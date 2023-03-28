@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Lato:wght@400;700;900&family=Oswald:wght@300;400;500;600&family=Playfair+Display:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* font-family: 'Bodoni Moda', serif; */
+  /* font-family: 'Lato', sans-serif; */
+  font-family: "Oswald", sans-serif;
+  /* font-family: 'Playfair Display', serif; */
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+body {
+  overflow-x: hidden;
+}

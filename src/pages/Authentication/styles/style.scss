@@ -1,0 +1,134 @@
+.authentication__container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+
+  img {
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .form__container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+
+    form {
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      font-size: 19px;
+      min-width: 25vw;
+      gap: 10px;
+
+      h1 {
+        font-family: "Bodoni Moda", serif;
+        font-size: 3rem;
+        font-weight: 600;
+      }
+      .newuser {
+        display: flex;
+        gap: 5px;
+        align-items: center;
+
+        p:last-child {
+          color: #27ae60;
+          cursor: pointer;
+        }
+      }
+
+      .email__container {
+        width: 100%;
+
+        input {
+          width: 100%;
+          font-size: 16px;
+          padding: 10px 8px;
+          margin-top: 10px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .password__container {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        width: 100%;
+        border: 1px solid #000;
+        padding: 0 8px;
+        input {
+          padding: 10px 0;
+          flex: 1;
+          border: none;
+          font-size: 16px;
+
+          &:focus {
+            outline: none;
+          }
+        }
+      }
+
+      .forgotButton{
+        text-align: right;
+        width: 100%;
+        text-decoration: underline;
+        color: #e74c3c;
+        cursor: pointer;
+      }
+
+      .MuiButton-root {
+        width: 100%;
+        font-family: "Oswald", sans-serif;
+        font-size: 19px;
+        text-transform: capitalize;
+        background: #34495e;
+        color: #fff;
+        padding: 10px 0;
+        margin-top: 5px;
+        font-weight: 400;
+      }
+
+      .divider{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        margin: 20px 0;
+
+        div{
+            flex: 1;
+            width: 100%;
+            height: 1px;
+            background: #000;
+        }
+
+        p{
+            font-size: 16px;
+            font-weight: 400;
+        }
+      }
+
+      .socialLogin{
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        justify-content: center;
+
+        img{
+            width: 30px;
+            object-fit: contain;
+            cursor: pointer;
+
+            &:last-child{
+                width: 35px;
+            }
+        }
+      }
+    }
+  }
+}
