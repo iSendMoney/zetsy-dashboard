@@ -5,6 +5,9 @@ import OrderAnalyticsCard from "./OrderAnalyticsCard";
 import AnalyticsNumbersData from "../../mocks/analyticsNumbers.json";
 
 import "./styles/style.css";
+import RecentOrders from "../RecentOrders";
+import TopSellingProducts from "../TopSellingProducts";
+import { Button } from "@mui/material";
 
 export default function SidebarApp() {
   return (
@@ -20,11 +23,22 @@ export default function SidebarApp() {
       </div>
       <div className="orderAnalytics">
         {AnalyticsNumbersData.map((data, key) => (
-          <OrderAnalyticsCard
-            key={key}
-            data={data}
-          />
+          <OrderAnalyticsCard key={key} data={data} />
         ))}
+      </div>
+
+      <div className="productData">
+        <div className="recentOrders">
+          <h3>Recent Orders</h3>
+          <RecentOrders />
+          <Button>View All</Button>
+        </div>
+        <div className="topSellingProducts">
+          <h3>Top Selling Products</h3>
+          <TopSellingProducts/>
+          <Button>View All</Button>
+
+        </div>
       </div>
     </div>
   );
