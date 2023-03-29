@@ -37,7 +37,6 @@ export default function SidebarApp() {
           <h3>Top Selling Products</h3>
           <TopSellingProducts/>
           <Button>View All</Button>
-
         </div>
       </div>
     </div>

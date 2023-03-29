@@ -101,6 +101,8 @@
   align-items: flex-start;
   gap: 24px;
   width: 100%;
+  border-bottom: 1px dashed rgba(145, 158, 171, 0.24);
+  padding-bottom: 24px;
 }
 .sidebarApp__container .productData h3 {
   margin-bottom: 24px;
