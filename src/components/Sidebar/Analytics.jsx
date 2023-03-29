@@ -1,7 +1,8 @@
 import React from 'react'
+import './styles/analytics.style.css'
 
 export default function Analytics() {
   return (
-    <div>Analytics</div>
+    <div className='analyticsTab__container'>Analytics</div>
   )
 }

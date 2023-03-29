@@ -110,6 +110,9 @@
   font-weight: 600;
   color: rgb(30, 40, 49);
   font-family: "Public Sans", sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 .sidebarApp__container .productData .recentOrders,
 .sidebarApp__container .productData .topSellingProducts {
@@ -126,6 +129,7 @@
   color: rgb(33, 43, 54);
   background-color: rgb(255, 255, 255);
   min-width: 0;
+  gap: 5px;
 }
 .sidebarApp__container .productData .MuiPaper-root {
   background-color: rgb(255, 255, 255);
@@ -153,4 +157,20 @@
 }
 .sidebarApp__container .productData .MuiTableRow-root:hover {
   background-color: rgba(0, 0, 0, 0.04);
+}
+.sidebarApp__container .productData .MuiTableRow-root .flex {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 16px;
+  font-family: "Public Sans", serif;
+}
+.sidebarApp__container .productData .MuiTableRow-root .flex .price {
+  font-size: 14px;
+  color: rgb(99, 115, 129);
+}
+.sidebarApp__container .productData .MuiTableRow-root .flex img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
 }/*# sourceMappingURL=style.css.map */

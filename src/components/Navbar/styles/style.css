@@ -13,6 +13,12 @@
   left: 0;
   border-bottom: 1px dashed rgba(145, 158, 171, 0.24);
 }
+.navbar__container h2 {
+  font-size: 22px;
+  font-weight: 700;
+  color: #22253c;
+  font-family: "Oswald", serif;
+}
 .navbar__container div {
   display: flex;
   align-items: center;

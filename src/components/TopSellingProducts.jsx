@@ -6,8 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import Box from '@mui/material/Box';
-import Rating from '@mui/material/Rating';
+import Box from "@mui/material/Box";
+import Rating from "@mui/material/Rating";
 
 function createData(name, calories, fat, carbs, protein) {
   return { name, calories, fat, carbs, protein };
@@ -45,10 +45,23 @@ export default function TopSellingProducts() {
                   {index + 1}
                 </TableCell>
                 <TableCell component="th" scope="row">
-                  {row.name}
+                  <div className="flex">
+                    <img
+                      src="https://images.unsplash.com/photo-1579338559194-a162d19bf842?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+                      loading="lazy"
+                      alt=""
+                    />
+                    <span>
+                      {row.name}
+                      <br />
+                      <span className="price">3,456</span>
+                    </span>
+                  </div>
                 </TableCell>
                 <TableCell align="center">{row.calories}</TableCell>
-                <TableCell align="center"><Rating name="read-only" value={3.5} readOnly /></TableCell>
+                <TableCell align="center">
+                  <Rating name="read-only" value={3.5} readOnly />
+                </TableCell>
                 <TableCell align="center">{row.carbs}</TableCell>
               </TableRow>
             ))}

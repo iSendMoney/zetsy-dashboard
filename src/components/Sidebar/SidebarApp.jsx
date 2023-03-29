@@ -29,14 +29,14 @@ export default function SidebarApp() {
 
       <div className="productData">
         <div className="recentOrders">
-          <h3>Recent Orders</h3>
+          <h3><i className="ri-shopping-cart-line"></i> Recent Orders</h3>
           <RecentOrders />
-          <Button>View All</Button>
+          <Button>View All <i className="ri-arrow-right-line"></i></Button>
         </div>
         <div className="topSellingProducts">
-          <h3>Top Selling Products</h3>
+          <h3><i className="ri-magic-line"></i>Top Selling Products</h3>
           <TopSellingProducts/>
-          <Button>View All</Button>
+          <Button>View All <i className="ri-arrow-right-line"></i></Button>
         </div>
       </div>
     </div>
