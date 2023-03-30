@@ -5,8 +5,8 @@ import OrderAnalyticsCard from "./OrderAnalyticsCard";
 import AnalyticsNumbersData from "../../mocks/analyticsNumbers.json";
 
 import "./styles/style.css";
-import RecentOrders from "../RecentOrders";
-import TopSellingProducts from "../TopSellingProducts";
+import RecentOrders from "../../components/RecentOrders";
+import TopSellingProducts from "../../components/TopSellingProducts";
 import { Button } from "@mui/material";
 
 export default function SidebarApp() {

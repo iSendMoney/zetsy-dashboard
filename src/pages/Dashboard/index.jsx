@@ -2,18 +2,18 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 
 import Sidebar from "../../components/Sidebar";
-import Analytics from "../../components/Sidebar/Analytics";
-import Calendar from "../../components/Sidebar/Calendar";
-import Chat from "../../components/Sidebar/Chat";
-import Ecommerce from "../../components/Sidebar/Ecommerce";
-import Invoice from "../../components/Sidebar/Invoice";
-import Mail from "../../components/Sidebar/Mail";
-import Media from "../../components/Sidebar/Media";
-import Payments from "../../components/Sidebar/Payments";
-import SidebarApp from "../../components/Sidebar/SidebarApp";
-import Themes from "../../components/Sidebar/Themes";
-import Todo from "../../components/Sidebar/Todo";
-import User from "../../components/Sidebar/User";
+import Analytics from "../DashboardContainer/Analytics";
+import Calendar from "../DashboardContainer/Calendar";
+import Chat from "../DashboardContainer/Chat";
+import Ecommerce from "../DashboardContainer/Ecommerce";
+import Invoice from "../DashboardContainer/Invoice";
+import Mail from "../DashboardContainer/Mail";
+import Media from "../DashboardContainer/Media";
+import Payments from "../DashboardContainer/Payments/Payments";
+import SidebarApp from "../DashboardContainer/SidebarApp";
+import Themes from "../DashboardContainer/Themes";
+import Todo from "../DashboardContainer/Todo";
+import User from "../DashboardContainer/User";
 
 import "./styles/style.css";
 
@@ -28,8 +28,8 @@ export default function Dashboard() {
       <Sidebar handleTabChange={handleTabChange} activeTab={activeTab} />
 
       <div className="dashboardContent__container">
-        <Navbar/>
-        
+        <Navbar />
+
         {activeTab === "app" && <SidebarApp />}
         {activeTab === "analytics" && <Analytics />}
         {activeTab === "payments" && <Payments />}

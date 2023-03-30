@@ -1,9 +1,9 @@
 import { Button } from "@mui/material";
 import React from "react";
-import ConversionRates from "../Analytics/ConversionRates";
-import OrderTimeline from "../Analytics/OrderTimeline";
-import ProductCategoySales from "../Analytics/ProductCategoySales";
-import Summary from "../Analytics/Summary";
+import ConversionRates from "../../components/Analytics/ConversionRates";
+import OrderTimeline from "../../components/Analytics/OrderTimeline";
+import ProductCategoySales from "../../components/Analytics/ProductCategoySales";
+import Summary from "../../components/Analytics/Summary";
 import "./styles/analytics.style.css";
 
 export default function Analytics() {
