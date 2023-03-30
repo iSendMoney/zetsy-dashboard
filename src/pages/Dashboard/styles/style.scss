@@ -152,9 +152,7 @@
   }
 
   .dashboardContent__container{
-    height: 100vh;
-    overflow-y: scroll;
     position: relative;
-    width: 100%;
+    flex: 1;
   }
 }
