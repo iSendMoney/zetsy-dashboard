@@ -8,10 +8,16 @@ import "./styles/style.css";
 import RecentOrders from "../../components/RecentOrders";
 import TopSellingProducts from "../../components/TopSellingProducts";
 import { Button } from "@mui/material";
+import { Helmet } from "react-helmet";
 
 export default function SidebarApp() {
   return (
     <div className="sidebarApp__container">
+      <Helmet>
+        <title>
+          Dashboard | Zetsy - Your all in one store for online retails.
+        </title>
+      </Helmet>
       <div className="header">
         <div className="greetings">
           <h2>Good Evening, Jessica Singh Shrestha</h2>
@@ -29,14 +35,22 @@ export default function SidebarApp() {
 
       <div className="productData">
         <div className="recentOrders">
-          <h3><i className="ri-shopping-cart-line"></i> Recent Orders</h3>
+          <h3>
+            <i className="ri-shopping-cart-line"></i> Recent Orders
+          </h3>
           <RecentOrders />
-          <Button>View All <i className="ri-arrow-right-line"></i></Button>
+          <Button>
+            View All <i className="ri-arrow-right-line"></i>
+          </Button>
         </div>
         <div className="topSellingProducts">
-          <h3><i className="ri-magic-line"></i>Top Selling Products</h3>
-          <TopSellingProducts/>
-          <Button>View All <i className="ri-arrow-right-line"></i></Button>
+          <h3>
+            <i className="ri-magic-line"></i>Top Selling Products
+          </h3>
+          <TopSellingProducts />
+          <Button>
+            View All <i className="ri-arrow-right-line"></i>
+          </Button>
         </div>
       </div>
     </div>

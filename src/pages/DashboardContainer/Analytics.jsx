@@ -1,5 +1,6 @@
 import { Button } from "@mui/material";
 import React from "react";
+import { Helmet } from "react-helmet";
 import ConversionRates from "../../components/Analytics/ConversionRates";
 import OrderTimeline from "../../components/Analytics/OrderTimeline";
 import ProductCategoySales from "../../components/Analytics/ProductCategoySales";
@@ -9,6 +10,11 @@ import "./styles/analytics.style.css";
 export default function Analytics() {
   return (
     <div className="analyticsTab__container">
+      <Helmet>
+        <title>
+          Analytics | Zetsy - Your all in one store for online retails.
+        </title>
+      </Helmet>
       <div className="conversionsAndCategory">
         <ConversionRates />
         <ProductCategoySales />
