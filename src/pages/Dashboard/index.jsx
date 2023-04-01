@@ -13,7 +13,7 @@ import Payments from "../DashboardContainer/Payments/Payments";
 import SidebarApp from "../DashboardContainer/SidebarApp";
 import Themes from "../DashboardContainer/Themes";
 import Todo from "../DashboardContainer/Todo";
-import User from "../DashboardContainer/User";
+import User from "../DashboardContainer/User/User";
 
 import "./styles/style.css";
 
