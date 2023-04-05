@@ -1,13 +1,27 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { registerUser } from "../api/auth";
 
 export default function Register({ setFormStatus }) {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState({
+    password: "",
+    confirmPassword: "",
+  });
   const handleFormStatus = (status) => {
     setFormStatus(status);
   };
 
+  const handleUserRegister = (e) => {
+    e.preventDefault();
+    // @note need to validate whether the password is valid or not, simply input validation and sanitization
+    registerUser(email, passowrd?.password)
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  };
+
   return (
-    <form className="register__container" action="">
+    <form className="register__container" onSubmit={handleUserRegister}>
       <h1>Sign Up.</h1>
       <div className="newuser">
         <p>Already have an account?</p>
@@ -16,24 +30,53 @@ export default function Register({ setFormStatus }) {
 
       <div className="email__container">
         <label htmlFor="email">Email</label>
-        <input name="email" type="email" placeholder="my@awesomemail.me" />
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          type="email"
+          placeholder="my@awesomemail.me"
+        />
       </div>
 
       <label htmlFor="password">Password</label>
       <div className="password__container">
-        <input type="password" name="password" placeholder="secret@123" />
+        <input
+          value={password.password}
+          onChange={(e) =>
+            setPassword((state) => {
+              return { ...state, password: e.target.value };
+            })
+          }
+          type="password"
+          name="password"
+          placeholder="secret@123"
+        />
         <i className="ri-eye-off-line"></i>
       </div>
 
       <label htmlFor="password">Confirm Password</label>
       <div className="password__container">
-        <input type="password" name="password" placeholder="secret@123" />
+        <input
+          value={password.confirmPassword}
+          onChange={(e) =>
+            setPassword((state) => {
+              return {
+                ...state,
+                confirmPassword: e.target.value,
+              };
+            })
+          }
+          type="password"
+          name="password"
+          placeholder="secret@123"
+        />
         <i className="ri-eye-off-line"></i>
       </div>
 
       <p className="forgotButton">Must be 8 characters long!</p>
 
-      <Button>Register</Button>
+      <Button type="submit">Register</Button>
 
       <div className="divider">
         <div></div>

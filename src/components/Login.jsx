@@ -1,13 +1,24 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { loginUser } from "../api/auth";
 
 export default function Login({ setFormStatus }) {
+  const [email, setEmail] = React.useState("");
+  const [password, setPassword] = React.useState("");
+
   const handleFormStatus = (status) => {
     setFormStatus(status);
   };
 
+  const handleUserLogin = (e) => {
+    e.preventDefault();
+    loginUser(email, password)
+      .then((data) => console.log(data))
+      .catch((error) => console.error(error));
+  };
+
   return (
-    <form className="login__container" action="">
+    <form className="login__container" onSubmit={handleUserLogin}>
       <h1>Sign In.</h1>
       <div className="newuser">
         <p>Don't have an account?</p>
@@ -16,12 +27,24 @@ export default function Login({ setFormStatus }) {
 
       <div className="email__container">
         <label htmlFor="email">Email</label>
-        <input name="email" type="email" placeholder="my@awesomemail.me" />
+        <input
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          name="email"
+          type="email"
+          placeholder="my@awesomemail.me"
+        />
       </div>
 
       <label htmlFor="password">Password</label>
       <div className="password__container">
-        <input type="password" name="password" placeholder="secret@123" />
+        <input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          type="password"
+          name="password"
+          placeholder="secret@123"
+        />
         <i className="ri-eye-off-line"></i>
       </div>
 
@@ -29,7 +52,7 @@ export default function Login({ setFormStatus }) {
         forgot password?
       </p>
 
-      <Button>Login</Button>
+      <Button type="submit">Login</Button>
 
       <div className="divider">
         <div></div>
