@@ -2,24 +2,24 @@ import React from "react";
 
 import {
   initialAuthenticationState,
-  MarketplaceReducer,
-} from "./MarketplaceReducer";
+  AuthenticationReducer,
+} from "./AuthReducer";
 
-const MarketplaceContext = React.createContext();
+const AuthContext = React.createContext();
 
-export const AuthenticationReducer = ({ children }) => {
-  const [marketplaceData, dispatchMarketplaceData] = React.useReducer(
-    MarketplaceReducer,
-    initialMarketplaceState
+export const AuthenticationProvider = ({ children }) => {
+  const [authenticationData, dispatchAuthenticationData] = React.useReducer(
+    AuthenticationReducer,
+    initialAuthenticationState
   );
 
   return (
-    <MarketplaceContext.Provider
-      value={[marketplaceData, dispatchMarketplaceData]}
+    <AuthContext.Provider
+      value={[authenticationData, dispatchAuthenticationData]}
     >
       {children}
-    </MarketplaceContext.Provider>
+    </AuthContext.Provider>
   );
 };
 
-export const useMarketplaceContext = () => React.useContext(MarketplaceContext);
+export const useAuthContext = () => React.useContext(AuthContext);

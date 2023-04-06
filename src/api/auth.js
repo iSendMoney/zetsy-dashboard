@@ -1,9 +1,7 @@
 import { useContext } from "react";
-import { useHistory } from "react-router-dom";
 
 export async function loginUser(email, password) {
   const { dispatch } = useContext(AuthContext);
-  const history = useHistory();
 
   const response = await fetch(`${import.meta.env.VITE_API_BASE_URI}/login`, {
     method: "POST",
@@ -21,7 +19,6 @@ export async function loginUser(email, password) {
     // dispatch({ type: "LOGIN", payload: { token, refreshToken } });
     localStorage.setItem("token", token);
     localStorage.setItem("refreshToken", refreshToken);
-    history.push("/dashboard");
   } else {
     throw new Error("Login failed.");
   }
