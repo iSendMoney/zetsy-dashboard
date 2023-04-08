@@ -1,15 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
-import "remixicon/fonts/remixicon.css";
-import "./index.css";
 import { BrowserRouter } from "react-router-dom";
+import "remixicon/fonts/remixicon.css";
+
 import { AuthenticationProvider } from "./contexts/Auth";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthenticationProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
+    <ToastContainer
+      position="top-center"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHover
+      theme="dark"
+    />
   </AuthenticationProvider>
 );

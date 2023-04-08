@@ -1,5 +1,5 @@
 export const ACTIONS = {
-  SET_AUTHENTICATION: "set-authentication",
+  LOGIN: "login",
 };
 
 export const initialAuthenticationState = {
@@ -9,7 +9,7 @@ export const initialAuthenticationState = {
 export const AuthenticationReducer = (state, action) => {
   switch (action.type) {
     // @note set authentication
-    case ACTIONS.SET_AUTHENTICATION:
+    case ACTIONS.LOGIN:
       return {
         ...state,
         authenticated: true,
