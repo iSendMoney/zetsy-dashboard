@@ -21,7 +21,7 @@ export default function App() {
       <Route
         path="/"
         element={
-          isAuthenticated ? <Navigate to="/dashboard" /> : <Authentication />
+          isAuthenticated ? <Navigate to="/dashboard" /> : <Authentication setIsAuthenticated={setIsAuthenticated} />
         }
       />
       <Route

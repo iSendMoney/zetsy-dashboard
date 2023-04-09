@@ -4,11 +4,9 @@ import { useAuthContext } from "../contexts/Auth";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { sanitizeAuthenticationInput } from "../configs/SanitizeAuthentication";
-import { useNavigate } from "react-router-dom";
 
-export default function Login({ setFormStatus }) {
+export default function Login({ setFormStatus, setIsAuthenticated }) {
   const [, dispatch] = useAuthContext();
-  const navigate = useNavigate();
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -30,7 +28,7 @@ export default function Login({ setFormStatus }) {
         );
 
         dispatch({ type: "login", payload: response.data });
-        navigate("dashboard");
+        setIsAuthenticated(true);
       } catch (error) {
         toast("Email or Password is incorrect!");
         console.log(error);

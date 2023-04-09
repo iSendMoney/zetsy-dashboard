@@ -5,7 +5,7 @@ import Register from "../../components/Register";
 
 import "./styles/style.css";
 
-export default function Authentication() {
+export default function Authentication({setIsAuthenticated}) {
   const [formStatus, setFormStatus] = React.useState("login");
   return (
     <div className="authentication__container">
@@ -15,7 +15,7 @@ export default function Authentication() {
         loading="lazy"
       />
       <div className="form__container">
-        {formStatus === "login" && <Login setFormStatus={setFormStatus}/>}
+        {formStatus === "login" && <Login setIsAuthenticated={setIsAuthenticated} setFormStatus={setFormStatus}/>}
         {formStatus === "register" && <Register setFormStatus={setFormStatus}/>}
         {formStatus === "forgot" && <Forgot setFormStatus={setFormStatus}/>}
       </div>
