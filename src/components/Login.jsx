@@ -30,7 +30,7 @@ export default function Login({ setFormStatus }) {
         );
 
         dispatch({ type: "login", payload: response.data });
-        navigate("dashboard")
+        navigate("dashboard");
       } catch (error) {
         toast("Email or Password is incorrect!");
         console.log(error);
