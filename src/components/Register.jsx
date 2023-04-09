@@ -74,7 +74,13 @@ export default function Register({ setFormStatus }) {
         <i className="ri-eye-off-line"></i>
       </div>
 
-      <p className="forgotButton">Must be 8 characters long!</p>
+      <p className="forgotButton">
+        Must be 8 characters long.
+        <br />
+        Must Contain a capital character.
+        <br />
+        Must have one number included.
+      </p>
 
       <Button type="submit">Register</Button>
 

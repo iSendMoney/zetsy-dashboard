@@ -4,6 +4,7 @@ import { Navigate } from "react-router-dom";
 
 export default function ProtectedRoute({ children }) {
   const [{ authenticated }] = useAuthContext();
-  if (authenticated) return <Navigate to="/" />;
+
+  if (!authenticated) return <Navigate to="/" />;
   else return <>{children}</>;
 }
