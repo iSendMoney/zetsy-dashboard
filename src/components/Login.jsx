@@ -20,7 +20,7 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
     if (sanitizeAuthenticationInput(email, password)) {
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_API_BASE_URI}/login`,
+          `${import.meta.env.VITE_API_BASE_URI}/api/v1/auth/login`,
           {
             email,
             password,

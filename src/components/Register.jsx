@@ -36,7 +36,7 @@ export default function Register({ setFormStatus }) {
     if (sanitizeRegisterData()) {
       try {
         const response = await axios.post(
-          `${import.meta.env.VITE_API_BASE_URI}/register`,
+          `${import.meta.env.VITE_API_BASE_URI}/api/v1/auth/register`,
           {
             email,
             password: password.password,
