@@ -8,8 +8,11 @@ export const initialAuthenticationState = {
 
 export const AuthenticationReducer = (state, action) => {
   switch (action.type) {
-    // @note set authentication
     case ACTIONS.LOGIN:
+      localStorage.setItem(
+        "authentication-token",
+        JSON.stringify(action.payload)
+      );
       return {
         ...state,
         authenticated: true,

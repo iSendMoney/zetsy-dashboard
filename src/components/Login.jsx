@@ -3,9 +3,12 @@ import { Button } from "@mui/material";
 import { useAuthContext } from "../contexts/Auth";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { sanitizeAuthenticationInput } from "../configs/SanitizeAuthentication";
+import { useNavigate } from "react-router-dom";
 
 export default function Login({ setFormStatus }) {
   const [, dispatch] = useAuthContext();
+  const navigate = useNavigate();
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
@@ -14,26 +17,9 @@ export default function Login({ setFormStatus }) {
     setFormStatus(status);
   };
 
-  const sanitizeLoginData = () => {
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const isValidEmail = emailRegex.test(email);
-    if (!isValidEmail) {
-      toast("Please enter a valid email address!");
-      return false;
-    }
-
-    const passwordRegex =
-      /^(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    const isValidPassword = passwordRegex.test(password);
-    if (!isValidPassword) {
-      toast("Please enter a valid password!");
-      return false;
-    }
-  };
-
   const handleUserLogin = async (e) => {
     e.preventDefault();
-    if (sanitizeLoginData()) {
+    if (sanitizeAuthenticationInput(email, password)) {
       try {
         const response = await axios.post(
           `${import.meta.env.VITE_API_BASE_URI}/login`,
@@ -42,13 +28,9 @@ export default function Login({ setFormStatus }) {
             password,
           }
         );
-        if (response?.data?.token) {
-          dispatch({ type: "login" });
-          localStorage.setItem(
-            "authentication-token",
-            JSON.stringify(response?.data)
-          );
-        }
+
+        dispatch({ type: "login", payload: response.data });
+        navigate("dashboard")
       } catch (error) {
         toast("Email or Password is incorrect!");
         console.log(error);

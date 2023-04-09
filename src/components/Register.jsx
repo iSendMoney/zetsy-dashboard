@@ -1,6 +1,8 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { registerUser } from "../api/auth";
+import axios from "axios";
+import { sanitizeAuthenticationInput } from "../configs/SanitizeAuthentication";
+import { toast } from "react-toastify";
 
 export default function Register({ setFormStatus }) {
   const [email, setEmail] = React.useState("");
@@ -8,16 +10,45 @@ export default function Register({ setFormStatus }) {
     password: "",
     confirmPassword: "",
   });
+
   const handleFormStatus = (status) => {
     setFormStatus(status);
   };
 
-  const handleUserRegister = (e) => {
+  const sanitizeRegisterData = () => {
+    if (sanitizeAuthenticationInput(email, password?.password)) {
+      if (password.password !== password.confirmPassword) {
+        toast("Passwords do not match!");
+        return false;
+      }
+
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const handleUserRegister = async (e) => {
     e.preventDefault();
-    // @note need to validate whether the password is valid or not, simply input validation and sanitization
-    registerUser(email, passowrd?.password)
-      .then((data) => console.log(data))
-      .catch((error) => console.error(error));
+
+    console.log(sanitizeRegisterData());
+
+    if (sanitizeRegisterData()) {
+      try {
+        const response = await axios.post(
+          `${import.meta.env.VITE_API_BASE_URI}/register`,
+          {
+            email,
+            password: password.password,
+          }
+        );
+
+        console.log(response);
+      } catch (error) {
+        toast("User with that email already exists!")
+        console.log(error);
+      }
+    }
   };
 
   return (
@@ -77,7 +108,7 @@ export default function Register({ setFormStatus }) {
       <p className="forgotButton">
         Must be 8 characters long.
         <br />
-        Must Contain a capital character.
+        Must contain a capital character.
         <br />
         Must have one number included.
       </p>
