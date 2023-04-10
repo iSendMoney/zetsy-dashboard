@@ -10,6 +10,7 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
 
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [passwordType, setPasswordType] = React.useState("password");
 
   const handleFormStatus = (status) => {
     setFormStatus(status);
@@ -60,11 +61,15 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
         <input
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          type="password"
+          type={passwordType}
           name="password"
           placeholder="secret@123"
         />
-        <i className="ri-eye-off-line"></i>
+        {passwordType === "password" ? (<i onClick={() => {
+          setPasswordType("text")
+        }} className="ri-eye-off-line"></i>) : (<i onClick={() => {
+          setPasswordType("password")
+        }} className="ri-eye-line"></i>)}
       </div>
 
       <p className="forgotButton" onClick={() => handleFormStatus("forgot")}>

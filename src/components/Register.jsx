@@ -10,6 +10,7 @@ export default function Register({ setFormStatus }) {
     password: "",
     confirmPassword: "",
   });
+  const [passwordType, setPasswordType] = React.useState("password");
 
   const handleFormStatus = (status) => {
     setFormStatus(status);
@@ -45,7 +46,7 @@ export default function Register({ setFormStatus }) {
 
         console.log(response);
       } catch (error) {
-        toast("User with that email already exists!")
+        toast("User with that email already exists!");
         console.log(error);
       }
     }
@@ -79,11 +80,25 @@ export default function Register({ setFormStatus }) {
               return { ...state, password: e.target.value };
             })
           }
-          type="password"
+          type={passwordType}
           name="password"
           placeholder="secret@123"
         />
-        <i className="ri-eye-off-line"></i>
+        {passwordType === "password" ? (
+          <i
+            onClick={() => {
+              setPasswordType("text");
+            }}
+            className="ri-eye-off-line"
+          ></i>
+        ) : (
+          <i
+            onClick={() => {
+              setPasswordType("password");
+            }}
+            className="ri-eye-line"
+          ></i>
+        )}
       </div>
 
       <label htmlFor="password">Confirm Password</label>
@@ -98,11 +113,25 @@ export default function Register({ setFormStatus }) {
               };
             })
           }
-          type="password"
+          type={passwordType}
           name="password"
           placeholder="secret@123"
         />
-        <i className="ri-eye-off-line"></i>
+        {passwordType === "password" ? (
+          <i
+            onClick={() => {
+              setPasswordType("text");
+            }}
+            className="ri-eye-off-line"
+          ></i>
+        ) : (
+          <i
+            onClick={() => {
+              setPasswordType("password");
+            }}
+            className="ri-eye-line"
+          ></i>
+        )}
       </div>
 
       <p className="forgotButton">
