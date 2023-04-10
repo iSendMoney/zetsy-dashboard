@@ -83,6 +83,9 @@
   margin-top: 5px;
   font-weight: 400;
 }
+.authentication__container .form__container form i {
+  cursor: pointer;
+}
 .authentication__container .form__container form .divider {
   display: flex;
   align-items: center;
