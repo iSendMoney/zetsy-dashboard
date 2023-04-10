@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import Hello from "../configs/Hello";
 
+
 export default function Register({ setFormStatus }) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState({
@@ -57,10 +58,15 @@ export default function Register({ setFormStatus }) {
 
   const register = async (provider) => {
     try {
-      const oauth = await Hello(provider).login();
-      const userData = await Hello(provider).api('me');
+      const oauth = await Hello(provider).login({scope:"email"});
+      console.log(oauth);
+      let headers = {};
+      if(provider=="github"){
+        headers =  {Authorization: `token ${oauth.authResponse.access_token}`}
+      }
+      const userData = await Hello(provider).api({path:"me", headers:headers});
+      console.log(userData);
       
-      console.log(userData, oauth);
       // // Check if user already exists
       // const response = await fetch('/api/register', {
       //   method: 'POST',
