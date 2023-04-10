@@ -45,6 +45,7 @@ export default function Register({ setFormStatus }) {
         );
 
         console.log(response);
+        toast("User verification mail sent!");
       } catch (error) {
         toast("User with that email already exists!");
         console.log(error);
