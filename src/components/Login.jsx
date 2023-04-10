@@ -4,6 +4,7 @@ import { useAuthContext } from "../contexts/Auth";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { sanitizeAuthenticationInput } from "../configs/SanitizeAuthentication";
+import { Helmet } from "react-helmet";
 
 export default function Login({ setFormStatus, setIsAuthenticated }) {
   const [, dispatch] = useAuthContext();
@@ -39,6 +40,11 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
 
   return (
     <form className="login__container" onSubmit={handleUserLogin}>
+      <Helmet>
+        <title>
+          Login | Zetsy | Zetsy is a cutting-edge ecommerce platform that is changing the way people shop online.
+        </title>
+      </Helmet>
       <h1>Sign In.</h1>
       <div className="newuser">
         <p>Don't have an account?</p>
