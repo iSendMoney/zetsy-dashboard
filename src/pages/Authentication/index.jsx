@@ -16,7 +16,7 @@ export default function Authentication({setIsAuthenticated}) {
       />
       <div className="form__container">
         {formStatus === "login" && <Login setIsAuthenticated={setIsAuthenticated} setFormStatus={setFormStatus}/>}
-        {formStatus === "register" && <Register setFormStatus={setFormStatus}/>}
+        {formStatus === "register" && <Register setIsAuthenticated={setIsAuthenticated} setFormStatus={setFormStatus}/>}
         {formStatus === "forgot" && <Forgot setFormStatus={setFormStatus}/>}
       </div>
     </div>

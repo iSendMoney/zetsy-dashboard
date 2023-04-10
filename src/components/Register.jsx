@@ -5,17 +5,17 @@ import { sanitizeAuthenticationInput } from "../configs/SanitizeAuthentication";
 import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import Hello from "../configs/Hello";
+import { useAuthContext } from "../contexts/Auth";
 
 
-export default function Register({ setFormStatus }) {
+export default function Register({ setFormStatus, setIsAuthenticated }) {
+  const [, dispatch] = useAuthContext();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState({
     password: "",
     confirmPassword: "",
   });
   const [passwordType, setPasswordType] = React.useState("password");
-  const [user, setUser] = React.useState(null);
-
   const handleFormStatus = (status) => {
     setFormStatus(status);
   };
@@ -59,22 +59,26 @@ export default function Register({ setFormStatus }) {
   const register = async (provider) => {
     try {
       const oauth = await Hello(provider).login({scope:"email"});
-      console.log(oauth);
       let headers = {};
       if(provider=="github"){
         headers =  {Authorization: `token ${oauth.authResponse.access_token}`}
       }
       const userData = await Hello(provider).api({path:"me", headers:headers});
-      console.log(userData);
+      // Check if user already exists
+      await axios.post(
+        `${import.meta.env.VITE_API_BASE_URI}/api/v1/auth/register?social=true`,
+        {
+          email:userData.email,
+          picture: userData.picture,
+        }
+      ).then(res=>{
+        const {accessToken, refreshToken} = res.data;
+        console.log(accessToken)
+        dispatch({ type: "login", payload: {accessToken, refreshToken} });
+        dispatch({ type: "set-user", payload: res.data.savedUser });
+        return setIsAuthenticated(true)
+      }).catch(err=>err && toast(err.response?.data?.message))
       
-      // // Check if user already exists
-      // const response = await fetch('/api/register', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(userData)
-      // });
-      // const data = await response.json();
-
       // setUser(data.user);
     } catch (error) {
       console.error(error);

@@ -28,8 +28,9 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
             password,
           }
         );
-
-        dispatch({ type: "login", payload: response.data });
+        const {accessToken, refreshToken} = response.data;
+        dispatch({ type: "login", payload: {accessToken, refreshToken} });
+        dispatch({ type: "set-user", payload: res.data.user });
         setIsAuthenticated(true);
       } catch (error) {
         toast("Email or Password is incorrect!");
