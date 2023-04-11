@@ -1,9 +1,11 @@
 export const ACTIONS = {
   LOGIN: "login",
+  SET_USER: "set-user"
 };
 
 export const initialAuthenticationState = {
   authenticated: false,
+  user:  localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) :{}
 };
 
 export const AuthenticationReducer = (state, action) => {
@@ -17,5 +19,14 @@ export const AuthenticationReducer = (state, action) => {
         ...state,
         authenticated: true,
       };
+    case ACTIONS.SET_USER:
+      localStorage.setItem(
+        "user",
+        JSON.stringify(action.payload)
+      );
+        return {
+          ...state,
+          user: action.payload,
+        };
   }
 };

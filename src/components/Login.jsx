@@ -5,6 +5,8 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { sanitizeAuthenticationInput } from "../configs/SanitizeAuthentication";
 import { Helmet } from "react-helmet";
+import Hello from "../configs/Hello";
+
 
 export default function Login({ setFormStatus, setIsAuthenticated }) {
   const [, dispatch] = useAuthContext();
@@ -28,13 +30,42 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
             password,
           }
         );
-
-        dispatch({ type: "login", payload: response.data });
+        const {accessToken, refreshToken} = response.data;
+        dispatch({ type: "login", payload: {accessToken, refreshToken} });
+        dispatch({ type: "set-user", payload: res.data.user });
         setIsAuthenticated(true);
       } catch (error) {
         toast("Email or Password is incorrect!");
         console.log(error);
       }
+    }
+  };
+
+  const register = async (provider) => {
+    try {
+      const oauth = await Hello(provider).login({scope:"email"});
+      let headers = {};
+      if(provider=="github"){
+        headers =  {Authorization: `token ${oauth.authResponse.access_token}`}
+      }
+      const userData = await Hello(provider).api({path:"me", headers:headers});
+      // Check if user already exists
+      await axios.post(
+        `${import.meta.env.VITE_API_BASE_URI}/api/v1/auth/login?social=true`,
+        {
+          email:userData.email,
+          picture: userData.picture,
+        }
+      ).then(res=>{
+        const {accessToken, refreshToken} = res.data;
+        dispatch({ type: "login", payload: {accessToken, refreshToken} });
+        dispatch({ type: "set-user", payload: res.data.user });
+        return setIsAuthenticated(true)
+      }).catch(err=>err && toast(err.response?.data?.message))
+      
+      // setUser(data.user);
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -94,22 +125,27 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
         <img
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/150px-Google_%22G%22_Logo.svg.png"
           loading="lazy"
+          onClick={() => register('google')}
           alt=""
         />
         <img
           src="https://imgs.search.brave.com/G8j01hT__Dy0scW_XC8gPfClk2CjdyhNVXs1m9jAeyY/rs:fit:700:700:1/g:ce/aHR0cHM6Ly9sb2dv/ZG93bmxvYWQub3Jn/L3dwLWNvbnRlbnQv/dXBsb2Fkcy8yMDE0/LzA5L2ZhY2Vib29r/LWxvZ28tNS0xLnBu/Zw"
           loading="lazy"
           alt=""
+          onClick={() => register('facebook')}
+
         />
         <img
           src="https://imgs.search.brave.com/ij3t5KLpcnSaGFABUAAdPh9IARp5fsbQSBZBRQC7UWE/rs:fit:1200:1200:1/g:ce/aHR0cHM6Ly9sb2dv/cy1kb3dubG9hZC5j/b20vd3AtY29udGVu/dC91cGxvYWRzLzIw/MTYvMDkvR2l0SHVi/X2xvZ28ucG5n"
           loading="lazy"
           alt=""
+          onClick={() => register('github')}
         />
         <img
           src="https://imgs.search.brave.com/HSqZIViVT05nuvKYi1zxI4wa9U4S0cYVgXJBDNUjowc/rs:fit:1200:1200:1/g:ce/aHR0cDovLzEwMDBs/b2dvcy5uZXQvd3At/Y29udGVudC91cGxv/YWRzLzIwMTcvMDYv/VHdpdHRlci1Mb2dv/LnBuZw"
           loading="lazy"
           alt=""
+          onClick={() => register('twitter')}
         />
       </div>
     </form>
