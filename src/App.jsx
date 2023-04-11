@@ -34,7 +34,7 @@ export default function App() {
         path="/dashboard"
         element={
           <ProtectedRoute>
-            {hasStore ? <Dashboard /> : <UserOnboarding />}
+            {hasStore ? <Dashboard /> : <UserOnboarding setHasStore={setHasStore}/>}
           </ProtectedRoute>
         }
       />

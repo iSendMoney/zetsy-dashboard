@@ -16,7 +16,7 @@ const steps = [
   "Social Information",
 ];
 
-export default function UserOnboarding() {
+export default function UserOnboarding({ setHasStore }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
@@ -87,7 +87,10 @@ export default function UserOnboarding() {
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button className="resetBtn" onClick={handleReset}>Reset</Button>
+                {/* @note save all those form data in local storage and onclick button send a post request adn remove from local storage */}
+                <Button className="resetBtn" onClick={() => setHasStore(true)}>
+                  Let's Get Started
+                </Button>
               </Box>
             </React.Fragment>
           ) : activeStep === 0 ? (

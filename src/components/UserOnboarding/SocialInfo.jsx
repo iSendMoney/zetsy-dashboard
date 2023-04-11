@@ -11,7 +11,7 @@ export default function SocialInfo({
 }) {
   return (
     <div className="socialInformation__container">
-      <h1>Social Information</h1>
+      <h1><i className="ri-links-line"></i>Social Information</h1>
       <form>
         <TextField
           id="outlined-basic"

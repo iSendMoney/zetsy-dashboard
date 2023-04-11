@@ -69,16 +69,16 @@
   background-color: rgba(45, 52, 54, 0.6901960784);
 }
 .onboardUser__container .paper .resetBtn {
-  background-color: #d63031;
+  background-color: #6c5ce7;
 }
 .onboardUser__container .paper .resetBtn:hover {
-  background-color: rgba(214, 48, 49, 0.6901960784);
+  background-color: rgba(108, 92, 231, 0.7450980392);
 }
 .onboardUser__container .paper form {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   align-items: center;
 }
 .onboardUser__container .paper form input {

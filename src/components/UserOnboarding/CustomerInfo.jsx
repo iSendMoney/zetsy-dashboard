@@ -11,7 +11,7 @@ export default function CustomerInfo({
 }) {
   return (
     <div className="customerInformation__container">
-      <h1>Customer Information</h1>
+      <h1><i className="ri-store-2-line"></i> Customer Information</h1>
       <form>
         <TextField
           id="outlined-basic"
