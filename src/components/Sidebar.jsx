@@ -3,7 +3,7 @@ import { useAuthContext } from "../contexts/Auth";
 
 export default function Sidebar({ handleTabChange, activeTab }) {
   const [{user}, dispatch] = useAuthContext();
-  console.log(user)
+  
   return (
     <div className="sidebar__container">
       <h1 className="logo__container">Zetsy.</h1>
