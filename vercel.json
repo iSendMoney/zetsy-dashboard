@@ -11,6 +11,10 @@
         {
             "source": "/dashboard",
             "destination": "/dashboard"
+        },
+        {
+            "source": "/onboard-user",
+            "destination": "/onboard-user"
         }
     ]
 }
