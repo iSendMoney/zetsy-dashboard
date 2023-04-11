@@ -5,6 +5,7 @@ import Dashboard from "./pages/Dashboard";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
+  const [hasStore, setHasStore] = React.useState(false);
 
   useEffect(() => {
     const authToken = JSON.parse(localStorage.getItem("authentication-token"));
@@ -21,7 +22,7 @@ export default function App() {
       <Route
         path="/"
         element={
-          isAuthenticated ? <Navigate to="/dashboard" /> : <Authentication setIsAuthenticated={setIsAuthenticated} />
+          isAuthenticated ? hasStore ? <Navigate to="/dashboard" /> : <Navigate to="/onboard-user" /> : <Authentication setIsAuthenticated={setIsAuthenticated} />
         }
       />
       <Route
