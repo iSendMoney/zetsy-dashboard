@@ -1,12 +1,12 @@
 import React, { useEffect } from "react";
-import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import Authentication from "./pages/Authentication";
 import Dashboard from "./pages/Dashboard";
 import UserOnboarding from "./pages/UserOnboarding";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [hasStore, setHasStore] = React.useState(false);
+  const [hasStore, setHasStore] = React.useState(true);
 
   useEffect(() => {
     const authToken = JSON.parse(localStorage.getItem("authentication-token"));
@@ -23,15 +23,18 @@ export default function App() {
       <Route
         path="/"
         element={
-          isAuthenticated ? hasStore ? <Navigate to="/dashboard" /> : <Navigate to="/onboard-user" /> : <Authentication setIsAuthenticated={setIsAuthenticated} />
+          isAuthenticated ? (
+            <Navigate to="/dashboard" />
+          ) : (
+            <Authentication setIsAuthenticated={setIsAuthenticated} />
+          )
         }
       />
-      <Route path="/onboard-user" element={<UserOnboarding/>}/>
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
-            <Dashboard />
+            {hasStore ? <Dashboard /> : <UserOnboarding />}
           </ProtectedRoute>
         }
       />
