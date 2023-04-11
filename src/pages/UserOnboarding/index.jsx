@@ -20,8 +20,8 @@ export default function UserOnboarding() {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
 
-  const isStepOptional = (step) => {
-    return step === 1;
+  const isStepOptional = () => {
+    return true;
   };
 
   const isStepSkipped = (step) => {
@@ -44,13 +44,13 @@ export default function UserOnboarding() {
   };
 
   const handleSkip = () => {
-    if (!isStepOptional(activeStep)) {
+    if (!isStepOptional()) {
       // You probably want to guard against something like this,
       // it should never occur unless someone's actively trying to break something.
       throw new Error("You can't skip a step that isn't optional.");
     }
 
-    setActiveStep((prevActiveStep) => prevActiveStep + 1);
+    setActiveStep(2);
     setSkipped((prevSkipped) => {
       const newSkipped = new Set(prevSkipped.values());
       newSkipped.add(activeStep);
@@ -87,74 +87,38 @@ export default function UserOnboarding() {
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button onClick={handleReset}>Reset</Button>
+                <Button className="resetBtn" onClick={handleReset}>Reset</Button>
               </Box>
             </React.Fragment>
           ) : activeStep === 0 ? (
             <>
-              <BusinessInfo />
-              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <Button
-                  color="inherit"
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  sx={{ mr: 1 }}
-                >
-                  Back
-                </Button>
-                <Box sx={{ flex: "1 1 auto" }} />
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
-                </Button>
-
-                <Button onClick={handleNext}>
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
-              </Box>
+              <BusinessInfo
+                handleNext={handleNext}
+                activeStep={activeStep}
+                handleSkip={handleSkip}
+                handleBack={handleBack}
+                steps={steps}
+              />
             </>
           ) : activeStep === 1 ? (
             <>
-              <CustomerInfo />
-              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <Button
-                  color="inherit"
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  sx={{ mr: 1 }}
-                >
-                  Back
-                </Button>
-                <Box sx={{ flex: "1 1 auto" }} />
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
-                </Button>
-
-                <Button onClick={handleNext}>
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
-              </Box>
+              <CustomerInfo
+                handleNext={handleNext}
+                activeStep={activeStep}
+                handleSkip={handleSkip}
+                handleBack={handleBack}
+                steps={steps}
+              />
             </>
           ) : (
             <>
-              <SocialInfo />
-              <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
-                <Button
-                  color="inherit"
-                  disabled={activeStep === 0}
-                  onClick={handleBack}
-                  sx={{ mr: 1 }}
-                >
-                  Back
-                </Button>
-                <Box sx={{ flex: "1 1 auto" }} />
-                <Button color="inherit" onClick={handleSkip} sx={{ mr: 1 }}>
-                  Skip
-                </Button>
-
-                <Button onClick={handleNext}>
-                  {activeStep === steps.length - 1 ? "Finish" : "Next"}
-                </Button>
-              </Box>
+              <SocialInfo
+                handleNext={handleNext}
+                activeStep={activeStep}
+                handleSkip={handleSkip}
+                handleBack={handleBack}
+                steps={steps}
+              />
             </>
           )}
         </Box>
