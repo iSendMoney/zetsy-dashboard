@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import Authentication from "./pages/Authentication";
 import Dashboard from "./pages/Dashboard";
+import UserOnboarding from "./pages/UserOnboarding";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -24,6 +25,7 @@ export default function App() {
           isAuthenticated ? <Navigate to="/dashboard" /> : <Authentication setIsAuthenticated={setIsAuthenticated} />
         }
       />
+      <Route path="/onboard-user" element={<UserOnboarding/>}/>
       <Route
         path="/dashboard"
         element={
