@@ -32,7 +32,7 @@ export default function Login({ setFormStatus, setIsAuthenticated }) {
         );
         const {accessToken, refreshToken} = response.data;
         dispatch({ type: "login", payload: {accessToken, refreshToken} });
-        dispatch({ type: "set-user", payload: res.data.user });
+        dispatch({ type: "set-user", payload: response.data.user });
         setIsAuthenticated(true);
       } catch (error) {
         toast("Email or Password is incorrect!");
