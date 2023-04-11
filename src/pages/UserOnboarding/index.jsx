@@ -87,7 +87,9 @@ export default function UserOnboarding() {
               </Typography>
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Box sx={{ flex: "1 1 auto" }} />
-                <Button className="resetBtn" onClick={handleReset}>Reset</Button>
+                <Button className="resetBtn" onClick={handleReset}>
+                  Reset
+                </Button>
               </Box>
             </React.Fragment>
           ) : activeStep === 0 ? (
