@@ -8,7 +8,7 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import ProductTable from "../../components/Ecommerce/ProductTable";
 
-export default function Ecommerce() {
+export default function Ecommerce({handleTabChange}) {
   const [status, setStatus] = React.useState("");
 
   const handleChange = (event) => {
@@ -21,7 +21,7 @@ export default function Ecommerce() {
           <h1>Ecommerce</h1>
           <p>Dashboard - Ecommerce - List</p>
         </div>
-        <Button>
+        <Button onClick={() => handleTabChange("new-product")}>
           <i className="ri-add-line"></i>
           <p>New Product</p>
         </Button>

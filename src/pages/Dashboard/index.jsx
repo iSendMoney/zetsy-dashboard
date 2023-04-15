@@ -14,6 +14,7 @@ import SidebarApp from "../DashboardContainer/SidebarApp";
 import Themes from "../DashboardContainer/Themes";
 import Todo from "../DashboardContainer/Todo";
 import User from "../DashboardContainer/User/User";
+import NewProduct from "../DashboardContainer/NewProduct"
 
 import "./styles/style.css";
 
@@ -35,13 +36,14 @@ export default function Dashboard() {
         {activeTab === "payments" && <Payments />}
         {activeTab === "media" && <Media />}
         {activeTab === "user" && <User />}
-        {activeTab === "e-commerce" && <Ecommerce />}
+        {activeTab === "e-commerce" && <Ecommerce handleTabChange={handleTabChange}/>}
         {activeTab === "invoice" && <Invoice />}
         {activeTab === "themes" && <Themes />}
         {activeTab === "mail" && <Mail />}
         {activeTab === "chat" && <Chat />}
         {activeTab === "calendar" && <Calendar />}
         {activeTab === "todo" && <Todo />}
+        {activeTab === "new-product" && <NewProduct />}
       </div>
     </div>
   );
