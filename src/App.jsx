@@ -6,7 +6,7 @@ import UserOnboarding from "./pages/UserOnboarding";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [hasStore, setHasStore] = React.useState(true);
+  const [hasStore, setHasStore] = React.useState(false);
 
   useEffect(() => {
     const authToken = JSON.parse(localStorage.getItem("authentication-token"));
