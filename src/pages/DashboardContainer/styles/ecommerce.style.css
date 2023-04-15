@@ -72,9 +72,9 @@
   border-radius: 5px;
 }
 .ecommerce__container .productList.paper .filter .productSearchContainer input {
-  font-size: 1.2rem;
+  font-size: 1rem;
   flex: 1;
-  padding: 13px 0;
+  padding: 16px 0;
   border: none;
 }
 .ecommerce__container .productList.paper .filter .productSearchContainer input:focus {
@@ -82,17 +82,17 @@
   border: none;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .MuiTableHead-root {
-  background-color: #F5F7F8;
+  background-color: #f5f7f8;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productImage {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 0;
+  gap: 16px;
+  padding: 16px 0;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productImage img {
-  width: 50px;
-  height: 50px;
+  width: 55px;
+  height: 55px;
   -o-object-fit: cover;
      object-fit: cover;
   border-radius: 15px;
@@ -100,18 +100,48 @@
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productImage p {
   font-size: 16px;
 }
+.ecommerce__container .productList.paper .ecommerceContainer__productTable .productImage h4 {
+  color: rgba(0, 0, 0, 0.5333333333);
+}
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root {
   min-width: 0;
+  padding: 3px 8px;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root i {
   font-size: 18px;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root:nth-child(1) {
-  color: #3498db;
+  color: #43ff3c;
+  background: rgba(66, 255, 60, 0.1098039216);
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root:nth-child(2) {
-  color: #2ecc71;
+  color: #2e55cc;
+  background: rgba(46, 85, 204, 0.0980392157);
+  margin: 0 8px;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root:nth-child(3) {
-  color: #F44336;
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1098039216);
+}
+.ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus div {
+  border-radius: 8px;
+  padding: 5px 8px;
+  max-width: 110px;
+  margin: 0 auto;
+}
+.ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus .outOfStock {
+  background: rgba(244, 67, 54, 0.2549019608);
+  color: #f44336;
+}
+.ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus .onStock {
+  background: rgba(46, 204, 112, 0.2509803922);
+  color: #00a545;
+}
+.ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus .lowStock {
+  background: rgba(52, 152, 219, 0.1137254902);
+  color: #3498db;
+}
+.ecommerce__container .productList.paper .ecommerceContainer__productTable b {
+  color: rgba(0, 0, 0, 0.6);
+  font-weight: 500;
 }/*# sourceMappingURL=ecommerce.style.css.map */

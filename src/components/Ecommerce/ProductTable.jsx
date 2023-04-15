@@ -20,6 +20,7 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
+import moment from "moment";
 
 function createData(name, calories, fat, carbs, protein, actions) {
   return {
@@ -104,12 +105,6 @@ const headCells = [
     label: "Price",
   },
   {
-    id: "protein",
-    numeric: true,
-    disablePadding: false,
-    label: "Inventory",
-  },
-  {
     id: "action",
     numeric: true,
     disablePadding: false,
@@ -144,10 +139,10 @@ function EnhancedTableHead(props) {
             }}
           />
         </TableCell>
-        {headCells.map((headCell) => (
+        {headCells.map((headCell, index) => (
           <TableCell
             key={headCell.id}
-            align={headCell.numeric ? "right" : "left"}
+            align={index !== 0 ? "center" : "left"}
             padding={headCell.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === headCell.id ? order : false}
           >
@@ -197,14 +192,14 @@ function EnhancedTableToolbar(props) {
       }}
     >
       {numSelected > 0 ? (
-        <Typography
+        <Typographyleft
           sx={{ flex: "1 1 100%" }}
           color="inherit"
           variant="subtitle1"
           component="div"
         >
           {numSelected} selected
-        </Typography>
+        </Typographyleft>
       ) : (
         <Typography
           sx={{ flex: "1 1 100%" }}
@@ -335,8 +330,9 @@ export default function ProductTable() {
                       key={row.name}
                       selected={isItemSelected}
                     >
-                      <TableCell padding="checkbox"
-                      onClick={(event) => handleClick(event, row.name)}
+                      <TableCell
+                        padding="checkbox"
+                        onClick={(event) => handleClick(event, row.name)}
                       >
                         <Checkbox
                           color="primary"
@@ -351,28 +347,39 @@ export default function ProductTable() {
                         id={labelId}
                         scope="row"
                         padding="none"
-                        className="productImage"
                       >
-                        <img
-                          src="https://api-prod-minimal-v4.vercel.app/assets/images/products/product_3.jpg"
-                          loading="lazy"
-                          alt=""
-                        />
-                        <p>{row.name}</p>
+                        <div className="productImage">
+                          <img
+                            src="https://api-prod-minimal-v4.vercel.app/assets/images/products/product_3.jpg"
+                            loading="lazy"
+                            alt=""
+                          />
+                          <div>
+                            <p>{row.name}</p>
+                            <h4>64 Items</h4>
+                          </div>
+                        </div>
                       </TableCell>
-                      <TableCell align="right">{row.calories}</TableCell>
-                      <TableCell align="right">{row.fat}</TableCell>
-                      <TableCell align="right">{row.carbs}</TableCell>
-                      <TableCell align="right">{row.protein}</TableCell>
-                      <TableCell align="right" className="productTableAction">
+                      <TableCell align="center">
+                        <b>{moment().format("lll")}</b>
+                      </TableCell>
+                      <TableCell className="productStatus" align="center">
+                        {/* <div className="outOfStock">Out of Stock</div> */}
+                        <div className="onStock">In Stock</div>
+                        {/* <div className="lowStock">Low Stock</div> */}
+                      </TableCell>
+                      <TableCell align="center">
+                        <b>Rs. 10,000</b>
+                      </TableCell>
+                      <TableCell align="center" className="productTableAction">
                         <Button>
-                        <i className="ri-eye-line"></i>
+                          <i className="ri-eye-line"></i>
                         </Button>
                         <Button>
-                        <i className="ri-ball-pen-line"></i>
+                          <i className="ri-ball-pen-line"></i>
                         </Button>
                         <Button>
-                        <i className="ri-delete-bin-7-line"></i>
+                          <i className="ri-delete-bin-7-line"></i>
                         </Button>
                       </TableCell>
                     </TableRow>

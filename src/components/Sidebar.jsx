@@ -2,7 +2,7 @@ import React from "react";
 import { useAuthContext } from "../contexts/Auth";
 
 export default function Sidebar({ handleTabChange, activeTab }) {
-  const [{user}, dispatch] = useAuthContext();
+  const [{user}] = useAuthContext();
   
   return (
     <div className="sidebar__container">
@@ -15,7 +15,7 @@ export default function Sidebar({ handleTabChange, activeTab }) {
           alt=""
         />
         <div>
-          <p>{user.email || "John Doe"}</p>
+          <p>{user?.email.split("@")[0] || "John Doe"}</p>
           <p>{user.role}</p>
         </div>
       </div>

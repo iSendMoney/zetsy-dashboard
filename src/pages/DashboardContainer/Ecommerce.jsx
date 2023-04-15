@@ -40,7 +40,8 @@ export default function Ecommerce() {
                 onChange={handleChange}
               >
                 <MenuItem value="out-of-stock">Out of Stock</MenuItem>
-                <MenuItem value="active">Active</MenuItem>
+                <MenuItem value="active">In Stock</MenuItem>
+                <MenuItem value="low-stock">Low Stock</MenuItem>
                 <MenuItem value="draft">Draft</MenuItem>
               </Select>
             </FormControl>

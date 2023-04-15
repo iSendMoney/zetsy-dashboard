@@ -75,9 +75,9 @@
         border-radius: 5px;
 
         input {
-          font-size: 1.2rem;
+          font-size: 1rem;
           flex: 1;
-          padding: 13px 0;
+          padding: 16px 0;
           border: none;
 
           &:focus {
@@ -88,47 +88,86 @@
       }
     }
 
-    .ecommerceContainer__productTable{
-        .MuiTableHead-root{
-            background-color: #F5F7F8;
-        }
-        .productImage{
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 0;
+    .ecommerceContainer__productTable {
+      .MuiTableHead-root {
+        background-color: #f5f7f8;
+      }
+      .productImage {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px 0;
 
-            img{
-                width: 50px;
-                height: 50px;
-                object-fit: cover;
-                border-radius: 15px;
-            }
-
-            p{
-                font-size: 16px;
-            }
+        img {
+          width: 55px;
+          height: 55px;
+          object-fit: cover;
+          border-radius: 15px;
         }
 
-        .productTableAction{
-            .MuiButton-root{
-                min-width: 0;
-
-                i{
-                    font-size: 18px;
-                }
-            }
-
-            .MuiButton-root:nth-child(1){
-                color: #3498db;
-            }
-            .MuiButton-root:nth-child(2){
-                color: #2ecc71;
-            }
-            .MuiButton-root:nth-child(3){
-                color: #F44336;
-            }
+        p {
+          font-size: 16px;
         }
+
+        h4 {
+          color: #0008;
+        }
+      }
+
+      .productTableAction {
+
+        .MuiButton-root {
+          min-width: 0;
+          padding: 3px 8px;
+
+          i {
+            font-size: 18px;
+          }
+        }
+
+        .MuiButton-root:nth-child(1) {
+          color: #43ff3c;
+          background: #42ff3c1c;
+        }
+        .MuiButton-root:nth-child(2) {
+          color: #2e55cc;
+          background: #2e55cc19;
+          margin: 0 8px;
+        }
+        .MuiButton-root:nth-child(3) {
+          color: #f44336;
+          background: #f443361c;
+        }
+      }
+
+      .productStatus {
+        div {
+          border-radius: 8px;
+          padding: 5px 8px;
+          max-width: 110px;
+          margin: 0 auto;
+        }
+
+        .outOfStock {
+          background: #f4433641;
+          color: #f44336;
+        }
+
+        .onStock {
+          background: #2ecc7040;
+          color: #00a545;
+        }
+
+        .lowStock {
+          background: #3498db1d;
+          color: #3498db;
+        }
+      }
+
+      b{
+        color: #0009;
+        font-weight: 500;
+      }
     }
   }
 }
