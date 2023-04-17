@@ -21,3 +21,8 @@ body {
   overflow-x: hidden;
   overflow-y: hidden;
 }
+ .MuiAutocomplete-root {
+  width: 100% !important;
+  /* padding: 16.5px 14px !important; */
+ } 
+

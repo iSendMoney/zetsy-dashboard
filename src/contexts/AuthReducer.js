@@ -1,11 +1,13 @@
 export const ACTIONS = {
   LOGIN: "login",
-  SET_USER: "set-user"
+  SET_USER: "set-user",
+  SET_AT:"set-accessToken"
 };
 
 export const initialAuthenticationState = {
   authenticated: false,
-  user:  localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) :{}
+  user:  localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) :{},
+  accessToken:localStorage.getItem("authentication-token") ? JSON.parse(localStorage.getItem("authentication-token")).accessToken : ""
 };
 
 export const AuthenticationReducer = (state, action) => {
@@ -28,5 +30,10 @@ export const AuthenticationReducer = (state, action) => {
           ...state,
           user: action.payload,
         };
+    case ACTIONS.SET_AT:
+      return {
+        ...state,
+        accessToken: action.payload
+      }
   }
 };
