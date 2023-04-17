@@ -1,7 +1,8 @@
 export const ACTIONS = {
   LOGIN: "login",
   SET_USER: "set-user",
-  SET_AT:"set-accessToken"
+  SET_AT:"set-accessToken",
+  LOGOUT:"logout"
 };
 
 export const initialAuthenticationState = {
@@ -35,5 +36,13 @@ export const AuthenticationReducer = (state, action) => {
         ...state,
         accessToken: action.payload
       }
+    case ACTIONS.LOGOUT:
+      localStorage.clear();
+        return {
+          ...state,
+          authenticated: "",
+          user: {},
+          accessToken: ""
+        }
   }
 };

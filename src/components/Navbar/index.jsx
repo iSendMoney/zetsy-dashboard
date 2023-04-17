@@ -3,13 +3,15 @@ import React from "react";
 
 import "./styles/style.css";
 import { useAuthContext } from "../../contexts/Auth";
+import { useShopContext } from "../../contexts/Shop";
 
 export default function Navbar() {
   const [{user}, dispatch] = useAuthContext();
+  const [{shop},] = useShopContext();
 
   return (
     <div className="navbar__container">
-      <h2>{user.shop || "SS Brothers"}</h2>
+      <h2>{shop.name || "SS Brothers"}</h2>
       <div>
         <Button><i className="ri-notification-2-line"></i></Button>
         <Button><i className="ri-moon-line"></i></Button>

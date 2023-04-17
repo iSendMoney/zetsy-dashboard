@@ -17,6 +17,7 @@ import User from "../DashboardContainer/User/User";
 import NewProduct from "../DashboardContainer/NewProduct"
 
 import "./styles/style.css";
+import { useShopContext } from "../../contexts/Shop";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = React.useState("app");

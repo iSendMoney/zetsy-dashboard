@@ -6,12 +6,13 @@ import UserOnboarding from "./pages/UserOnboarding";
 import { useAuthContext } from "./contexts/Auth";
 import { getStore } from "./api/store";
 import { useShopContext } from "./contexts/Shop";
+import { toast } from "react-toastify";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
   const [hasStore, setHasStore] = React.useState(false);
-  const [{accessToken},] = useAuthContext();
   const [,dispatch] = useShopContext();
+  const [{accessToken},authDispatch] = useAuthContext();
 
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
@@ -19,10 +20,16 @@ export default function App() {
       // get shop if user is authenticated
      getStore(accessToken).then(res=>{
        // store shop details in context
-       if(res.length>0){
-         dispatch({type:"store", payload:res});
+       if(res){
+         dispatch({type:"shop", payload:res});
          setHasStore(true);
        }
+     }).catch(err=>{
+      if(err==="Forbidden"){
+        toast("Session Expired",{type:'error'})
+        setIsAuthenticated(false);
+        authDispatch({type:"logout"})
+      }
      })
     }
   }, [isAuthenticated]);

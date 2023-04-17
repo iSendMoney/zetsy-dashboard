@@ -11,6 +11,7 @@ export async function getStore(token){
         const {store} = response.data;
         return store;
     } catch (error) {
-        return new Error("Failed to fetch");
+       
+        throw (error.response.data || "Failed to fetch");
     }
 }
