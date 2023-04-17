@@ -83,6 +83,7 @@ export default function BusinessInfo({
           renderInput={(params) => (
             <TextField {...params} 
             label="Estimated Yearly Revenue..."
+            value={businessInfo.name}
              />
           )}
         />

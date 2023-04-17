@@ -15,27 +15,17 @@ export const ACTIONS = {
   export const ShopReducer = (state, action) => {
     switch (action.type) {
       case ACTIONS.BIZINFO:
-       
-        return {
-            ...state,
-            businessInfo: action.payload
-        };
+        state.businessInfo = action.payload;
+        return state;
       case ACTIONS.CUSINFO:
-        return {
-            ...state,
-            customerInfo: action.payload
-        };
+        state.customerInfo= action.payload
+        return state;
       case ACTIONS.SOCINFO:
-        return {
-            ...state,
-            socialInfo: action.payload
-        };
-
+        state.socialInfo = action.payload
+        return state;
       case ACTIONS.SHOP:
-        return {
-          ...state,
-          shop: action.payload
-        }
+        state.shop = action.payload
+        return state;
         }
   };
   
