@@ -25,8 +25,10 @@
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
     "react-dom": "^18.2.0",
+    "react-drag-drop-files": "^2.3.9",
     "react-helmet": "^6.1.0",
     "react-router-dom": "^6.9.0",
+    "react-tagsinput": "^3.20.1",
     "react-toastify": "^9.1.2",
     "react-top-loading-bar": "^2.3.1",
     "remixicon": "^2.5.0"

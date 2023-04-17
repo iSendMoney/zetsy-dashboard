@@ -1,6 +1,6 @@
 .ecommerce__container {
-  margin-top: 90px;
-  padding: 0 40px;
+  margin-top: 120px;
+  padding: 0 5vw;
   height: 90vh;
   overflow-y: scroll;
 
@@ -8,6 +8,25 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    .subtitle {
+      line-height: 1.57143;
+      font-size: 0.875rem;
+      font-family: "Public Sans", sans-serif;
+      font-weight: 400;
+      color: rgb(99, 115, 129);
+    }
+
+    .actionBtns{
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
 
     .MuiButton-root {
       gap: 5px;
@@ -115,7 +134,6 @@
       }
 
       .productTableAction {
-
         .MuiButton-root {
           min-width: 0;
           padding: 3px 8px;
@@ -164,7 +182,7 @@
         }
       }
 
-      b{
+      b {
         color: #0009;
         font-weight: 500;
       }

@@ -1,0 +1,59 @@
+.dashboard__bulkUploadContainer {
+  padding: 0 7vw;
+  margin-top: 120px;
+  height: 90vh;
+  overflow-y: scroll;
+}
+.dashboard__bulkUploadContainer .header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.dashboard__bulkUploadContainer .header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.dashboard__bulkUploadContainer .header .subtitle {
+  line-height: 1.57143;
+  font-size: 0.875rem;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 400;
+  color: rgb(99, 115, 129);
+}
+.dashboard__bulkUploadContainer .header a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #0984e3;
+}
+.dashboard__bulkUploadContainer .ewqTBN {
+  width: 100%;
+  max-width: 100%;
+  padding: 120px 50px;
+  margin: 16px 0;
+  background: #f5f7f8;
+  border: 1px dashed rgba(145, 158, 171, 0.32);
+}
+.dashboard__bulkUploadContainer .kyUZVo > span {
+  font-size: 18px;
+}
+.dashboard__bulkUploadContainer .kyUZVo .file-types {
+  text-transform: lowercase;
+}
+.dashboard__bulkUploadContainer svg {
+  margin-right: 8px;
+}
+.dashboard__bulkUploadContainer svg path {
+  fill: #00aa54;
+}
+.dashboard__bulkUploadContainer .llmFop span {
+  color: #00aa54;
+}
+.dashboard__bulkUploadContainer .imageActions .MuiButton-root {
+  padding: 0;
+  min-width: 0;
+  color: #eb4d4b;
+  text-transform: capitalize;
+  gap: 5px;
+  margin-top: 15px;
+}/*# sourceMappingURL=bulkupload.style.css.map */

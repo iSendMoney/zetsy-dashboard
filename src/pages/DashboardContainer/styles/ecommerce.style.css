@@ -1,6 +1,6 @@
 .ecommerce__container {
-  margin-top: 90px;
-  padding: 0 40px;
+  margin-top: 120px;
+  padding: 0 5vw;
   height: 90vh;
   overflow-y: scroll;
 }
@@ -8,6 +8,22 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+.ecommerce__container .ecommerceContainer__header h1 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+.ecommerce__container .ecommerceContainer__header .subtitle {
+  line-height: 1.57143;
+  font-size: 0.875rem;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 400;
+  color: rgb(99, 115, 129);
+}
+.ecommerce__container .ecommerceContainer__header .actionBtns {
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 .ecommerce__container .ecommerceContainer__header .MuiButton-root {
   gap: 5px;
