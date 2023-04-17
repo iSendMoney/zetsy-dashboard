@@ -12,6 +12,8 @@ import SocialInfo from "../../components/UserOnboarding/SocialInfo";
 import { useShopContext } from "../../contexts/Shop";
 import axios from "axios";
 import { useAuthContext } from "../../contexts/Auth";
+import LoadingBar from 'react-top-loading-bar'
+import { toast } from "react-toastify";
 
 const steps = [
   "Business Information",
@@ -24,6 +26,8 @@ export default function UserOnboarding({ setHasStore }) {
   const [skipped, setSkipped] = React.useState(new Set());
   const [shopData, dispatchShop] = useShopContext();
   const [{accessToken},] = useAuthContext();
+  const [loading, setLoading] = React.useState(false);
+  const ref = React.useRef(null)
 
   const isStepOptional = () => {
     return true;
@@ -34,12 +38,12 @@ export default function UserOnboarding({ setHasStore }) {
   };
 
   const handleNext = () => {
+   
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
       newSkipped.delete(activeStep);
     }
-
     setActiveStep((prevActiveStep) => prevActiveStep + 1);
     setSkipped(newSkipped);
   };
@@ -67,15 +71,31 @@ export default function UserOnboarding({ setHasStore }) {
     setActiveStep(0);
   };
 
-  const saveStore =async ()=>{
-    console.log(accessToken)
+
+  const saveStore = async ()=>{
+    try {
+    ref.current.continuousStart()
     const response = await axios.post(`${import.meta.env.VITE_API_BASE_URI}/api/v1/store/save`,shopData,{
       headers:{
         Authorization: `${accessToken}`
       }
     });
-    const {store} = response.data;
+    const {store, message} = response.data;
     dispatchShop({type:"shop", payload: store});
+    ref.current.complete()
+    toast(message,{
+      type:"success"
+    })
+    setHasStore(true);
+    } catch (error) {
+      if(error){
+        console.log(error.response.data)
+        ref.current.complete()
+        toast(error.response?.data || "Failed to Create Shop",{
+          type:'error'
+        })
+      }
+    }
     
   }
 
@@ -99,6 +119,7 @@ export default function UserOnboarding({ setHasStore }) {
           </Stepper>
           {activeStep === steps.length ? (
             <React.Fragment>
+              <LoadingBar color="#6c5ce7" ref={ref} shadow={true} height={10} />
               <Typography sx={{ mt: 2, mb: 1 }}>
                 All steps completed - you&apos;re finished
               </Typography>

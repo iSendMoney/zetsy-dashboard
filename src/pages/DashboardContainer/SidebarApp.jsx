@@ -9,8 +9,12 @@ import RecentOrders from "../../components/RecentOrders";
 import TopSellingProducts from "../../components/TopSellingProducts";
 import { Button } from "@mui/material";
 import { Helmet } from "react-helmet";
+import { useAuthContext } from "../../contexts/Auth";
+import { useShopContext } from "../../contexts/Shop";
 
 export default function SidebarApp() {
+  const [{user}, dispatch] = useAuthContext();
+  const [{shop},] = useShopContext();
   return (
     <div className="sidebarApp__container">
       <Helmet>
@@ -20,11 +24,15 @@ export default function SidebarApp() {
       </Helmet>
       <div className="header">
         <div className="greetings">
-          <h2>Good Evening, Jessica Singh Shrestha</h2>
+          <h2>Good Evening, {user.email}</h2>
           <p>Here's your stat's for {moment().format("LL")}</p>
         </div>
         <div className="redirectToSite">
-          <p>Go to your site</p> <i className="ri-arrow-right-up-line"></i>
+          <p>
+            <a href={`https://${shop.subdomain}.zetsy.store`} target="_blank">
+              Go to your site
+            </a>
+            </p> <i className="ri-arrow-right-up-line"></i>
         </div>
       </div>
       <div className="orderAnalytics">
