@@ -17,6 +17,7 @@ import User from "../DashboardContainer/User/User";
 import NewProduct from "../DashboardContainer/NewProduct"
 
 import "./styles/style.css";
+import BulkUpload from "../DashboardContainer/BulkUpload";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = React.useState("app");
@@ -43,7 +44,8 @@ export default function Dashboard() {
         {activeTab === "chat" && <Chat />}
         {activeTab === "calendar" && <Calendar />}
         {activeTab === "todo" && <Todo />}
-        {activeTab === "new-product" && <NewProduct />}
+        {activeTab === "new-product" && <NewProduct handleTabChange={handleTabChange}/>}
+        {activeTab === "bulk-upload" && <BulkUpload />}
       </div>
     </div>
   );

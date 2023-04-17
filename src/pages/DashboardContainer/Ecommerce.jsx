@@ -23,7 +23,7 @@ export default function Ecommerce({ handleTabChange }) {
         </div>
         <div className="actionBtns">
           <Button>
-            New Category
+          <i className="ri-price-tag-3-line"></i> New Category
           </Button>
           <Button onClick={() => handleTabChange("new-product")}>
             <i className="ri-add-line"></i>

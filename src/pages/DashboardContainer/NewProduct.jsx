@@ -75,7 +75,7 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-export default function NewProduct() {
+export default function NewProduct({handleTabChange}) {
   const defaultTheme = createTheme({
     components: {
       MUIRichTextEditor: {
@@ -141,8 +141,13 @@ export default function NewProduct() {
 
   return (
     <div className="dashboard__newProduct__container">
-      <h1>Add a new product</h1>
-      <span className="subtitle">Dashboard - E-Commerce - New product</span>
+      <div className="header">
+        <div>
+          <h1>Add a new product</h1>
+          <span className="subtitle">Dashboard - E-Commerce - New product</span>
+        </div>
+        <Button onClick={() => handleTabChange("bulk-upload")}><i className="ri-folder-shared-line"></i> Bulk Upload</Button>
+      </div>
 
       <main>
         <div className="paper productDescription">
@@ -173,13 +178,13 @@ export default function NewProduct() {
               />
               <p>
                 {files ? (
-                  <div className="uploadedImages">
+                  <span className="uploadedImages">
                     {files.map((file, index) => (
-                      <div className="image" key={index}>
+                      <span className="image" key={index}>
                         <img src={URL.createObjectURL(file)} alt="" />
-                      </div>
+                      </span>
                     ))}
-                  </div>
+                  </span>
                 ) : (
                   "No files uploaded yet!"
                 )}

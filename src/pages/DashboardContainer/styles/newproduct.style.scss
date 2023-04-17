@@ -4,17 +4,56 @@
   height: 90vh;
   overflow-y: scroll;
 
-  h1 {
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
+  .header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
-  span.subtitle {
-    line-height: 1.57143;
-    font-size: 0.875rem;
-    font-family: "Public Sans", sans-serif;
-    font-weight: 400;
-    color: rgb(99, 115, 129);
+    h1 {
+      font-size: 1.5rem;
+      font-weight: 500;
+    }
+
+    span.subtitle {
+      line-height: 1.57143;
+      font-size: 0.875rem;
+      font-family: "Public Sans", sans-serif;
+      font-weight: 400;
+      color: rgb(99, 115, 129);
+    }
+
+    .MuiButton-root {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+      outline: 0px;
+      border: 0px;
+      margin: 0px;
+      cursor: pointer;
+      user-select: none;
+      vertical-align: middle;
+      appearance: none;
+      text-decoration: none;
+      font-weight: 700;
+      line-height: 1.71429;
+      text-transform: capitalize;
+      font-family: "Public Sans", sans-serif;
+      min-width: 64px;
+      padding: 8px 22px;
+      border-radius: 8px;
+      color: rgb(255, 255, 255);
+      background-color: rgb(0, 171, 85);
+      box-shadow: none;
+      height: 48px;
+      gap: 5px;
+      font-size: 15px;
+      transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+        border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    }
   }
 
   main {
@@ -90,12 +129,13 @@
           }
 
           .images {
-            .uploadedImages{
+            .uploadedImages {
               display: flex;
               align-items: center;
               gap: 8px;
+              flex-wrap: wrap;
 
-              img{
+              img {
                 height: 60px;
                 object-fit: contain;
               }
