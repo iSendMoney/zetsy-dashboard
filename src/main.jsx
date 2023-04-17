@@ -8,9 +8,11 @@ import { AuthenticationProvider } from "./contexts/Auth";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
+import { ShopProvider } from "./contexts/Shop";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthenticationProvider>
+    <ShopProvider>
     <BrowserRouter>
       <App />
     </BrowserRouter>
@@ -26,5 +28,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       pauseOnHover
       theme="dark"
     />
+    </ShopProvider>
   </AuthenticationProvider>
 );

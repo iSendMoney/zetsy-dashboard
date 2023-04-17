@@ -9,6 +9,9 @@ import "./styles/style.css";
 import BusinessInfo from "../../components/UserOnboarding/BusinessInfo";
 import CustomerInfo from "../../components/UserOnboarding/CustomerInfo";
 import SocialInfo from "../../components/UserOnboarding/SocialInfo";
+import { useShopContext } from "../../contexts/Shop";
+import axios from "axios";
+import { useAuthContext } from "../../contexts/Auth";
 
 const steps = [
   "Business Information",
@@ -19,6 +22,8 @@ const steps = [
 export default function UserOnboarding({ setHasStore }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
+  const [shopData, dispatchShop] = useShopContext();
+  const [{accessToken},] = useAuthContext();
 
   const isStepOptional = () => {
     return true;
@@ -62,6 +67,18 @@ export default function UserOnboarding({ setHasStore }) {
     setActiveStep(0);
   };
 
+  const saveStore =async ()=>{
+    console.log(accessToken)
+    const response = await axios.post(`${import.meta.env.VITE_API_BASE_URI}/api/v1/store/save`,shopData,{
+      headers:{
+        Authorization: `${accessToken}`
+      }
+    });
+    const {store} = response.data;
+    dispatchShop({type:"shop", payload: store});
+    
+  }
+
   return (
     <div className="onboardUser__container">
       <div className="overlay">
@@ -88,7 +105,7 @@ export default function UserOnboarding({ setHasStore }) {
               <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
                 <Box sx={{ flex: "1 1 auto" }} />
                 {/* @note save all those form data in local storage and onclick button send a post request adn remove from local storage */}
-                <Button className="resetBtn" onClick={() => setHasStore(true)}>
+                <Button className="resetBtn" onClick={() => saveStore()}>
                   Let's Get Started
                 </Button>
               </Box>

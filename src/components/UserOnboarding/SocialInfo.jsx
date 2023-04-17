@@ -1,6 +1,7 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import { Box, Button } from "@mui/material";
+import { useShopContext } from "../../contexts/Shop";
 
 export default function SocialInfo({
   handleNext,
@@ -9,6 +10,20 @@ export default function SocialInfo({
   activeStep,
   steps,
 }) {
+  const [data, dispatch] = useShopContext();
+  console.log(data);
+  const [socialInfo, setSocialInfo] = React.useState({
+    facebook:"",
+    instagram:"",
+    twitter:"",
+    linkedin:"",
+  })
+
+  const handleSubmitNext = ()=>{
+    dispatch({type:"social-info", payload: socialInfo});
+    handleNext();
+  }
+
   return (
     <div className="socialInformation__container">
       <h1><i className="ri-links-line"></i>Social Information</h1>
@@ -17,21 +32,28 @@ export default function SocialInfo({
           id="outlined-basic"
           label="Facebook"
           variant="outlined"
+          onChange={e => setSocialInfo({...socialInfo, facebook: e.target.value})}
         />
         <TextField
           id="outlined-basic"
           label="Instagram"
           variant="outlined"
+          onChange={e => setSocialInfo({...socialInfo, instagram: e.target.value})}
+
         />
         <TextField
           id="outlined-basic"
           label="Twitter"
           variant="outlined"
+          onChange={e => setSocialInfo({...socialInfo, twitter: e.target.value})}
+
         />
         <TextField
           id="outlined-basic"
           label="Linkedin"
           variant="outlined"
+          onChange={e => setSocialInfo({...socialInfo, linkedin: e.target.value})}
+
         />
       </form>
       <Box sx={{ display: "flex", flexDirection: "row", pt: 2 }}>
@@ -54,7 +76,7 @@ export default function SocialInfo({
           Skip
         </Button>
 
-        <Button className="nextBtn" onClick={handleNext}>
+        <Button className="nextBtn" onClick={handleSubmitNext}>
           {activeStep === steps.length - 1 ? "Finish" : "Next"}
         </Button>
       </Box>

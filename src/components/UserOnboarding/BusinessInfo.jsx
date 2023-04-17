@@ -1,12 +1,13 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 import { Box, Button, Autocomplete } from "@mui/material";
+import { useShopContext } from "../../contexts/Shop";
 
 const options = [
-  { label: "Restaurant" },
-  { label: "Foods and Average" },
-  { label: "clothing" },
-  { label: "shoes" },
+  { label: "Restaurant", value:"Restaurant" },
+  { label: "Foods and Average", value: "Foods and Average" },
+  { label: "clothing", value: "clothing" },
+  { label: "shoes", value: "shoes"  },
 ];
 
 const noOfEmployees = ["0 - 5", "5 - 10", "10 - 15","15 - 50+"];
@@ -24,6 +25,20 @@ export default function BusinessInfo({
   activeStep,
   steps,
 }) {
+
+  const [, dispatchShop] = useShopContext();
+  const [businessInfo, setBusinessInfo] = React.useState({
+    name:"",
+    no_of_emp:"",
+    estimated_revenue:"",
+    category:"",
+  })
+
+  const handleSubmitNext = () => {
+    dispatchShop({type:"biz-info", payload: businessInfo});
+    handleNext();
+  }
+
   return (
     <div className="businessInfo__container">
       <h1>
@@ -34,6 +49,7 @@ export default function BusinessInfo({
           id="outlined-basic"
           label="Business Name"
           variant="outlined"
+          onChange={e => setBusinessInfo({...businessInfo, name: e.target.value})}
         />
         <Autocomplete
           disablePortal
@@ -41,24 +57,33 @@ export default function BusinessInfo({
           options={options}
           className="types"
           x={{ width: "360px !important" }}
+          onChange={e=>setBusinessInfo({...businessInfo, category: e.target.innerHTML})}
           renderInput={(params) => (
-            <TextField {...params} label="Categories..." />
+            <TextField {...params} 
+              label="Categories..."
+            />
           )}
         />
         <Autocomplete
           disablePortal
           id="combo-box-demo"
           options={noOfEmployees}
+          onChange={e=>setBusinessInfo({...businessInfo, no_of_emp: e.target.innerHTML})}
           renderInput={(params) => (
-            <TextField {...params} label="No of Employees..." />
+            <TextField {...params} 
+            label="No of Employees..."
+             />
           )}
         />
         <Autocomplete
           disablePortal
           id="combo-box-demo"
           options={price}
+          onChange={e=>setBusinessInfo({...businessInfo, estimated_revenue: e.target.innerHTML})}
           renderInput={(params) => (
-            <TextField {...params} label="Estimated Yearly Revenue..." />
+            <TextField {...params} 
+            label="Estimated Yearly Revenue..."
+             />
           )}
         />
       </form>
@@ -82,7 +107,7 @@ export default function BusinessInfo({
           Skip
         </Button>
 
-        <Button className="nextBtn" onClick={handleNext}>
+        <Button className="nextBtn" onClick={()=> handleSubmitNext()}>
           {activeStep === steps.length - 1 ? "Finish" : "Next"}
         </Button>
       </Box>
