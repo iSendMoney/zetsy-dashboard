@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [hasStore, setHasStore] = React.useState(false);
+  const [hasStore, setHasStore] = React.useState(true);
   const [,dispatch] = useShopContext();
   const [{accessToken},authDispatch] = useAuthContext();
 

@@ -9,25 +9,28 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
 import { ShopProvider } from "./contexts/Shop";
+import { UtilityProvider } from "./contexts/Utilities";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <AuthenticationProvider>
     <ShopProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-    <ToastContainer
-      position="top-center"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHover
-      theme="dark"
-    />
+      <UtilityProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+        <ToastContainer
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+      </UtilityProvider>
     </ShopProvider>
   </AuthenticationProvider>
 );

@@ -20,6 +20,7 @@
 body {
   overflow-x: hidden;
   overflow-y: hidden;
+  /* background-color: #161C24; */
 }
  .MuiAutocomplete-root {
   width: 100% !important;
