@@ -58,7 +58,7 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function Navbar() {
+export default function Navbar({ theme, dispatchUtilityData }) {
   const [{ user }] = useAuthContext();
   const [{ shop }] = useShopContext();
 
@@ -69,7 +69,11 @@ export default function Navbar() {
         <Button>
           <i className="ri-notification-2-line"></i>
         </Button>
-        <MaterialUISwitch sx={{ m: 1 }} />
+        <MaterialUISwitch
+          sx={{ m: 1 }}
+          onChange={() => dispatchUtilityData({ type: "theme" })}
+          checked={theme === "dark" ? true : false}
+        />
         <Button>
           <i className="ri-settings-3-line"></i>
         </Button>

@@ -19,9 +19,11 @@ import NewProduct from "../DashboardContainer/NewProduct"
 import "./styles/style.css";
 import { useShopContext } from "../../contexts/Shop";
 import BulkUpload from "../DashboardContainer/BulkUpload";
+import { useUtilityContext } from "../../contexts/Utilities";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = React.useState("app");
+  const [{theme}, dispatchUtilityData] = useUtilityContext();
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
@@ -31,9 +33,9 @@ export default function Dashboard() {
       <Sidebar handleTabChange={handleTabChange} activeTab={activeTab} />
 
       <div className="dashboardContent__container">
-        <Navbar />
+        <Navbar theme={theme} dispatchUtilityData={dispatchUtilityData}/>
 
-        {activeTab === "app" && <SidebarApp />}
+        {activeTab === "app" && <SidebarApp theme={theme}/>}
         {activeTab === "analytics" && <Analytics />}
         {activeTab === "payments" && <Payments />}
         {activeTab === "media" && <Media />}

@@ -12,11 +12,11 @@ import { Helmet } from "react-helmet";
 import { useAuthContext } from "../../contexts/Auth";
 import { useShopContext } from "../../contexts/Shop";
 
-export default function SidebarApp() {
-  const [{user}, dispatch] = useAuthContext();
-  const [{shop},] = useShopContext();
+export default function SidebarApp({theme}) {
+  const [{user}] = useAuthContext();
+  const [{shop}] = useShopContext();
   return (
-    <div className="sidebarApp__container">
+    <div className={`sidebarApp__container ${theme}`}>
       <Helmet>
         <title>
           Dashboard | Zetsy - Your all in one store for online retails.

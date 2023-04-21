@@ -1,6 +1,12 @@
 .sidebarApp__container {
-  margin-top: 90px;
   padding: 0 40px;
+  height: 100vh;
+  padding-top: 120px;
+  overflow-y: scroll;
+
+  &.dark {
+    background-color: #161c24;
+  }
 
   .header {
     display: flex;
@@ -72,7 +78,7 @@
 
             i {
               margin-right: 8px;
-              padding: 4px;
+              padding: 3px 8px;
               border-radius: 50%;
               font-size: 20px;
 
@@ -176,19 +182,19 @@
         background-color: rgba(0, 0, 0, 0.04);
       }
 
-      .flex{
+      .flex {
         display: flex;
         align-items: center;
         gap: 10px;
         font-size: 16px;
         font-family: "Public Sans", serif;
 
-        .price{
+        .price {
           font-size: 14px;
           color: rgb(99, 115, 129);
         }
 
-        img{
+        img {
           width: 40px;
           height: 40px;
           border-radius: 10px;

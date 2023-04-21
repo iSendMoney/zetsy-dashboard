@@ -1,6 +1,11 @@
 .sidebarApp__container {
-  margin-top: 90px;
   padding: 0 40px;
+  height: 100vh;
+  padding-top: 120px;
+  overflow-y: scroll;
+}
+.sidebarApp__container.dark {
+  background-color: #161c24;
 }
 .sidebarApp__container .header {
   display: flex;
@@ -63,7 +68,7 @@
 }
 .sidebarApp__container .orderAnalytics .orderAnalyticsCard__container .analyticsNumber div:first-child .overview i {
   margin-right: 8px;
-  padding: 4px;
+  padding: 3px 8px;
   border-radius: 50%;
   font-size: 20px;
 }
