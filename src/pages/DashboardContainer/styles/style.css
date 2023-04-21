@@ -194,16 +194,17 @@
   color: #fff;
   background-color: rgb(33, 43, 54);
 }
-.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root {
+.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root, .sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root {
   background-color: rgb(33, 43, 54);
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px, rgba(0, 0, 0, 0.12) 0px 12px 24px -4px;
 }
-.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root {
+.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root, .sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root {
   background-color: rgb(33, 43, 54);
 }
 .sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root th,
-.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root td {
+.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root td, .sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root th,
+.sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root td {
   color: #fff;
   border-bottom: 1px solid rgba(224, 224, 224, 0.12);
 }/*# sourceMappingURL=style.css.map */

@@ -20,6 +20,7 @@ import "./styles/style.css";
 // import { useShopContext } from "../../contexts/Shop";
 import BulkUpload from "../DashboardContainer/BulkUpload";
 import { useUtilityContext } from "../../contexts/Utilities";
+import AnalyticsNew from "../DashboardContainer/AnalyticsNew";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = React.useState("app");
@@ -36,7 +37,8 @@ export default function Dashboard() {
         <Navbar theme={theme} dispatchUtilityData={dispatchUtilityData}/>
 
         {activeTab === "app" && <SidebarApp theme={theme}/>}
-        {activeTab === "analytics" && <Analytics />}
+        {/* {activeTab === "analytics" && <Analytics />} */}
+        {activeTab === "analytics" && <AnalyticsNew />}
         {activeTab === "payments" && <Payments />}
         {activeTab === "media" && <Media />}
         {activeTab === "user" && <User />}
