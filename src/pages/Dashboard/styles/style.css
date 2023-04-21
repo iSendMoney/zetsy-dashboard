@@ -12,6 +12,8 @@
   font-family: "Bodoni Moda", serif;
   text-align: center;
   padding: 20px 10px;
+  font-size: 2em;
+  font-weight: 600;
 }
 .dashboard__container .sidebar__container .userIcon {
   display: flex;
@@ -158,6 +160,18 @@
   text-transform: uppercase;
   font-family: "Lato", sans-serif;
   color: rgb(99, 115, 129);
+}
+.dashboard__container .sidebar__container.dark {
+  background: #161c24;
+}
+.dashboard__container .sidebar__container.dark .logo__container {
+  color: #fff;
+}
+.dashboard__container .sidebar__container.dark .userIcon {
+  background: rgba(145, 158, 171, 0.12);
+}
+.dashboard__container .sidebar__container.dark .userIcon p:first-child {
+  color: #fff;
 }
 .dashboard__container .dashboardContent__container {
   position: relative;

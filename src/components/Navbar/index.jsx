@@ -63,7 +63,7 @@ export default function Navbar({ theme, dispatchUtilityData }) {
   const [{ shop }] = useShopContext();
 
   return (
-    <div className="navbar__container">
+    <div className={`navbar__container ${theme}`}>
       <h2>{shop.name || "SS Brothers"}</h2>
       <div>
         <Button>

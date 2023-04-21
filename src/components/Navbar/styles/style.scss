@@ -45,4 +45,20 @@
       cursor: pointer;
     }
   }
+
+
+  &.dark{
+    background-color: rgba(22, 28, 36, 0.8);
+    backdrop-filter: blur(6px);
+
+    h2{
+      color: #fff;
+    }
+
+    div{
+      i{
+        color: #fff;
+      }
+    }
+  }
 }

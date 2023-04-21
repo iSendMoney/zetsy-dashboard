@@ -17,7 +17,7 @@ import User from "../DashboardContainer/User/User";
 import NewProduct from "../DashboardContainer/NewProduct"
 
 import "./styles/style.css";
-import { useShopContext } from "../../contexts/Shop";
+// import { useShopContext } from "../../contexts/Shop";
 import BulkUpload from "../DashboardContainer/BulkUpload";
 import { useUtilityContext } from "../../contexts/Utilities";
 
@@ -30,7 +30,7 @@ export default function Dashboard() {
   };
   return (
     <div className="dashboard__container">
-      <Sidebar handleTabChange={handleTabChange} activeTab={activeTab} />
+      <Sidebar theme={theme} handleTabChange={handleTabChange} activeTab={activeTab} />
 
       <div className="dashboardContent__container">
         <Navbar theme={theme} dispatchUtilityData={dispatchUtilityData}/>
