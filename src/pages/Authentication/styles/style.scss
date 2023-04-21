@@ -3,9 +3,28 @@
   height: 100vh;
   align-items: center;
 
+  @media screen and (min-width: 769px) and (max-width:1441px) {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+  }
+
+  > img {
+    @media screen and (max-width: 769px) {
+      display: none;
+    }
+  }
+
   img {
     height: 100%;
     object-fit: contain;
+  }
+
+  > img {
+    @media screen and (min-width: 769px) and (max-width:1441px) {
+      width: 100%;
+      height: 100%;
+      object-fit: initial;
+    }
   }
 
   .form__container {
@@ -21,6 +40,14 @@
       font-size: 19px;
       min-width: 25vw;
       gap: 10px;
+
+      @media screen and (max-width: 426px) {
+        width: 80%;
+      }
+
+      @media screen and (min-width: 427px) and (max-width: 769px) {
+        width: 60%;
+      }
 
       h1 {
         font-family: "Bodoni Moda", serif;
@@ -137,7 +164,7 @@
   }
 
   &.dark {
-  background: #161C24;
+    background: #161c24;
 
     .form__container {
       form {
@@ -161,7 +188,7 @@
           border: 1px solid rgb(99, 115, 129);
           padding: 15px 10px;
 
-          &:focus{
+          &:focus {
             border-color: #fff;
           }
         }
@@ -170,7 +197,7 @@
           border: 1px solid rgb(99, 115, 129);
           padding: 0 10px;
 
-          &:focus-within{
+          &:focus-within {
             border-color: #fff;
           }
 
@@ -184,17 +211,17 @@
           }
         }
 
-        .MuiButton-root{
+        .MuiButton-root {
           background: #fff;
           color: #34495e;
         }
 
-        .divider{
-          div{
+        .divider {
+          div {
             background: rgb(99, 115, 129);
           }
 
-          p{
+          p {
             color: rgb(99, 115, 129);
           }
         }
