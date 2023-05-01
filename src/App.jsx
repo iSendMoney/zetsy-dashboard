@@ -16,7 +16,7 @@ export default function App() {
 
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
-    if(accessToken){
+    if(isAuthenticated && accessToken){
       // get shop if user is authenticated
      getStore(accessToken).then(res=>{
        // store shop details in context
