@@ -90,10 +90,10 @@
         font-weight: 400;
         color: rgb(27, 40, 52);
 
-        span{
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: rgb(73, 102, 127);
+        span {
+          font-size: 0.9rem;
+          font-weight: 400;
+          color: rgb(73, 102, 127);
         }
       }
 
@@ -111,11 +111,11 @@
           font-weight: 400;
           width: 100%;
 
-          &.paper{
+          &.paper {
             padding: 10px 15px;
           }
 
-          i{
+          i {
             font-size: 24px;
           }
 
@@ -198,19 +198,36 @@
       }
     }
 
-    div:last-child{
+    div:last-child {
+      display: flex;
+
+      .summaryDetails {
         display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
-        .summaryDetails{
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-
-            .details{
-                display: flex;
-                flex-direction: column;
-            }
+        .details {
+          display: flex;
+          flex-direction: column;
         }
+      }
+    }
+  }
+
+  &.dark {
+    background: #161c24;
+
+    .pageTitle {
+      color: #fff;
+    }
+
+    .analyticsItems {
+      .tremor-Card-root {
+        background-color: rgb(33, 43, 54);
+        color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px,
+          rgba(0, 0, 0, 0.12) 0px 12px 24px -4px;
+      }
     }
   }
 }

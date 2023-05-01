@@ -41,13 +41,13 @@ const statusMapping = {
   "Critical performance": { icon: CogIcon, color: "amber" },
 };
 
-export default function Sales() {
+export default function Sales({theme}) {
   return (
-    <Grid numColsSm={2} className="mt-6 gap-6">
+    <Grid numColsSm={3} className="mt-6 gap-6">
       {categories.map((item) => (
-        <Card key={item.title}>
-          <Text>{item.title}</Text>
-          <Metric>{item.metric}</Metric>
+        <Card key={item.title} className={`${theme === "dark" && "bg-[#212B36] ring-[#212B36] drop-shadow-[rgba(0, 0, 0, 0.2)_0px_0px_2px_0px]"}`}>
+          <Text className="text-base">{item.title}</Text>
+          <Metric className={`${theme === "dark" && "text-white"}`}>{item.metric}</Metric>
           <Callout
             className="mt-6"
             title={item.status}
@@ -62,6 +62,7 @@ export default function Sales() {
               variant="light"
               icon={ArrowNarrowRightIcon}
               iconPosition="right"
+              className="text-base focus:ring-0 focus:ring-offset-0"
             >
               View more
             </Button>

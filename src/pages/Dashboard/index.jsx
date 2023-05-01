@@ -38,7 +38,7 @@ export default function Dashboard() {
 
         {activeTab === "app" && <SidebarApp theme={theme}/>}
         {/* {activeTab === "analytics" && <Analytics />} */}
-        {activeTab === "analytics" && <AnalyticsNew />}
+        {activeTab === "analytics" && <AnalyticsNew theme={theme}/>}
         {activeTab === "payments" && <Payments />}
         {activeTab === "media" && <Media />}
         {activeTab === "user" && <User />}
