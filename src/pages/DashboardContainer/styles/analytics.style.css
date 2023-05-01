@@ -174,4 +174,15 @@
 .analyticsTab__container .socialMediaAnalytics__containe div:last-child .summaryDetails .details {
   display: flex;
   flex-direction: column;
+}
+.analyticsTab__container.dark {
+  background: #161c24;
+}
+.analyticsTab__container.dark .pageTitle {
+  color: #fff;
+}
+.analyticsTab__container.dark .analyticsItems .tremor-Card-root {
+  background-color: rgb(33, 43, 54);
+  color: rgb(255, 255, 255);
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px, rgba(0, 0, 0, 0.12) 0px 12px 24px -4px;
 }/*# sourceMappingURL=analytics.style.css.map */
