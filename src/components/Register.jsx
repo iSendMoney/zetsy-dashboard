@@ -43,6 +43,11 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
           {
             email,
             password: password.password,
+          },
+          {
+            headers:{
+              "Access-Control-Allow-Origin": "* "
+            }
           }
         );
 

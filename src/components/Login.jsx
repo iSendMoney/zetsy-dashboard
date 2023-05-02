@@ -27,6 +27,11 @@ export default function Login({ setFormStatus, setIsAuthenticated, theme }) {
           {
             email,
             password,
+          },
+          {
+            headers:{
+              "Access-Control-Allow-Origin": "* "
+            }
           }
         );
         const { accessToken, refreshToken } = response.data;

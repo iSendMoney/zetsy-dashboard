@@ -62,6 +62,7 @@ export default function Navbar({ theme, dispatchUtilityData }) {
   const [{ user }] = useAuthContext();
   const [{ shop }] = useShopContext();
 
+ 
   return (
     <div className={`navbar__container ${theme}`}>
       <h2>{shop.name || "SS Brothers"}</h2>
