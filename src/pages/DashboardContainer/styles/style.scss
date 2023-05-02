@@ -161,6 +161,10 @@
       border-radius: 16px;
       z-index: 0;
     }
+    .MuiTable-root {
+      min-width: 0;
+      width: 100%;
+    }
     .MuiTableHead-root {
       color: rgb(99, 115, 129) !important;
       background-color: rgb(244, 246, 248);
