@@ -180,8 +180,12 @@
 .ecommerce__container.dark .productList.paper .MuiFormLabel-root,
 .ecommerce__container.dark .productList.paper .MuiInputBase-root,
 .ecommerce__container.dark .productList.paper .MuiTablePagination-selectLabel,
-.ecommerce__container.dark .productList.paper .MuiTablePagination-displayedRows {
+.ecommerce__container.dark .productList.paper .MuiTablePagination-displayedRows,
+.ecommerce__container.dark .productList.paper .MuiTypography-root {
   color: #fff;
+}
+.ecommerce__container.dark .productList.paper .MuiTableCell-root {
+  border-color: rgba(255, 255, 255, 0.2);
 }
 .ecommerce__container.dark .productList.paper .MuiPaper-root {
   background: #212b36;
@@ -197,7 +201,7 @@
   color: rgb(99, 115, 129);
 }
 .ecommerce__container.dark .productList.paper .filter .productSearchContainer {
-  border-color: rgba(22, 28, 36, 0.8);
+  border-color: rgba(255, 255, 255, 0.2);
 }
 .ecommerce__container.dark .productList.paper .filter .productSearchContainer input {
   background: transparent;

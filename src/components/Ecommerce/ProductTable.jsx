@@ -192,14 +192,14 @@ function EnhancedTableToolbar(props) {
       }}
     >
       {numSelected > 0 ? (
-        <Typographyleft
+        <Typography
           sx={{ flex: "1 1 100%" }}
           color="inherit"
           variant="subtitle1"
           component="div"
         >
           {numSelected} selected
-        </Typographyleft>
+        </Typography>
       ) : (
         <Typography
           sx={{ flex: "1 1 100%" }}

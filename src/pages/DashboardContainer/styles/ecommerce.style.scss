@@ -212,8 +212,13 @@
       .MuiFormLabel-root,
       .MuiInputBase-root,
       .MuiTablePagination-selectLabel,
-      .MuiTablePagination-displayedRows {
+      .MuiTablePagination-displayedRows,
+      .MuiTypography-root {
         color: #fff;
+      }
+
+      .MuiTableCell-root {
+        border-color: rgba(255, 255, 255, 0.2);
       }
 
       .MuiPaper-root {
@@ -232,7 +237,7 @@
 
       .filter {
         .productSearchContainer {
-          border-color: rgba(22, 28, 36, 0.8);
+          border-color: rgba(255, 255, 255, 0.2);
 
           input {
             background: transparent;

@@ -41,7 +41,7 @@ export default function Payments({theme}) {
               </p>
             </div>
             <Button>
-              <i class="ri-arrow-right-up-line"></i>
+              <i className="ri-arrow-right-up-line"></i>
             </Button>
           </div>
           <RevenueLineChart />
