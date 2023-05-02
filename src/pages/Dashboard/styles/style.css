@@ -3,7 +3,7 @@
   align-items: flex-start;
 }
 .dashboard__container .sidebar__container {
-  width: 15vw;
+  min-width: 16vw;
   border-right: 1px dashed rgba(145, 158, 171, 0.24);
   height: 100vh;
   overflow-y: scroll;
