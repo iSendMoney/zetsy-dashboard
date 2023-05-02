@@ -2,15 +2,18 @@ import React from "react";
 import { useAuthContext } from "../contexts/Auth";
 
 export default function Sidebar({ handleTabChange, activeTab, theme }) {
-  const [{user}] = useAuthContext();
-  
+  const [{ user }] = useAuthContext();
+
   return (
     <div className={`sidebar__container ${theme}`}>
       <h1 className="logo__container">Zetsy.</h1>
 
       <div className="userIcon">
         <img
-          src={user.picture || "https://www.dropbox.com/s/iv3vsr5k6ib2pqx/avatar_default.jpg?dl=1"}
+          src={
+            user.picture ||
+            "https://www.dropbox.com/s/iv3vsr5k6ib2pqx/avatar_default.jpg?dl=1"
+          }
           loading="lazy"
           alt=""
         />

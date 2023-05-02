@@ -39,7 +39,7 @@ export default function Dashboard() {
         {activeTab === "app" && <SidebarApp theme={theme}/>}
         {/* {activeTab === "analytics" && <Analytics />} */}
         {activeTab === "analytics" && <AnalyticsNew theme={theme}/>}
-        {activeTab === "payments" && <Payments />}
+        {activeTab === "payments" && <Payments theme={theme}/>}
         {activeTab === "media" && <Media />}
         {activeTab === "user" && <User />}
         {activeTab === "e-commerce" && <Ecommerce handleTabChange={handleTabChange}/>}
