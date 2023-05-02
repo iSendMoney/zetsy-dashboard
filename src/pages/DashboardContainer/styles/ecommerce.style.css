@@ -1,7 +1,6 @@
 .ecommerce__container {
-  margin-top: 120px;
-  padding: 0 5vw;
-  height: 90vh;
+  padding: 120px 5vw;
+  height: 100vh;
   overflow-y: scroll;
 }
 .ecommerce__container .ecommerceContainer__header {
@@ -160,4 +159,47 @@
 .ecommerce__container .productList.paper .ecommerceContainer__productTable b {
   color: rgba(0, 0, 0, 0.6);
   font-weight: 500;
+}
+.ecommerce__container.dark {
+  background: #161c24;
+}
+.ecommerce__container.dark .ecommerceContainer__header h1 {
+  color: #fff;
+}
+.ecommerce__container.dark .productList.paper {
+  background: #212b36;
+  color: #fff;
+  box-shadow: none;
+}
+.ecommerce__container.dark .productList.paper .MuiTableHead-root {
+  background: #212b36;
+}
+.ecommerce__container.dark .productList.paper .MuiTypography-root#tableTitle,
+.ecommerce__container.dark .productList.paper .MuiButtonBase-root,
+.ecommerce__container.dark .productList.paper .MuiSvgIcon-root,
+.ecommerce__container.dark .productList.paper .MuiFormLabel-root,
+.ecommerce__container.dark .productList.paper .MuiInputBase-root,
+.ecommerce__container.dark .productList.paper .MuiTablePagination-selectLabel,
+.ecommerce__container.dark .productList.paper .MuiTablePagination-displayedRows {
+  color: #fff;
+}
+.ecommerce__container.dark .productList.paper .MuiPaper-root {
+  background: #212b36;
+}
+.ecommerce__container.dark .productList.paper .MuiPaper-root .MuiTableCell-root,
+.ecommerce__container.dark .productList.paper .MuiPaper-root b {
+  color: #fff;
+}
+.ecommerce__container.dark .productList.paper .MuiPaper-root .MuiTableCell-root .subtitle,
+.ecommerce__container.dark .productList.paper .MuiPaper-root .MuiTableCell-root h4,
+.ecommerce__container.dark .productList.paper .MuiPaper-root b .subtitle,
+.ecommerce__container.dark .productList.paper .MuiPaper-root b h4 {
+  color: rgb(99, 115, 129);
+}
+.ecommerce__container.dark .productList.paper .filter .productSearchContainer {
+  border-color: rgba(22, 28, 36, 0.8);
+}
+.ecommerce__container.dark .productList.paper .filter .productSearchContainer input {
+  background: transparent;
+  color: #fff;
 }/*# sourceMappingURL=ecommerce.style.css.map */

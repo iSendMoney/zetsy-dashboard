@@ -1,7 +1,6 @@
 .ecommerce__container {
-  margin-top: 120px;
-  padding: 0 5vw;
-  height: 90vh;
+  padding: 120px 5vw;
+  height: 100vh;
   overflow-y: scroll;
 
   .ecommerceContainer__header {
@@ -22,7 +21,7 @@
       color: rgb(99, 115, 129);
     }
 
-    .actionBtns{
+    .actionBtns {
       display: flex;
       gap: 10px;
       align-items: center;
@@ -185,6 +184,61 @@
       b {
         color: #0009;
         font-weight: 500;
+      }
+    }
+  }
+
+  &.dark {
+    background: #161c24;
+
+    .ecommerceContainer__header {
+      h1 {
+        color: #fff;
+      }
+    }
+
+    .productList.paper {
+      background: #212b36;
+      color: #fff;
+      box-shadow: none;
+
+      .MuiTableHead-root {
+        background: #212b36;
+      }
+
+      .MuiTypography-root#tableTitle,
+      .MuiButtonBase-root,
+      .MuiSvgIcon-root,
+      .MuiFormLabel-root,
+      .MuiInputBase-root,
+      .MuiTablePagination-selectLabel,
+      .MuiTablePagination-displayedRows {
+        color: #fff;
+      }
+
+      .MuiPaper-root {
+        background: #212b36;
+
+        .MuiTableCell-root,
+        b {
+          color: #fff;
+
+          .subtitle,
+          h4 {
+            color: rgb(99, 115, 129);
+          }
+        }
+      }
+
+      .filter {
+        .productSearchContainer {
+          border-color: rgba(22, 28, 36, 0.8);
+
+          input {
+            background: transparent;
+            color: #fff;
+          }
+        }
       }
     }
   }

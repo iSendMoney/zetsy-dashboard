@@ -42,14 +42,14 @@ export default function Dashboard() {
         {activeTab === "payments" && <Payments theme={theme}/>}
         {activeTab === "media" && <Media />}
         {activeTab === "user" && <User />}
-        {activeTab === "e-commerce" && <Ecommerce handleTabChange={handleTabChange}/>}
+        {activeTab === "e-commerce" && <Ecommerce handleTabChange={handleTabChange} theme={theme}/>}
         {activeTab === "invoice" && <Invoice />}
         {activeTab === "themes" && <Themes />}
         {activeTab === "mail" && <Mail />}
         {activeTab === "chat" && <Chat />}
         {activeTab === "calendar" && <Calendar />}
         {activeTab === "todo" && <Todo />}
-        {activeTab === "new-product" && <NewProduct handleTabChange={handleTabChange}/>}
+        {activeTab === "new-product" && <NewProduct theme={theme} handleTabChange={handleTabChange}/>}
         {activeTab === "bulk-upload" && <BulkUpload />}
       </div>
     </div>
