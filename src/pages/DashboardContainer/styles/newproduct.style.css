@@ -80,7 +80,7 @@
 .dashboard__newProduct__container main .paper.productDescription {
   flex: 1;
 }
-.dashboard__newProduct__container main .paper.productDescription .ewqTBN.sc-beqWaB {
+.dashboard__newProduct__container main .paper.productDescription .ewqTBN, .dashboard__newProduct__container main .paper.productDescription .sc-beqWaB {
   width: 100%;
   max-width: 100%;
   padding: 120px 50px;
