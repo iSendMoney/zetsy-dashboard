@@ -18,12 +18,12 @@ export default function Sidebar({ handleTabChange, activeTab, theme }) {
           alt=""
         />
         <div>
-          <p>{user?.email.split("@")[0] || "John Doe"}</p>
-          <p>{user.role}</p>
+          <p className="text-base">{user?.email.split("@")[0] || "John Doe"}</p>
+          <p className="text-sm">{user.role}</p>
         </div>
       </div>
 
-      <section className="general">
+      <section className="general text-base">
         <h2>General</h2>
         <div
           className={activeTab === "app" ? "active" : ""}

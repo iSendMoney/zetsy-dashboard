@@ -1,5 +1,5 @@
 .ecommerce__container {
-  padding: 120px 5vw;
+  padding: 120px 9vw;
   height: 100vh;
   overflow-y: scroll;
 
@@ -143,8 +143,8 @@
         }
 
         .MuiButton-root:nth-child(1) {
-          color: #43ff3c;
-          background: #42ff3c1c;
+          color: rgb(0, 171, 85);
+          background: #42ff3c46;
         }
         .MuiButton-root:nth-child(2) {
           color: #2e55cc;
@@ -171,8 +171,8 @@
         }
 
         .onStock {
-          background: #2ecc7040;
-          color: #00a545;
+          color: rgb(0, 171, 85);
+          background: #42ff3c46;
         }
 
         .lowStock {

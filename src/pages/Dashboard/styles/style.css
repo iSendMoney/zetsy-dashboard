@@ -38,7 +38,6 @@
 .dashboard__container .sidebar__container .userIcon div p {
   font-weight: 600;
   line-height: 1.57143;
-  font-size: 1rem;
   font-family: "Public Sans", sans-serif;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -46,7 +45,6 @@
 }
 .dashboard__container .sidebar__container .userIcon div p:last-child {
   line-height: 1.57143;
-  font-size: 0.9rem;
   font-weight: 500;
   overflow: hidden;
   text-overflow: ellipsis;

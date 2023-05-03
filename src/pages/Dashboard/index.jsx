@@ -12,7 +12,6 @@ import Media from "../DashboardContainer/Media";
 import Payments from "../DashboardContainer/Payments/Payments";
 import SidebarApp from "../DashboardContainer/SidebarApp";
 import Themes from "../DashboardContainer/Themes";
-import Todo from "../DashboardContainer/Todo";
 import User from "../DashboardContainer/User/User";
 import NewProduct from "../DashboardContainer/NewProduct"
 
@@ -21,6 +20,7 @@ import "./styles/style.css";
 import BulkUpload from "../DashboardContainer/BulkUpload";
 import { useUtilityContext } from "../../contexts/Utilities";
 import AnalyticsNew from "../DashboardContainer/AnalyticsNew";
+import Board from "../DashboardContainer/Todo";
 
 export default function Dashboard() {
   const [activeTab, setActiveTab] = React.useState("app");
@@ -48,7 +48,7 @@ export default function Dashboard() {
         {activeTab === "mail" && <Mail />}
         {activeTab === "chat" && <Chat />}
         {activeTab === "calendar" && <Calendar />}
-        {activeTab === "todo" && <Todo />}
+        {activeTab === "todo" && <Board />}
         {activeTab === "new-product" && <NewProduct theme={theme} handleTabChange={handleTabChange}/>}
         {activeTab === "bulk-upload" && <BulkUpload />}
       </div>

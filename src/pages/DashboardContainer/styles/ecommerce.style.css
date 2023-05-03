@@ -1,5 +1,5 @@
 .ecommerce__container {
-  padding: 120px 5vw;
+  padding: 120px 9vw;
   height: 100vh;
   overflow-y: scroll;
 }
@@ -126,8 +126,8 @@
   font-size: 18px;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root:nth-child(1) {
-  color: #43ff3c;
-  background: rgba(66, 255, 60, 0.1098039216);
+  color: rgb(0, 171, 85);
+  background: rgba(66, 255, 60, 0.2745098039);
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root:nth-child(2) {
   color: #2e55cc;
@@ -149,8 +149,8 @@
   color: #f44336;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus .onStock {
-  background: rgba(46, 204, 112, 0.2509803922);
-  color: #00a545;
+  color: rgb(0, 171, 85);
+  background: rgba(66, 255, 60, 0.2745098039);
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus .lowStock {
   background: rgba(52, 152, 219, 0.1137254902);

@@ -12,9 +12,9 @@ import { Helmet } from "react-helmet";
 import { useAuthContext } from "../../contexts/Auth";
 import { useShopContext } from "../../contexts/Shop";
 
-export default function SidebarApp({theme}) {
-  const [{user}] = useAuthContext();
-  const [{shop}] = useShopContext();
+export default function SidebarApp({ theme }) {
+  const [{ user }] = useAuthContext();
+  const [{ shop }] = useShopContext();
   return (
     <div className={`sidebarApp__container ${theme}`}>
       <Helmet>
@@ -23,7 +23,7 @@ export default function SidebarApp({theme}) {
         </title>
       </Helmet>
       <div className="header">
-        <div className="greetings">
+        <div className="greetings text-base">
           <h2>Good Evening, {user.email}</h2>
           <p>Here's your stat's for {moment().format("LL")}</p>
         </div>
@@ -32,7 +32,8 @@ export default function SidebarApp({theme}) {
             <a href={`https://${shop.subdomain}.zetsy.store`} target="_blank">
               Go to your site
             </a>
-            </p> <i className="ri-arrow-right-up-line"></i>
+          </p>{" "}
+          <i className="ri-arrow-right-up-line"></i>
         </div>
       </div>
       <div className="orderAnalytics">
