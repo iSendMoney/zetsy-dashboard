@@ -98,6 +98,9 @@
   cursor: pointer;
   font-size: 16px;
 }
+.authentication__container .form__container form .forgotButton .valid {
+  color: #27ae60;
+}
 .authentication__container .form__container form .MuiButton-root {
   width: 100%;
   font-family: "Oswald", sans-serif;

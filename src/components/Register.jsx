@@ -19,6 +19,61 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
     setFormStatus(status);
   };
 
+  const [passwordValidation, setPasswordValidation] = React.useState({
+    character: false,
+    capital: false,
+    number: false,
+  });
+
+  const handlePasswordValidation = (password) => {
+    const capitalRegex = /[A-Z]/;
+    const numberRegex = /[0-9]/;
+
+    if (password.length >= 8 && passwordValidation.character === false) {
+      setPasswordValidation({
+        ...passwordValidation,
+        character: true,
+      });
+    }
+    if (password.length < 8 && passwordValidation.character === true) {
+      setPasswordValidation({
+        ...passwordValidation,
+        character: false,
+      });
+    }
+    if (capitalRegex.test(password) && passwordValidation.capital === false) {
+      setPasswordValidation({
+        ...passwordValidation,
+        capital: true,
+      });
+    }
+    if (!capitalRegex.test(password) && passwordValidation.capital === true) {
+      setPasswordValidation({
+        ...passwordValidation,
+        capital: false,
+      });
+    }
+    if (numberRegex.test(password) && passwordValidation.number === false) {
+      setPasswordValidation({
+        ...passwordValidation,
+        number: true,
+      });
+    }
+    if (!numberRegex.test(password) && passwordValidation.number === true) {
+      setPasswordValidation({
+        ...passwordValidation,
+        number: false,
+      });
+    }
+    if (password.length === 0) {
+      setPasswordValidation({
+        character: false,
+        capital: false,
+        number: false,
+      });
+    }
+  };
+
   const sanitizeRegisterData = () => {
     if (sanitizeAuthenticationInput(email, password?.password)) {
       if (password.password !== password.confirmPassword) {
@@ -98,7 +153,10 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
   };
 
   return (
-    <form className="register__container text-base" onSubmit={handleUserRegister}>
+    <form
+      className="register__container text-base"
+      onSubmit={handleUserRegister}
+    >
       <Helmet>
         <title>
           Register | Zetsy | Zetsy is a cutting-edge ecommerce platform that is
@@ -126,11 +184,12 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
       <div className="password__container">
         <input
           value={password.password}
-          onChange={(e) =>
+          onChange={(e) => {
             setPassword((state) => {
               return { ...state, password: e.target.value };
-            })
-          }
+            });
+            handlePasswordValidation(e.target.value);
+          }}
           type={passwordType}
           name="password"
           placeholder="secret@123"
@@ -186,11 +245,17 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
       </div>
 
       <p className="forgotButton">
-        Must be 8 characters long.
+        <span className={`${passwordValidation.character && "valid"}`}>
+          Must be 8 characters long.
+        </span>
         <br />
-        Must contain a capital character.
+        <span className={`${passwordValidation.capital && "valid"}`}>
+          Must contain a capital character.
+        </span>
         <br />
-        Must have one number included.
+        <span className={`${passwordValidation.number && "valid"}`}>
+          Must have one number included.
+        </span>
       </p>
 
       <Button type="submit">Register</Button>
