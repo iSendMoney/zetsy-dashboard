@@ -1,7 +1,6 @@
 .dashboard__newProduct__container {
-  padding: 0 7vw;
-  margin-top: 120px;
-  height: 90vh;
+  padding: 120px 7vw;
+  height: 100vh;
   overflow-y: scroll;
 
   .header {
@@ -85,7 +84,7 @@
       &.productDescription {
         flex: 1;
 
-        .ewqTBN {
+        .ewqTBN,.sc-beqWaB {
           width: 100%;
           max-width: 100%;
           padding: 120px 50px;
@@ -241,6 +240,49 @@
               box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
               border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
           }
+        }
+      }
+    }
+  }
+
+  &.dark {
+    background: #161c24;
+
+    .header {
+      h1 {
+        color: #fff;
+      }
+    }
+
+    main {
+      .paper {
+        background: #212b36;
+        color: #fff;
+        box-shadow: rgba(29, 30, 31, 0.5) 0px 0px 2px 0px,
+          rgba(32, 34, 36, 0.4) 0px 12px 24px -4px;
+
+        .MuiFormLabel-root,
+        .MuiInputBase-root,
+        .MuiTypography-root, .kyUZVo > span {
+          color: #fff;
+        }
+
+        .sc-beqWaB.ewqTBN{
+          background: transparent;
+        }
+
+        .MuiSvgIcon-root {
+          color: rgb(99, 115, 129);
+        }
+
+        .MuiOutlinedInput-notchedOutline {
+          border-color: rgba(145, 158, 171, 0.32);
+        }
+
+        .react-tagsinput {
+          background: transparent;
+          color: #fff;
+          border: 1px solid rgba(145, 158, 171, 0.32);
         }
       }
     }

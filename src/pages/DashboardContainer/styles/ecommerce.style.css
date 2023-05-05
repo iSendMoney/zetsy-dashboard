@@ -1,7 +1,6 @@
 .ecommerce__container {
-  margin-top: 120px;
-  padding: 0 5vw;
-  height: 90vh;
+  padding: 120px 9vw;
+  height: 100vh;
   overflow-y: scroll;
 }
 .ecommerce__container .ecommerceContainer__header {
@@ -127,8 +126,8 @@
   font-size: 18px;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root:nth-child(1) {
-  color: #43ff3c;
-  background: rgba(66, 255, 60, 0.1098039216);
+  color: rgb(0, 171, 85);
+  background: rgba(66, 255, 60, 0.2745098039);
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productTableAction .MuiButton-root:nth-child(2) {
   color: #2e55cc;
@@ -150,8 +149,8 @@
   color: #f44336;
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus .onStock {
-  background: rgba(46, 204, 112, 0.2509803922);
-  color: #00a545;
+  color: rgb(0, 171, 85);
+  background: rgba(66, 255, 60, 0.2745098039);
 }
 .ecommerce__container .productList.paper .ecommerceContainer__productTable .productStatus .lowStock {
   background: rgba(52, 152, 219, 0.1137254902);
@@ -160,4 +159,51 @@
 .ecommerce__container .productList.paper .ecommerceContainer__productTable b {
   color: rgba(0, 0, 0, 0.6);
   font-weight: 500;
+}
+.ecommerce__container.dark {
+  background: #161c24;
+}
+.ecommerce__container.dark .ecommerceContainer__header h1 {
+  color: #fff;
+}
+.ecommerce__container.dark .productList.paper {
+  background: #212b36;
+  color: #fff;
+  box-shadow: none;
+}
+.ecommerce__container.dark .productList.paper .MuiTableHead-root {
+  background: #212b36;
+}
+.ecommerce__container.dark .productList.paper .MuiTypography-root#tableTitle,
+.ecommerce__container.dark .productList.paper .MuiButtonBase-root,
+.ecommerce__container.dark .productList.paper .MuiSvgIcon-root,
+.ecommerce__container.dark .productList.paper .MuiFormLabel-root,
+.ecommerce__container.dark .productList.paper .MuiInputBase-root,
+.ecommerce__container.dark .productList.paper .MuiTablePagination-selectLabel,
+.ecommerce__container.dark .productList.paper .MuiTablePagination-displayedRows,
+.ecommerce__container.dark .productList.paper .MuiTypography-root {
+  color: #fff;
+}
+.ecommerce__container.dark .productList.paper .MuiTableCell-root {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.ecommerce__container.dark .productList.paper .MuiPaper-root {
+  background: #212b36;
+}
+.ecommerce__container.dark .productList.paper .MuiPaper-root .MuiTableCell-root,
+.ecommerce__container.dark .productList.paper .MuiPaper-root b {
+  color: #fff;
+}
+.ecommerce__container.dark .productList.paper .MuiPaper-root .MuiTableCell-root .subtitle,
+.ecommerce__container.dark .productList.paper .MuiPaper-root .MuiTableCell-root h4,
+.ecommerce__container.dark .productList.paper .MuiPaper-root b .subtitle,
+.ecommerce__container.dark .productList.paper .MuiPaper-root b h4 {
+  color: rgb(99, 115, 129);
+}
+.ecommerce__container.dark .productList.paper .filter .productSearchContainer {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+.ecommerce__container.dark .productList.paper .filter .productSearchContainer input {
+  background: transparent;
+  color: #fff;
 }/*# sourceMappingURL=ecommerce.style.css.map */

@@ -81,14 +81,14 @@ export default function Login({ setFormStatus, setIsAuthenticated, theme }) {
   };
 
   return (
-    <form className="login__container" onSubmit={handleUserLogin}>
+    <form className="login__container text-base" onSubmit={handleUserLogin}>
       <Helmet>
         <title>
           Login | Zetsy | Zetsy is a cutting-edge ecommerce platform that is
           changing the way people shop online.
         </title>
       </Helmet>
-      <h1>Sign In.</h1>
+      <h1 className="text-4xl">Sign In.</h1>
       <div className="newuser">
         <p>Don't have an account?</p>
         <p onClick={() => handleFormStatus("register")}>Create One.</p>

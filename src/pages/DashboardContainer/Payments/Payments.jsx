@@ -5,9 +5,9 @@ import RevenueLineChart from "../../../components/Payments/RevenueLineChart";
 
 import "./styles/style.css";
 
-export default function Payments() {
+export default function Payments({theme}) {
   return (
-    <div className="paymentsTab__container">
+    <div className={`paymentsTab__container ${theme}`}>
       <Helmet>
         <title>
           Payments | Zetsy - Your all in one store for online retails.
@@ -41,7 +41,7 @@ export default function Payments() {
               </p>
             </div>
             <Button>
-              <i class="ri-arrow-right-up-line"></i>
+              <i className="ri-arrow-right-up-line"></i>
             </Button>
           </div>
           <RevenueLineChart />

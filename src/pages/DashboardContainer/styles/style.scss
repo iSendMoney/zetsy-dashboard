@@ -1,7 +1,6 @@
 .sidebarApp__container {
-  padding: 0 40px;
+  padding: 120px 40px;
   height: 100vh;
-  padding-top: 120px;
   overflow-y: scroll;
 
   .header {
@@ -161,6 +160,10 @@
       border-radius: 16px;
       z-index: 0;
     }
+    .MuiTable-root {
+      min-width: 0;
+      width: 100%;
+    }
     .MuiTableHead-root {
       color: rgb(99, 115, 129) !important;
       background-color: rgb(244, 246, 248);
@@ -228,12 +231,18 @@
         background-color: rgb(33, 43, 54);
       }
 
-      .recentOrders__container, .topSellingProducts__container {
+      .recentOrders__container,
+      .topSellingProducts__container {
         .MuiPaper-root {
           background-color: rgb(33, 43, 54);
           color: #fff;
           box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px,
             rgba(0, 0, 0, 0.12) 0px 12px 24px -4px;
+
+          .MuiTable-root {
+            min-width: 0;
+            width: 100%;
+          }
 
           .MuiTableRow-root {
             background-color: rgb(33, 43, 54);

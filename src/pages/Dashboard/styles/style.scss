@@ -3,7 +3,7 @@
   align-items: flex-start;
 
   .sidebar__container {
-    width: 15vw;
+    min-width: 16vw;
     border-right: 1px dashed rgba(145, 158, 171, 0.24);
     height: 100vh;
     overflow-y: scroll;
@@ -39,7 +39,7 @@
         p {
           font-weight: 600;
           line-height: 1.57143;
-          font-size: 1rem;
+          // font-size: 1rem;
           font-family: "Public Sans", sans-serif;
           overflow: hidden;
           text-overflow: ellipsis;
@@ -48,7 +48,6 @@
 
         p:last-child {
           line-height: 1.57143;
-          font-size: 0.9rem;
           font-weight: 500;
           overflow: hidden;
           text-overflow: ellipsis;

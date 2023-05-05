@@ -7,8 +7,8 @@ import "./styles/style.css";
 
 export default function Authentication({setIsAuthenticated}) {
   const [formStatus, setFormStatus] = React.useState("login");
-  const [{theme}, disatchUtilityData] = useUtilityContext();
-  console.log(theme);
+  const [{theme}] = useUtilityContext();
+
   return (
     <div className={`authentication__container  ${theme}`}>
       <img

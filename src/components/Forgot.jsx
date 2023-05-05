@@ -7,8 +7,8 @@ export default function Forgot({ setFormStatus }) {
   };
 
   return (
-    <form className="forgot__container" action="">
-      <h1>Zetsy.</h1>
+    <form className="forgot__container text-base" action="">
+      <h1 className="text-4xl">Zetsy.</h1>
       <div className="newuser">
         <p>Already have an account?</p>
         <p onClick={() => handleFormStatus("login")}>Login</p>

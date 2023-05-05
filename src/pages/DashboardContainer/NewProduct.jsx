@@ -77,7 +77,7 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-export default function NewProduct({ handleTabChange }) {
+export default function NewProduct({handleTabChange, theme}) {
   const defaultTheme = createTheme({
     components: {
       MUIRichTextEditor: {
@@ -159,7 +159,7 @@ export default function NewProduct({ handleTabChange }) {
   };
 
   return (
-    <div className="dashboard__newProduct__container">
+    <div className={`dashboard__newProduct__container ${theme}`}>
       <div className="header">
         <div>
           <h1>Add a new product</h1>

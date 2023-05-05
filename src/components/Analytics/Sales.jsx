@@ -43,9 +43,9 @@ const statusMapping = {
 
 export default function Sales({theme}) {
   return (
-    <Grid numColsSm={3} className="mt-6 gap-6">
+    <Grid numColsSm={4} className="mt-6 gap-6">
       {categories.map((item) => (
-        <Card key={item.title} className={`${theme === "dark" && "bg-[#212B36] ring-[#212B36] drop-shadow-[rgba(0, 0, 0, 0.2)_0px_0px_2px_0px]"}`}>
+        <Card key={item.title} className={`p-4 py-2.5 ${theme === "dark" && "bg-[#212B36] ring-[#212B36] drop-shadow-[rgba(0, 0, 0, 0.2)_0px_0px_2px_0px]"}`}>
           <Text className="text-base">{item.title}</Text>
           <Metric className={`${theme === "dark" && "text-white"}`}>{item.metric}</Metric>
           <Callout

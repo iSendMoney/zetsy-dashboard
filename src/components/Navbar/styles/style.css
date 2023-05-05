@@ -1,3 +1,59 @@
+.navbar__container__userActions .MuiButton-root {
+  text-transform: capitalize;
+  justify-content: left;
+  color: #212b36;
+  gap: 6px;
+  align-items: center;
+}
+.navbar__container__userActions .divider {
+  margin: 0px;
+  flex-shrink: 0;
+  border-width: 0px 0px thin;
+  border-color: rgba(145, 158, 171, 0.24);
+  border-style: dashed;
+}
+.navbar__container__userActions.dark .MuiButton-root {
+  color: #fff;
+}
+
+#navbar-pop-over .MuiPaper-root {
+  background-color: rgb(255, 255, 255);
+  color: rgb(33, 43, 54);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-image: none;
+  position: absolute;
+  min-width: 16px;
+  min-height: 16px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100% - 32px);
+  outline: 0px;
+  box-shadow: rgba(145, 158, 171, 0.24) 0px 0px 2px 0px, rgba(145, 158, 171, 0.24) -20px 20px 40px -4px;
+  border-radius: 12px;
+  padding: 0px;
+  width: 200px;
+  overflow: inherit;
+  margin-left: 6px;
+}
+
+#navbar-pop-over-dark .MuiPaper-root {
+  background-color: rgb(33, 43, 54);
+  color: rgb(255, 255, 255);
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-image: none;
+  position: absolute;
+  min-width: 16px;
+  min-height: 16px;
+  max-width: calc(100% - 32px);
+  max-height: calc(100% - 32px);
+  outline: 0px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 0px 2px 0px, rgba(0, 0, 0, 0.24) -20px 20px 40px -4px;
+  border-radius: 12px;
+  padding: 0px;
+  width: 200px;
+  overflow: inherit;
+  margin-left: 6px;
+}
+
 .navbar__container {
   width: 100%;
   padding: 20px 40px;

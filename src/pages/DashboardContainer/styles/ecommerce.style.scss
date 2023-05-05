@@ -1,7 +1,6 @@
 .ecommerce__container {
-  margin-top: 120px;
-  padding: 0 5vw;
-  height: 90vh;
+  padding: 120px 9vw;
+  height: 100vh;
   overflow-y: scroll;
 
   .ecommerceContainer__header {
@@ -22,7 +21,7 @@
       color: rgb(99, 115, 129);
     }
 
-    .actionBtns{
+    .actionBtns {
       display: flex;
       gap: 10px;
       align-items: center;
@@ -144,8 +143,8 @@
         }
 
         .MuiButton-root:nth-child(1) {
-          color: #43ff3c;
-          background: #42ff3c1c;
+          color: rgb(0, 171, 85);
+          background: #42ff3c46;
         }
         .MuiButton-root:nth-child(2) {
           color: #2e55cc;
@@ -172,8 +171,8 @@
         }
 
         .onStock {
-          background: #2ecc7040;
-          color: #00a545;
+          color: rgb(0, 171, 85);
+          background: #42ff3c46;
         }
 
         .lowStock {
@@ -185,6 +184,66 @@
       b {
         color: #0009;
         font-weight: 500;
+      }
+    }
+  }
+
+  &.dark {
+    background: #161c24;
+
+    .ecommerceContainer__header {
+      h1 {
+        color: #fff;
+      }
+    }
+
+    .productList.paper {
+      background: #212b36;
+      color: #fff;
+      box-shadow: none;
+
+      .MuiTableHead-root {
+        background: #212b36;
+      }
+
+      .MuiTypography-root#tableTitle,
+      .MuiButtonBase-root,
+      .MuiSvgIcon-root,
+      .MuiFormLabel-root,
+      .MuiInputBase-root,
+      .MuiTablePagination-selectLabel,
+      .MuiTablePagination-displayedRows,
+      .MuiTypography-root {
+        color: #fff;
+      }
+
+      .MuiTableCell-root {
+        border-color: rgba(255, 255, 255, 0.2);
+      }
+
+      .MuiPaper-root {
+        background: #212b36;
+
+        .MuiTableCell-root,
+        b {
+          color: #fff;
+
+          .subtitle,
+          h4 {
+            color: rgb(99, 115, 129);
+          }
+        }
+      }
+
+      .filter {
+        .productSearchContainer {
+          border-color: rgba(255, 255, 255, 0.2);
+
+          input {
+            background: transparent;
+            color: #fff;
+          }
+        }
       }
     }
   }

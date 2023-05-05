@@ -1,7 +1,6 @@
 .sidebarApp__container {
-  padding: 0 40px;
+  padding: 120px 40px;
   height: 100vh;
-  padding-top: 120px;
   overflow-y: scroll;
 }
 .sidebarApp__container .header {
@@ -144,6 +143,10 @@
   border-radius: 16px;
   z-index: 0;
 }
+.sidebarApp__container .productData .MuiTable-root {
+  min-width: 0;
+  width: 100%;
+}
 .sidebarApp__container .productData .MuiTableHead-root {
   color: rgb(99, 115, 129) !important;
   background-color: rgb(244, 246, 248);
@@ -194,16 +197,24 @@
   color: #fff;
   background-color: rgb(33, 43, 54);
 }
-.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root, .sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root {
+.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root,
+.sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root {
   background-color: rgb(33, 43, 54);
   color: #fff;
   box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px, rgba(0, 0, 0, 0.12) 0px 12px 24px -4px;
 }
-.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root, .sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root {
+.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTable-root,
+.sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTable-root {
+  min-width: 0;
+  width: 100%;
+}
+.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root,
+.sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root {
   background-color: rgb(33, 43, 54);
 }
 .sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root th,
-.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root td, .sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root th,
+.sidebarApp__container.dark .productData .recentOrders__container .MuiPaper-root .MuiTableRow-root td,
+.sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root th,
 .sidebarApp__container.dark .productData .topSellingProducts__container .MuiPaper-root .MuiTableRow-root td {
   color: #fff;
   border-bottom: 1px solid rgba(224, 224, 224, 0.12);
