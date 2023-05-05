@@ -1,0 +1,144 @@
+.card__action__btn > button {
+  background-color: #091e4214;
+  color: #000;
+  border: none;
+  font-size: 15px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 32px;
+  margin-top: 8px;
+  max-width: 300px;
+  overflow: hidden;
+  padding: 6px 12px;
+  position: relative;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  transition-duration: 85ms;
+  transition-property: background-color, border-color, box-shadow;
+  transition-timing-function: ease;
+  -webkit-user-select: none;
+  user-select: none;
+  white-space: nowrap;
+  justify-content: start;
+  align-items: center;
+  gap: 5px;
+}
+
+.icon__sm > svg {
+  height: 15px;
+  width: 15px;
+}
+.icon__md {
+  height: 20px;
+  width: 20px;
+}
+.card__label {
+  display: flex;
+  justify-content: space-between;
+}
+.label__color > span {
+  height: 32px;
+  box-sizing: border-box;
+  min-width: 40px;
+  width: auto;
+  padding: 0px 12px;
+  display: block;
+  border-radius: 3px;
+  font-weight: 600;
+  color: #fff;
+  line-height: 32px;
+  float: left;
+  margin: 0px 4px 4px 0px;
+}
+.label__color > span:hover {
+  cursor: pointer;
+}
+.progress-bar {
+  background-color: #61bd4f !important;
+}
+.task__editable {
+  width: 30%;
+}
+.task__list {
+  min-height: 20px;
+  height: auto;
+  padding-top: 6px;
+  padding-inline: 0.5rem;
+  border-radius: 2px;
+}
+.task__list:hover {
+  background-color: var(--task-hover);
+}
+
+.task__checkbox {
+  height: 18px !important;
+  width: 18px !important;
+  cursor: pointer;
+}
+.task__list > div > p {
+  text-align: left;
+  font-size: 16px;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
+
+.container {
+  padding: 0 12px;
+}
+
+.container .row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -12px;
+  color: #000;
+}
+
+.container .row .pb-4 {
+  padding-bottom: 24px;
+}
+
+.col-12 {
+  flex: 0 0 auto;
+  width: 100%;
+}
+
+.col-12 > * {
+  max-width: 100%;
+  padding: 0 12px;
+}
+
+.card__container {
+  display: flex;
+  align-items: center;
+  padding-top: 1rem;
+  gap: 0.5rem;
+}
+
+.card__container > * {
+  align-items: center;
+}
+
+.label__container {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  padding: 0 12px;
+}
+
+.label__container .label {
+  width: 100% !important;
+}
+
+.label__container .add__container {
+  width: 100% !important;
+}
+
+.label__container .add__container .btn__container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}

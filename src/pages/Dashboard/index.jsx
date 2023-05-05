@@ -15,6 +15,7 @@ import Themes from "../DashboardContainer/Themes";
 import Todo from "../DashboardContainer/Todo";
 import User from "../DashboardContainer/User/User";
 import NewProduct from "../DashboardContainer/NewProduct"
+import KanbanBoard from "../../components/KanbanBoard";
 
 import "./styles/style.css";
 import { useShopContext } from "../../contexts/Shop";
@@ -44,7 +45,7 @@ export default function Dashboard() {
         {activeTab === "mail" && <Mail />}
         {activeTab === "chat" && <Chat />}
         {activeTab === "calendar" && <Calendar />}
-        {activeTab === "todo" && <Todo />}
+        {activeTab === "todo" && <KanbanBoard />}
         {activeTab === "new-product" && <NewProduct handleTabChange={handleTabChange}/>}
         {activeTab === "bulk-upload" && <BulkUpload />}
       </div>
