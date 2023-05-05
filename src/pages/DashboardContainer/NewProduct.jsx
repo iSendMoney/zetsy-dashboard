@@ -21,6 +21,8 @@ import Switch from "@mui/material/Switch";
 import "react-tagsinput/react-tagsinput.css";
 
 import "./styles/newproduct.style.css";
+import { convertFromHTML, convertToRaw } from "draft-js";
+import { stateToHTML } from "draft-js-export-html";
 
 const fileTypes = ["JPEG", "PNG", "GIF"];
 
@@ -75,7 +77,7 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-export default function NewProduct({handleTabChange}) {
+export default function NewProduct({ handleTabChange }) {
   const defaultTheme = createTheme({
     components: {
       MUIRichTextEditor: {
@@ -125,18 +127,35 @@ export default function NewProduct({handleTabChange}) {
     setFiles(arrayImages);
   };
 
-  // category
-  const [category, setCategory] = React.useState(10);
-
-  const handleCategoryChange = (event) => {
-    setCategory(event.target.value);
-  };
-
   // react tag autocomplete
   const [tags, setTags] = React.useState([]);
 
-  const handleTagsChange = (tags) => {
-    setTags(tags);
+  const onEditorChange = (event) => {
+    const rteContent = stateToHTML(event.getCurrentContent()); // for rte content with text formating
+    rteContent && setProduct({ ..._product, description: rteContent }); // store your rteContent to state
+  };
+
+  // states
+
+  const [_product, setProduct] = React.useState({
+    name: "",
+    description: "",
+    quantity: "",
+    product_code: "",
+    sku: "",
+    category: "",
+    tags: "",
+    regular_price: "",
+    sale_price: "",
+    includes_tax: true,
+  });
+
+  // Add Product Handler
+
+  const addProduct = () => {
+    console.log(_product);
+    console.log(files);
+    console.log("add product");
   };
 
   return (
@@ -146,7 +165,9 @@ export default function NewProduct({handleTabChange}) {
           <h1>Add a new product</h1>
           <span className="subtitle">Dashboard - E-Commerce - New product</span>
         </div>
-        <Button onClick={() => handleTabChange("bulk-upload")}><i className="ri-folder-shared-line"></i> Bulk Upload</Button>
+        <Button onClick={() => handleTabChange("bulk-upload")}>
+          <i className="ri-folder-shared-line"></i> Bulk Upload
+        </Button>
       </div>
 
       <main>
@@ -156,13 +177,21 @@ export default function NewProduct({handleTabChange}) {
               id="outlined-basic"
               label="Product Name"
               variant="outlined"
+              onChange={(e) =>
+                setProduct({ ..._product, name: e.target.value })
+              }
+              value={_product.name}
             />
             <div className="richTextEditor">
               <label>
                 <i className="ri-product-hunt-line"></i> Product Description
               </label>
               <ThemeProvider theme={defaultTheme}>
-                <MUIRichTextEditor inlineToolbar={true} autoAdjustHeight />
+                <MUIRichTextEditor
+                  inlineToolbar={true}
+                  autoAdjustHeight
+                  onChange={onEditorChange}
+                />
               </ThemeProvider>
             </div>
 
@@ -210,17 +239,27 @@ export default function NewProduct({handleTabChange}) {
                 id="outlined-basic"
                 label="Quantity"
                 variant="outlined"
+                value={_product.quantity}
+                onChange={(e) =>
+                  setProduct({ ..._product, quantity: e.target.value })
+                }
               />
             </div>
             <TextField
               id="outlined-basic"
               label="Product Code"
               variant="outlined"
+              value={_product.product_code}
+              onChange={(e) =>
+                setProduct({ ..._product, product_code: e.target.value })
+              }
             />
             <TextField
               id="outlined-basic"
               label="Product SKU"
               variant="outlined"
+              value={_product.sku}
+              onChange={(e) => setProduct({ ..._product, sku: e.target.value })}
             />
 
             <Box sx={{ minWidth: 120 }}>
@@ -229,9 +268,11 @@ export default function NewProduct({handleTabChange}) {
                 <Select
                   labelId="demo-simple-select-label"
                   id="demo-simple-select"
-                  value={category}
+                  value={_product.category}
                   label="Category"
-                  onChange={handleCategoryChange}
+                  onChange={(e) =>
+                    setProduct({ ..._product, category: e.target.value })
+                  }
                 >
                   <MenuItem value={10}>Ten</MenuItem>
                   <MenuItem value={20}>Twenty</MenuItem>
@@ -253,7 +294,12 @@ export default function NewProduct({handleTabChange}) {
               <label htmlFor="">
                 <i className="ri-price-tag-3-line"></i> Tags
               </label>
-              <TagsInput value={tags} onChange={handleTagsChange} />
+              <TagsInput
+                value={_product.tags}
+                onChange={(e) =>
+                  setProduct({ ..._product, tags: e.target.value })
+                }
+              />
             </div>
 
             <div className="flex">
@@ -271,6 +317,10 @@ export default function NewProduct({handleTabChange}) {
                     <InputAdornment position="start">$</InputAdornment>
                   }
                   label="Amount"
+                  value={_product.regular_price}
+                  onChange={(e) =>
+                    setProduct({ ..._product, regular_price: e.target.value })
+                  }
                 />
               </FormControl>
             </div>
@@ -285,15 +335,30 @@ export default function NewProduct({handleTabChange}) {
                   <InputAdornment position="start">$</InputAdornment>
                 }
                 label="Amount"
+                value={_product.sale_price}
+                onChange={(e) =>
+                  setProduct({ ..._product, sale_price: e.target.value })
+                }
               />
             </FormControl>
 
             <FormControlLabel
-              control={<IOSSwitch sx={{ m: 1 }} defaultChecked />}
+              control={
+                <IOSSwitch
+                  sx={{ m: 1 }}
+                  defaultChecked={_product.includes_tax}
+                />
+              }
               label="Price includes taxes"
+              onChange={() =>
+                setProduct({
+                  ..._product,
+                  includes_tax: !_product.includes_tax,
+                })
+              }
             />
 
-            <Button className="newProductBtn">
+            <Button className="newProductBtn" onClick={() => addProduct()}>
               <i className="ri-add-line"></i> Create Product
             </Button>
           </form>
