@@ -17,6 +17,7 @@ export default function App() {
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
     if(isAuthenticated && accessToken){
+      console.log(accessToken,isAuthenticated)
       // get shop if user is authenticated
      getStore(accessToken).then(res=>{
        // store shop details in context
@@ -45,11 +46,9 @@ export default function App() {
       <Route
         path="/"
         element={
-          isAuthenticated ? (
-            <Navigate to="/dashboard" />
-          ) : (
+          !isAuthenticated ? (
             <Authentication setIsAuthenticated={setIsAuthenticated} />
-          )
+          ) : <Navigate to={"/dashboard"} />
         }
       />
       <Route

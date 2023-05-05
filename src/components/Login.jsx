@@ -6,20 +6,23 @@ import { toast } from "react-toastify";
 import { sanitizeAuthenticationInput } from "../configs/SanitizeAuthentication";
 import { Helmet } from "react-helmet";
 import Hello from "../configs/Hello";
+import { useNavigate } from "react-router";
+import Loader  from "../components/Loader";
 
 export default function Login({ setFormStatus, setIsAuthenticated, theme }) {
   const [, dispatch] = useAuthContext();
-
+  const navigate = useNavigate();
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [passwordType, setPasswordType] = React.useState("password");
-
+  const [loading, setLoading] = React.useState(false)
   const handleFormStatus = (status) => {
     setFormStatus(status);
   };
 
   const handleUserLogin = async (e) => {
     e.preventDefault();
+    setLoading(true);
     if (sanitizeAuthenticationInput(email, password)) {
       try {
         const response = await axios.post(
@@ -38,16 +41,19 @@ export default function Login({ setFormStatus, setIsAuthenticated, theme }) {
         dispatch({ type: "login", payload: { accessToken, refreshToken } });
         dispatch({ type: "set-user", payload: response.data.user });
         dispatch({ type: "set-accessToken", payload: accessToken });
+        setLoading(false);
         setIsAuthenticated(true);
       } catch (error) {
         toast("Email or Password is incorrect!");
         console.log(error);
+        setLoading(false);
       }
     }
   };
 
   const register = async (provider) => {
     try {
+     
       const oauth = await Hello(provider).login({ scope: "email" });
       let headers = {};
       if (provider == "github") {
@@ -57,6 +63,7 @@ export default function Login({ setFormStatus, setIsAuthenticated, theme }) {
         path: "me",
         headers: headers,
       });
+      setLoading(true);
       // Check if user already exists
       await axios
         .post(
@@ -70,13 +77,16 @@ export default function Login({ setFormStatus, setIsAuthenticated, theme }) {
           const { accessToken, refreshToken } = res.data;
           dispatch({ type: "login", payload: { accessToken, refreshToken } });
           dispatch({ type: "set-user", payload: res.data.user });
-          return setIsAuthenticated(true);
+          dispatch({ type: "set-accessToken", payload: accessToken });
+          setLoading(false);
+          setIsAuthenticated(true);
         })
-        .catch((err) => err && toast(err.response?.data?.message));
+        .catch((err) => err && toast(err.response?.data?.message),setLoading(false));
 
       // setUser(data.user);
     } catch (error) {
       console.error(error);
+      setLoading(false)
     }
   };
 
@@ -135,7 +145,10 @@ export default function Login({ setFormStatus, setIsAuthenticated, theme }) {
         forgot password?
       </p>
 
-      <Button type="submit">Login</Button>
+      <Button type="submit" disabled={loading}>
+        {loading ? <Loader />
+        : "login" }
+        </Button>
 
       <div className="divider">
         <div></div>
