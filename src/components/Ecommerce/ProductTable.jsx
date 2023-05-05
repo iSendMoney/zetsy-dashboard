@@ -364,9 +364,9 @@ export default function ProductTable() {
                         <b>{moment().format("lll")}</b>
                       </TableCell>
                       <TableCell className="productStatus" align="center">
-                        {/* <div className="outOfStock">Out of Stock</div> */}
+                        <div className="outOfStock">Out of Stock</div>
                         <div className="onStock">In Stock</div>
-                        {/* <div className="lowStock">Low Stock</div> */}
+                        <div className="lowStock">Low Stock</div>
                       </TableCell>
                       <TableCell align="center">
                         <b>Rs. 10,000</b>

@@ -37,7 +37,6 @@
       display: flex;
       align-items: flex-start;
       flex-direction: column;
-      font-size: 19px;
       min-width: 25vw;
       gap: 10px;
 
@@ -51,7 +50,6 @@
 
       h1 {
         font-family: "Bodoni Moda", serif;
-        font-size: 3rem;
         font-weight: 600;
       }
       .newuser {
@@ -70,7 +68,7 @@
 
         input {
           width: 100%;
-          font-size: 17px;
+          // font-size: 17px;
           padding: 15px 10px;
           margin-top: 10px;
           border: 1px solid #000;
@@ -92,7 +90,7 @@
           padding: 15px 0;
           flex: 1;
           border: none;
-          font-size: 17px;
+          // font-size: 17px;
 
           &:focus {
             outline: none;
@@ -111,7 +109,7 @@
       .MuiButton-root {
         width: 100%;
         font-family: "Oswald", sans-serif;
-        font-size: 19px;
+        font-size: 17px;
         text-transform: capitalize;
         background: #34495e;
         color: #fff;

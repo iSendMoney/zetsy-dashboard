@@ -1,14 +1,14 @@
 import React from "react";
 import { useAuthContext } from "../contexts/Auth";
 
-export default function Sidebar({ handleTabChange, activeTab, theme }) {
+export default function Sidebar({ handleTabChange, activeTab, theme, setActiveTab }) {
   const [{ user }] = useAuthContext();
 
   return (
     <div className={`sidebar__container ${theme}`}>
       <h1 className="logo__container">Zetsy.</h1>
 
-      <div className="userIcon">
+      <div className="userIcon" onClick={() => setActiveTab("profile")}>
         <img
           src={
             user.picture ||

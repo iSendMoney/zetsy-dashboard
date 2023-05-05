@@ -68,9 +68,15 @@ function notificationsLabel(count) {
   return `${count} notifications`;
 }
 
-export default function Navbar({ theme, dispatchUtilityData }) {
+export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
   const [{ user }] = useAuthContext();
   const [{ shop }] = useShopContext();
+
+  const handleLogout = () => {
+    localStorage.removeItem("authentication-token")
+    localStorage.removeItem("user")
+    window.location.reload()
+  }
 
   return (
     <div className={`navbar__container ${theme}`}>
@@ -122,11 +128,11 @@ export default function Navbar({ theme, dispatchUtilityData }) {
                   <div className="divider"></div>
 
                   <div className="actions flex flex-col">
-                    <Button><i className="ri-home-line"></i> Home</Button>
-                    <Button><i className="ri-user-4-line"></i> Profile</Button>
+                    <Button onClick={() => setActiveTab("app")}><i className="ri-home-line"></i> Home</Button>
+                    <Button onClick={() => setActiveTab("profile")}><i className="ri-user-4-line"></i> Profile</Button>
                     <Button><i className="ri-settings-5-line"></i> Settings</Button>
                     <div className="divider"></div>
-                    <Button><i className="ri-logout-box-line"></i> Logout</Button>
+                    <Button onClick={() => handleLogout()}><i className="ri-logout-box-line"></i> Logout</Button>
                   </div>
                 </div>
               </Popover>
