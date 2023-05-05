@@ -107,7 +107,7 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
           }
         );
 
-        console.log(response);
+   
         toast("User verification mail sent!");
         setLoading(false);
         handleFormStatus("login");
