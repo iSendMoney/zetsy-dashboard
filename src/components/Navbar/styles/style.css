@@ -16,7 +16,7 @@
   color: #fff;
 }
 
-#navbar-pop-over .css-3bmhjh-MuiPaper-root-MuiPopover-paper {
+#navbar-pop-over .MuiPaper-root {
   background-color: rgb(255, 255, 255);
   color: rgb(33, 43, 54);
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
@@ -35,7 +35,7 @@
   margin-left: 6px;
 }
 
-#navbar-pop-over-dark .css-3bmhjh-MuiPaper-root-MuiPopover-paper {
+#navbar-pop-over-dark .MuiPaper-root {
   background-color: rgb(33, 43, 54);
   color: rgb(255, 255, 255);
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
