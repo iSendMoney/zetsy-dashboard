@@ -3,6 +3,11 @@
   height: 100vh;
   align-items: center;
 
+  @media (max-width: 576px) {
+    padding-top: 120px;
+    align-items: flex-start;
+  }
+
   @media screen and (min-width: 769px) and (max-width: 1441px) {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -105,7 +110,7 @@
         cursor: pointer;
         font-size: 16px;
 
-        .valid{
+        .valid {
           color: #27ae60;
         }
       }
