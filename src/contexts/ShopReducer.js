@@ -9,7 +9,7 @@ export const ACTIONS = {
     businessInfo:{},
     customerInfo:{},
     socialInfo:{},
-    shop:{}
+    shop: localStorage.getItem("shop") ? JSON.parse(localStorage.getItem("shop")) : {}
  };
   
   export const ShopReducer = (state, action) => {
@@ -24,6 +24,7 @@ export const ACTIONS = {
         state.socialInfo = action.payload
         return state;
       case ACTIONS.SHOP:
+        localStorage.setItem("shop",JSON.stringify(action.payload))
         state.shop = action.payload
         return state;
         }

@@ -10,29 +10,29 @@ import { toast } from "react-toastify";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [hasStore, setHasStore] = React.useState(true);
-  const [, dispatch] = useShopContext();
-  const [{ accessToken }, authDispatch] = useAuthContext();
+  const [hasStore, setHasStore] = React.useState(false);
+  const [,dispatch] = useShopContext();
+  const [{accessToken},authDispatch] = useAuthContext();
 
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
-    if (accessToken) {
+    if(isAuthenticated && accessToken){
+      console.log(accessToken,isAuthenticated)
       // get shop if user is authenticated
-      getStore(accessToken)
-        .then((res) => {
-          // store shop details in context
-          if (res) {
-            dispatch({ type: "shop", payload: res });
-            setHasStore(true);
-          }
-        })
-        .catch((err) => {
-          if (err === "Forbidden") {
-            toast("Session Expired", { type: "error" });
-            setIsAuthenticated(false);
-            authDispatch({ type: "logout" });
-          }
-        });
+     getStore(accessToken).then(res=>{
+       // store shop details in context
+       
+       if(res){
+         dispatch({type:"shop", payload:res});
+         setHasStore(true);
+       }
+     }).catch(err=>{
+      if(err==="Forbidden"){
+        toast("Session Expired",{type:'error'})
+        setIsAuthenticated(false);
+        authDispatch({type:"logout"})
+      }
+     })
     }
   }, [isAuthenticated]);
 
@@ -41,26 +41,24 @@ export default function App() {
     else return <>{children}</>;
   };
 
+
   return (
     <Routes>
-      {/* <Route
+      <Route
         path="/"
         element={
-          <Dashboard />
-          // isAuthenticated ? (
-            // <Navigate to="/dashboard" />
-          // ) : (
-            // <Authentication setIsAuthenticated={setIsAuthenticated} />
-          // )
+          !isAuthenticated ? (
+            <Authentication setIsAuthenticated={setIsAuthenticated} />
+          ) : <Navigate to={"/dashboard"} />
         }
-      /> */}
+      />
       <Route
         path="/dashboard"
-        element={<Dashboard />}
-        // <ProtectedRoute>
-        // {hasStore ?
-        // : <UserOnboarding setHasStore={setHasStore}/>}
-        // {/* </ProtectedRoute> */}
+        element={
+          <ProtectedRoute>
+            {hasStore ? <Dashboard /> : <UserOnboarding setHasStore={setHasStore}/>}
+          </ProtectedRoute>
+        }
       />
     </Routes>
   );

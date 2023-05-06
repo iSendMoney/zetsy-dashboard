@@ -1,6 +1,7 @@
 .sidebarApp__container {
-  margin-top: 90px;
-  padding: 0 40px;
+  padding: 20px 40px;
+  height: 100vh;
+  overflow-y: scroll;
 
   .header {
     display: flex;
@@ -72,7 +73,7 @@
 
             i {
               margin-right: 8px;
-              padding: 4px;
+              padding: 3px 8px;
               border-radius: 50%;
               font-size: 20px;
 
@@ -159,6 +160,10 @@
       border-radius: 16px;
       z-index: 0;
     }
+    .MuiTable-root {
+      min-width: 0;
+      width: 100%;
+    }
     .MuiTableHead-root {
       color: rgb(99, 115, 129) !important;
       background-color: rgb(244, 246, 248);
@@ -176,22 +181,78 @@
         background-color: rgba(0, 0, 0, 0.04);
       }
 
-      .flex{
+      .flex {
         display: flex;
         align-items: center;
         gap: 10px;
         font-size: 16px;
         font-family: "Public Sans", serif;
 
-        .price{
+        .price {
           font-size: 14px;
           color: rgb(99, 115, 129);
         }
 
-        img{
+        img {
           width: 40px;
           height: 40px;
           border-radius: 10px;
+        }
+      }
+    }
+  }
+
+  &.dark {
+    background-color: #161c24;
+
+    .header {
+      .greetings {
+        h2 {
+          color: #fff;
+        }
+      }
+    }
+    .orderAnalytics {
+      .orderAnalyticsCard__container {
+        background-color: rgb(33, 43, 54);
+        color: rgb(255, 255, 255);
+        box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px,
+          rgba(0, 0, 0, 0.12) 0px 12px 24px -4px;
+      }
+    }
+
+    .productData {
+      h3 {
+        color: #fff;
+      }
+
+      .MuiButton-root {
+        color: #fff;
+        background-color: rgb(33, 43, 54);
+      }
+
+      .recentOrders__container,
+      .topSellingProducts__container {
+        .MuiPaper-root {
+          background-color: rgb(33, 43, 54);
+          color: #fff;
+          box-shadow: rgba(0, 0, 0, 0.2) 0px 0px 2px 0px,
+            rgba(0, 0, 0, 0.12) 0px 12px 24px -4px;
+
+          .MuiTable-root {
+            min-width: 0;
+            width: 100%;
+          }
+
+          .MuiTableRow-root {
+            background-color: rgb(33, 43, 54);
+
+            th,
+            td {
+              color: #fff;
+              border-bottom: 1px solid rgb(224 224 224 / 12%);
+            }
+          }
         }
       }
     }

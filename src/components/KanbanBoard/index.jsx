@@ -8,24 +8,12 @@ import { DragDropContext } from "react-beautiful-dnd";
 import { v4 as uuidv4 } from "uuid";
 import Editable from "./components/Editable/Editable"
 import useLocalStorage from "use-local-storage";
-function KanbanBoard() {
+function KanbanBoard({theme}) {
   const [data, setData] = useState(
     localStorage.getItem("kanban-board")
       ? JSON.parse(localStorage.getItem("kanban-board"))
       : []
   );
-
-  const defaultDark = window.matchMedia(
-    "(prefers-colors-scheme: dark)"
-  ).matches;
-  const [theme, setTheme] = useLocalStorage(
-    "theme",
-    defaultDark ? "dark" : "light"
-  );
-
-  const switchTheme = () => {
-    setTheme(theme === "light" ? "dark" : "light");
-  };
 
   const setName = (title, bid) => {
     const index = data.findIndex((item) => item.id === bid);
@@ -132,7 +120,7 @@ function KanbanBoard() {
 
   return (
     <DragDropContext onDragEnd={onDragEnd}>
-      <div className="Kanban-board" data-theme={theme}>
+      <div className={`Kanban-board ${theme}`} data-theme={theme}>
         {/* <Navbar switchTheme={switchTheme} /> */}
         <div className="app_outer">
           <div className="app_boards">

@@ -1,14 +1,14 @@
 import React from "react";
 import { useAuthContext } from "../contexts/Auth";
 
-export default function Sidebar({ handleTabChange, activeTab }) {
+export default function Sidebar({ handleTabChange, activeTab, theme, setActiveTab }) {
   const [{ user }] = useAuthContext();
 
   return (
-    <div className="sidebar__container">
+    <div className={`sidebar__container ${theme}`}>
       <h1 className="logo__container">Zetsy.</h1>
 
-      <div className="userIcon">
+      <div className="userIcon" onClick={() => setActiveTab("profile")}>
         <img
           src={
             user.picture ||
@@ -18,13 +18,12 @@ export default function Sidebar({ handleTabChange, activeTab }) {
           alt=""
         />
         <div>
-          {/* user?.email.split("@")[0] || */}
-          <p>{"John Doe"}</p>
-          <p>{user.role}</p>
+          <p className="text-base">{user?.email?.split("@")[0] || "John Doe"}</p>
+          <p className="text-sm">{user.role}</p>
         </div>
       </div>
 
-      <section className="general">
+      <section className="general text-base">
         <h2>General</h2>
         <div
           className={activeTab === "app" ? "active" : ""}

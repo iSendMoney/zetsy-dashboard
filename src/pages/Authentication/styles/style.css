@@ -3,6 +3,12 @@
   height: 100vh;
   align-items: center;
 }
+@media (max-width: 576px) {
+  .authentication__container {
+    padding-top: 120px;
+    align-items: flex-start;
+  }
+}
 @media screen and (min-width: 769px) and (max-width: 1441px) {
   .authentication__container {
     display: grid;
@@ -37,7 +43,6 @@
   display: flex;
   align-items: flex-start;
   flex-direction: column;
-  font-size: 19px;
   min-width: 25vw;
   gap: 10px;
 }
@@ -53,7 +58,6 @@
 }
 .authentication__container .form__container form h1 {
   font-family: "Bodoni Moda", serif;
-  font-size: 3rem;
   font-weight: 600;
 }
 .authentication__container .form__container form .newuser {
@@ -70,9 +74,9 @@
 }
 .authentication__container .form__container form .email__container input {
   width: 100%;
-  font-size: 17px;
   padding: 15px 10px;
   margin-top: 10px;
+  border: 1px solid #000;
 }
 .authentication__container .form__container form .email__container input:focus {
   outline: none;
@@ -89,7 +93,6 @@
   padding: 15px 0;
   flex: 1;
   border: none;
-  font-size: 17px;
 }
 .authentication__container .form__container form .password__container input:focus {
   outline: none;
@@ -101,10 +104,13 @@
   cursor: pointer;
   font-size: 16px;
 }
+.authentication__container .form__container form .forgotButton .valid {
+  color: #27ae60;
+}
 .authentication__container .form__container form .MuiButton-root {
   width: 100%;
   font-family: "Oswald", sans-serif;
-  font-size: 19px;
+  font-size: 17px;
   text-transform: capitalize;
   background: #34495e;
   color: #fff;

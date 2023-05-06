@@ -6,6 +6,7 @@ import OrderTimeline from "../../components/Analytics/OrderTimeline";
 import ProductCategoySales from "../../components/Analytics/ProductCategoySales";
 import Summary from "../../components/Analytics/Summary";
 import "./styles/analytics.style.css";
+import WebAnalytics from "../../components/Analytics/WebAnalytics";
 
 export default function Analytics() {
   return (
@@ -48,6 +49,7 @@ export default function Analytics() {
             </div>
           </div>
         </div>
+        {/* <WebAnalytics /> */}
         <div className="paper top">
           <h3>
             Your Tools

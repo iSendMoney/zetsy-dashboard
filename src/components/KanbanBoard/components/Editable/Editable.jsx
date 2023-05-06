@@ -20,12 +20,20 @@ const Editable = (props) => {
       {show ? (
         <form onSubmit={handleOnSubmit}>
           <div className={`editable__input ${props.class}`}>
-            <textarea
+            {/* <textarea
               placeholder={props.placeholder}
               autoFocus
               id={"edit-input"}
               type={"text"}
               onChange={(e) => setText(e.target.value)}
+            /> */}
+            <input
+              type="text"
+              id="edit-input"
+              placeholder={props.placeholder}
+              onChange={(e) => setText(e.target.value)}
+              autoFocus
+              value={text}
             />
             <div className="btn__control">
               <button className="add__btn" type="submit">

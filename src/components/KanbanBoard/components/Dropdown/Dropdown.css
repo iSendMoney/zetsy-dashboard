@@ -2,7 +2,7 @@
   position: absolute;
   right: 0;
   top: 40px;
-  background-color: var(--drop-down-color);
+  /* background-color: var(--drop-down-color); */
   border-radius: 3px;
   min-height: 40px;
   min-width: 80px;

@@ -8,14 +8,15 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import ProductTable from "../../components/Ecommerce/ProductTable";
 
-export default function Ecommerce({ handleTabChange }) {
+export default function Ecommerce({ handleTabChange, theme }) {
   const [status, setStatus] = React.useState("");
 
   const handleChange = (event) => {
     setStatus(event.target.value);
   };
+
   return (
-    <div className="ecommerce__container">
+    <div className={`ecommerce__container ${theme}`}>
       <div className="ecommerceContainer__header">
         <div>
           <h1>Ecommerce</h1>
@@ -23,7 +24,7 @@ export default function Ecommerce({ handleTabChange }) {
         </div>
         <div className="actionBtns">
           <Button>
-          <i className="ri-price-tag-3-line"></i> New Category
+            <i className="ri-price-tag-3-line"></i> New Category
           </Button>
           <Button onClick={() => handleTabChange("new-product")}>
             <i className="ri-add-line"></i>

@@ -5,7 +5,7 @@ export async function getStore(token){
     try {     
         const response = await axios.get(`${import.meta.env.VITE_API_BASE_URI}/api/v1/store/`,{
             headers:{
-              Authorization: `${token}`
+              Authorization: `${token}`,
             }
           });
         const {store} = response.data;

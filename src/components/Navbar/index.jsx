@@ -1,11 +1,11 @@
 import { Button } from "@mui/material";
 import React from "react";
 import { styled } from "@mui/material/styles";
-import FormGroup from "@mui/material/FormGroup";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
-import Stack from "@mui/material/Stack";
-import Typography from "@mui/material/Typography";
+import Badge from "@mui/material/Badge";
+import IconButton from "@mui/material/IconButton";
+import Popover from "@mui/material/Popover";
+import PopupState, { bindTrigger, bindPopover } from "material-ui-popup-state";
 
 import { useAuthContext } from "../../contexts/Auth";
 import { useShopContext } from "../../contexts/Shop";
@@ -58,29 +58,87 @@ const MaterialUISwitch = styled(Switch)(({ theme }) => ({
   },
 }));
 
-export default function Navbar() {
+function notificationsLabel(count) {
+  if (count === 0) {
+    return "no notifications";
+  }
+  if (count > 99) {
+    return "more than 99 notifications";
+  }
+  return `${count} notifications`;
+}
+
+export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
   const [{ user }] = useAuthContext();
   const [{ shop }] = useShopContext();
 
+  const handleLogout = () => {
+    localStorage.removeItem("authentication-token")
+    localStorage.removeItem("user")
+    window.location.reload()
+  }
+
   return (
-    <div className="navbar__container">
+    <div className={`navbar__container ${theme}`}>
       <h2>{shop.name || "SS Brothers"}</h2>
       <div>
-        <Button>
-          <i className="ri-notification-2-line"></i>
-        </Button>
-        <MaterialUISwitch sx={{ m: 1 }} />
-        <Button>
-          <i className="ri-settings-3-line"></i>
-        </Button>
-        <img
-          src={
-            user.picture ||
-            "https://www.dropbox.com/s/iv3vsr5k6ib2pqx/avatar_default.jpg?dl=1"
-          }
-          loading="lazy"
-          alt=""
+        <IconButton aria-label={notificationsLabel(100)}>
+          <Badge badgeContent={100} color="warning">
+            <div>
+              <i className="ri-notification-2-line"></i>
+            </div>
+          </Badge>
+        </IconButton>
+        <MaterialUISwitch
+          sx={{ m: 1 }}
+          onChange={() => dispatchUtilityData({ type: "theme" })}
+          checked={theme === "dark" ? true : false}
         />
+        <PopupState variant="popover" popupId={`${theme === "dark" ? "navbar-pop-over-dark" : "navbar-pop-over"}`}>
+          {(popupState) => (
+            <div>
+              <img
+                {...bindTrigger(popupState)}
+                src={
+                  user.picture ||
+                  "https://www.dropbox.com/s/iv3vsr5k6ib2pqx/avatar_default.jpg?dl=1"
+                }
+                loading="lazy"
+                alt=""
+              />
+              <Popover
+                {...bindPopover(popupState)}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "right",
+                }}
+                transformOrigin={{
+                  vertical: "top",
+                  horizontal: "right",
+                }}
+              >
+                <div className={`navbar__container__userActions ${theme} px-3.5 py-2 pt-4`}>
+                  <div className="userDetails mb-3">
+                    <p className="font-medium">Jessica Singh Shrestha</p>
+                    <span className="text-[#637381] text-sm">
+                      jckamaich@gmail.com
+                    </span>
+                  </div>
+
+                  <div className="divider"></div>
+
+                  <div className="actions flex flex-col">
+                    <Button onClick={() => setActiveTab("app")}><i className="ri-home-line"></i> Home</Button>
+                    <Button onClick={() => setActiveTab("profile")}><i className="ri-user-4-line"></i> Profile</Button>
+                    <Button><i className="ri-settings-5-line"></i> Settings</Button>
+                    <div className="divider"></div>
+                    <Button onClick={() => handleLogout()}><i className="ri-logout-box-line"></i> Logout</Button>
+                  </div>
+                </div>
+              </Popover>
+            </div>
+          )}
+        </PopupState>
       </div>
     </div>
   );
