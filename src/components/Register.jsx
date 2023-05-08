@@ -6,10 +6,12 @@ import { toast } from "react-toastify";
 import { Helmet } from "react-helmet";
 import Hello from "../configs/Hello";
 import { useAuthContext } from "../contexts/Auth";
+import Loader from "../components/Loader"
 
 export default function Register({ setFormStatus, setIsAuthenticated }) {
   const [, dispatch] = useAuthContext();
   const [email, setEmail] = React.useState("");
+  const [loading, setLoading] = React.useState(false);
   const [password, setPassword] = React.useState({
     password: "",
     confirmPassword: "",
@@ -89,7 +91,7 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
 
   const handleUserRegister = async (e) => {
     e.preventDefault();
-
+    setLoading(true);
     if (sanitizeRegisterData()) {
       try {
         const response = await axios.post(
@@ -105,10 +107,12 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
           }
         );
 
-        // console.log(response);
+   
         toast("User verification mail sent!");
+        setLoading(false);
         handleFormStatus("login");
       } catch (error) {
+        setLoading(false);
         toast("User with that email already exists!");
         console.log(error);
       }
@@ -126,6 +130,7 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
         path: "me",
         headers: headers,
       });
+      setLoading(true);
       // Check if user already exists
       await axios
         .post(
@@ -142,13 +147,16 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
           console.log(accessToken);
           dispatch({ type: "login", payload: { accessToken, refreshToken } });
           dispatch({ type: "set-user", payload: res.data.savedUser });
-          return setIsAuthenticated(true);
+          dispatch({ type: "set-accessToken", payload: accessToken });
+          setLoading(false);
+          setIsAuthenticated(true);
         })
-        .catch((err) => err && toast(err.response?.data?.message));
+        .catch((err) => err && toast(err.response?.data?.message),setIsAuthenticated(true));
 
       // setUser(data.user);
     } catch (error) {
       console.error(error);
+      setIsAuthenticated(true)
     }
   };
 
@@ -258,7 +266,9 @@ export default function Register({ setFormStatus, setIsAuthenticated }) {
         </span>
       </p>
 
-      <Button type="submit">Register</Button>
+      <Button type="submit" disabled={loading}>
+        {loading? <Loader /> : "Register"}
+      </Button>
 
       <div className="divider">
         <div></div>

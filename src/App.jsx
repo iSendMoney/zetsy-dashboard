@@ -10,16 +10,18 @@ import { toast } from "react-toastify";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [hasStore, setHasStore] = React.useState(true);
+  const [hasStore, setHasStore] = React.useState(false);
   const [,dispatch] = useShopContext();
   const [{accessToken},authDispatch] = useAuthContext();
 
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
     if(isAuthenticated && accessToken){
+      console.log(accessToken,isAuthenticated)
       // get shop if user is authenticated
      getStore(accessToken).then(res=>{
        // store shop details in context
+       
        if(res){
          dispatch({type:"shop", payload:res});
          setHasStore(true);
@@ -45,11 +47,9 @@ export default function App() {
       <Route
         path="/"
         element={
-          isAuthenticated ? (
-            <Navigate to="/dashboard" />
-          ) : (
+          !isAuthenticated ? (
             <Authentication setIsAuthenticated={setIsAuthenticated} />
-          )
+          ) : <Navigate to={"/dashboard"} />
         }
       />
       <Route
