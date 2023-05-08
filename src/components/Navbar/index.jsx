@@ -101,7 +101,7 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
                 {...bindTrigger(popupState)}
                 src={
                   user.picture ||
-                  "https://www.dropbox.com/s/iv3vsr5k6ib2pqx/avatar_default.jpg?dl=1"
+                  "https://ik.imagekit.io/jckalabs/Zetsy/avatar_default.jpg?updatedAt=1683283007793"
                 }
                 loading="lazy"
                 alt=""

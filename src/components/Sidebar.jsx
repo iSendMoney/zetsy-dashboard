@@ -12,7 +12,7 @@ export default function Sidebar({ handleTabChange, activeTab, theme, setActiveTa
         <img
           src={
             user.picture ||
-            "https://www.dropbox.com/s/iv3vsr5k6ib2pqx/avatar_default.jpg?dl=1"
+            "https://ik.imagekit.io/jckalabs/Zetsy/avatar_default.jpg?updatedAt=1683283007793"
           }
           loading="lazy"
           alt=""
