@@ -18,7 +18,7 @@ export default function Sidebar({ handleTabChange, activeTab, theme, setActiveTa
           alt=""
         />
         <div>
-          <p className="text-base">{user?.email.split("@")[0] || "John Doe"}</p>
+          <p className="text-base">{user?.email?.split("@")[0] || "John Doe"}</p>
           <p className="text-sm">{user.role}</p>
         </div>
       </div>

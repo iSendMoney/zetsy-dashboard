@@ -13,7 +13,8 @@ import Payments from "../DashboardContainer/Payments/Payments";
 import SidebarApp from "../DashboardContainer/SidebarApp";
 import Themes from "../DashboardContainer/Themes";
 import User from "../DashboardContainer/User/User";
-import NewProduct from "../DashboardContainer/NewProduct";
+import NewProduct from "../DashboardContainer/NewProduct"
+import KanbanBoard from "../../components/KanbanBoard";
 
 import "./styles/style.css";
 // import { useShopContext } from "../../contexts/Shop";
@@ -61,7 +62,7 @@ export default function Dashboard() {
         {activeTab === "mail" && <Mail />}
         {activeTab === "chat" && <Chat />}
         {activeTab === "calendar" && <Calendar />}
-        {activeTab === "todo" && <Board />}
+        {activeTab === "todo" && <KanbanBoard theme= {theme} />}
         {activeTab === "new-product" && (
           <NewProduct theme={theme} handleTabChange={handleTabChange} />
         )}
