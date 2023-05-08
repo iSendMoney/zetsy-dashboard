@@ -86,6 +86,10 @@
     font-weight: 700;
     color: #22253c;
     font-family: "Oswald", serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
   }
 
   div {
@@ -115,7 +119,7 @@
   }
 
   &.dark {
-    background-color: rgba(22, 28, 36, 0.8);
+    background-color: rgba(22, 28, 36, 1);
     backdrop-filter: blur(6px);
 
     h2 {
