@@ -104,18 +104,18 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
                 className={`navbar__container__userActions ${theme} px-3.5 py-2 pt-4`}
               >
                 <div className="">
-                  <p className="font-medium mb-3">SS Brothers</p>
+                  <Button className="font-medium mb-3">SS Brothers</Button>
                 </div>
 
                 <div className="divider my-3"></div>
 
                 <div className="">
-                  <p className="font-medium my-3">Jcka Labs</p>
+                  <Button className="font-medium my-3">Jcka Labs</Button>
                 </div>
 
                 <div className="divider my-3"></div>
 
-                <Button><i className="ri-add-line"></i> Add Store</Button>
+                <Button className="newStore"><i className="ri-add-line"></i> Add Store</Button>
               </div>
             </Popover>
           </div>

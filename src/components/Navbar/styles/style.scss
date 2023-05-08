@@ -41,6 +41,9 @@
     width: 200px;
     overflow: inherit;
     margin-left: 6px;
+    .newStore, .MuiButton-root {
+      width: 100%;
+    }
   }
 }
 
@@ -63,6 +66,9 @@
     width: 200px;
     overflow: inherit;
     margin-left: 6px;
+    .newStore, .MuiButton-root {
+      width: 100%;
+    }
   }
 }
 

@@ -34,6 +34,9 @@
   overflow: inherit;
   margin-left: 6px;
 }
+#navbar-pop-over .MuiPaper-root .newStore, #navbar-pop-over .MuiPaper-root .MuiButton-root {
+  width: 100%;
+}
 
 #navbar-pop-over-dark .MuiPaper-root {
   background-color: rgb(33, 43, 54);
@@ -52,6 +55,9 @@
   width: 200px;
   overflow: inherit;
   margin-left: 6px;
+}
+#navbar-pop-over-dark .MuiPaper-root .newStore, #navbar-pop-over-dark .MuiPaper-root .MuiButton-root {
+  width: 100%;
 }
 
 .navbar__container {
