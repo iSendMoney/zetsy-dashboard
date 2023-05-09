@@ -127,9 +127,6 @@ export default function NewProduct({handleTabChange, theme}) {
     setFiles(arrayImages);
   };
 
-  // react tag autocomplete
-  const [tags, setTags] = React.useState([]);
-
   const onEditorChange = (event) => {
     const rteContent = stateToHTML(event.getCurrentContent()); // for rte content with text formating
     rteContent && setProduct({ ..._product, description: rteContent }); // store your rteContent to state
@@ -144,7 +141,7 @@ export default function NewProduct({handleTabChange, theme}) {
     product_code: "",
     sku: "",
     category: "",
-    tags: "",
+    tags: [],
     regular_price: "",
     sale_price: "",
     includes_tax: true,

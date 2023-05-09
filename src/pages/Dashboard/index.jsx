@@ -67,7 +67,7 @@ export default function Dashboard() {
           <NewProduct theme={theme} handleTabChange={handleTabChange} />
         )}
         {activeTab === "bulk-upload" && <BulkUpload />}
-        {activeTab === "profile" && <Profile />}
+        {activeTab === "profile" && <Profile theme={theme}/>}
       </div>
     </div>
   );

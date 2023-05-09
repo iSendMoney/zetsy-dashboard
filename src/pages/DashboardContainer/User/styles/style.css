@@ -1,6 +1,5 @@
 .user__container {
-  margin-top: 120px;
-  padding: 0 5vw;
+  padding: 50px 8vw;
   height: 90vh;
   overflow-y: scroll;
 }
