@@ -63,10 +63,11 @@ export default function Profile({ theme }) {
             aria-label="basic tabs example"
           >
             <Tab label="General" {...a11yProps(0)} />
-            <Tab label="Billing" {...a11yProps(1)} />
-            <Tab label="Notifications" {...a11yProps(2)} />
-            <Tab label="Social Links" {...a11yProps(3)} />
-            <Tab label="Change Password" {...a11yProps(4)} />
+            <Tab label="Store" {...a11yProps(1)} />
+            <Tab label="Billing" {...a11yProps(2)} />
+            <Tab label="Notifications" {...a11yProps(3)} />
+            <Tab label="Social Links" {...a11yProps(4)} />
+            <Tab label="Change Password" {...a11yProps(5)} />
           </Tabs>
         </Box>
 
@@ -142,15 +143,18 @@ export default function Profile({ theme }) {
           </div>
         </TabPanel>
         <TabPanel value={value} index={1}>
-          Item Two
+          Store
         </TabPanel>
         <TabPanel value={value} index={2}>
-          Item Three
-        </TabPanel>
-        <TabPanel value={value} index={3}>
           Item Two
         </TabPanel>
+        <TabPanel value={value} index={3}>
+          Item Three
+        </TabPanel>
         <TabPanel value={value} index={4}>
+          Item Two
+        </TabPanel>
+        <TabPanel value={value} index={5}>
           Item Three
         </TabPanel>
       </Box>

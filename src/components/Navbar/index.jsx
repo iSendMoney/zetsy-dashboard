@@ -70,7 +70,12 @@ function notificationsLabel(count) {
 
 export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
   const [{ user }] = useAuthContext();
-  const [{ shop }] = useShopContext();
+  const [{ shop, shopData }, dispatchShopData] = useShopContext();
+
+  const [activeShop, setActiveShop] = React.useState({});
+  const handleActiveShop = (shop) => {
+    setActiveShop(shop);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem("authentication-token");
@@ -88,7 +93,10 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
       >
         {(storePopupState) => (
           <div className="storeDropdown">
-            <h2 {...bindTrigger(storePopupState)}>{shop.name || "SS Brothers"} <i className="ri-arrow-down-s-line"></i></h2>
+            <h2 {...bindTrigger(storePopupState)}>
+              {activeShop.name || shop[0].name || "SS Brothers"}{" "}
+              <i className="ri-arrow-down-s-line"></i>
+            </h2>
             <Popover
               {...bindPopover(storePopupState)}
               anchorOrigin={{
@@ -103,19 +111,23 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
               <div
                 className={`navbar__container__userActions ${theme} px-3.5 py-2 pt-4`}
               >
-                <div className="">
-                  <Button className="font-medium mb-3">SS Brothers</Button>
-                </div>
+                {shop.map((data, index) => (
+                  <React.Fragment key={index}>
+                    <div className="">
+                      <Button
+                        onClick={() => handleActiveShop(data)}
+                        className="font-medium mb-3"
+                      >
+                        {data.name}
+                      </Button>
+                    </div>
+                    <div className="divider my-3"></div>
+                  </React.Fragment>
+                ))}
 
-                <div className="divider my-3"></div>
-
-                <div className="">
-                  <Button className="font-medium my-3">Jcka Labs</Button>
-                </div>
-
-                <div className="divider my-3"></div>
-
-                <Button className="newStore"><i className="ri-add-line"></i> Add Store</Button>
+                <Button className="newStore">
+                  <i className="ri-add-line"></i> Add Store
+                </Button>
               </div>
             </Popover>
           </div>

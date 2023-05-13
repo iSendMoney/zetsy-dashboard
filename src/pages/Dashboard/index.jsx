@@ -2,7 +2,7 @@ import React from "react";
 import Navbar from "../../components/Navbar";
 
 import Sidebar from "../../components/Sidebar";
-import Analytics from "../DashboardContainer/Analytics";
+// import Analytics from "../DashboardContainer/Analytics";
 import Calendar from "../DashboardContainer/Calendar";
 import Chat from "../DashboardContainer/Chat";
 import Ecommerce from "../DashboardContainer/Ecommerce";
@@ -21,7 +21,7 @@ import "./styles/style.css";
 import BulkUpload from "../DashboardContainer/BulkUpload";
 import { useUtilityContext } from "../../contexts/Utilities";
 import AnalyticsNew from "../DashboardContainer/AnalyticsNew";
-import Board from "../DashboardContainer/Todo";
+// import Board from "../DashboardContainer/Todo";
 import Profile from "../DashboardContainer/Profile";
 
 export default function Dashboard() {
