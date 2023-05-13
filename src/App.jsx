@@ -21,10 +21,9 @@ export default function App() {
       // get shop if user is authenticated
       getStore(accessToken)
         .then((res) => {
-          // store shop details in context
-
           if (res) {
             dispatch({ type: "shop", payload: res });
+            dispatch({type: "active-shop", payload: res[0]})
             setHasStore(true);
           } else {
             setHasStore(false);

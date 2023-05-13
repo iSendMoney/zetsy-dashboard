@@ -21,6 +21,8 @@ import Switch from "@mui/material/Switch";
 import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
 import moment from "moment";
+import { getProductsByStoreId } from "../../api/store";
+import { useShopContext } from "../../contexts/Shop";
 
 function createData(name, calories, fat, carbs, protein, actions) {
   return {
@@ -293,6 +295,17 @@ export default function ProductTable() {
   // Avoid a layout jump when reaching the last page with empty rows.
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
+
+  // @section => store products
+  const [{ activeShop }] = useShopContext();
+  const [storeProducts, setStoreProducts] = React.useState([]);
+
+  React.useEffect(() => {
+    (async () => {
+      const storeProducts = await getProductsByStoreId(activeShop?._id);
+      console.log(storeProducts);
+    })();
+  }, []);
 
   return (
     <Box sx={{ width: "100%" }} className="ecommerceContainer__productTable">
