@@ -70,11 +70,12 @@ function notificationsLabel(count) {
 
 export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
   const [{ user }] = useAuthContext();
-  const [{ shop, shopData }, dispatchShopData] = useShopContext();
-
+  const [{ shop }, dispatchShopData] = useShopContext();
   const [activeShop, setActiveShop] = React.useState({});
+
   const handleActiveShop = (shop) => {
     setActiveShop(shop);
+    dispatchShopData({ type: "active-shop", payload: shop });
   };
 
   const handleLogout = () => {
