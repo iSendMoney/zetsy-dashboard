@@ -32,6 +32,10 @@
     width: 40vw;
     flex-direction: column;
 
+    @media screen and (max-width:426px) {
+      width: 100vw;
+    }
+
     .MuiStepper-root {
       width: 100%;
       padding: 0;
@@ -92,6 +96,13 @@
 
       input {
         width: 25vw;
+      }
+
+    }
+
+    @media screen and (max-width:426px) {
+      .MuiFormControl-root {
+        width: 100%;
       }
     }
 

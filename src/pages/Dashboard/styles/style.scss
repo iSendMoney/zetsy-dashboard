@@ -91,6 +91,12 @@
         border-radius: 8px;
         height: 48px;
 
+        p {
+          @media screen and (max-width:426px) {
+            display: none;
+          }
+        }
+
         &:hover {
           text-decoration: none;
           background-color: rgba(145, 158, 171, 0.08);

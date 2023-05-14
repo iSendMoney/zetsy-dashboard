@@ -44,7 +44,7 @@ export default function BusinessInfo({
       <h1>
         <i className="ri-briefcase-line"></i> Business Information
       </h1>
-      <form style={{ width: "auto" }}>
+      <form >
         <TextField
           id="outlined-basic"
           label="Business Name"
