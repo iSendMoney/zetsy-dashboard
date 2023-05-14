@@ -13,7 +13,7 @@ export default function App() {
   const [hasStore, setHasStore] = React.useState(false);
   const [,dispatch] = useShopContext();
   const [{accessToken},authDispatch] = useAuthContext();
-
+  const [loading, setLoading] = React.useState(true);
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
     if(isAuthenticated && accessToken){
@@ -26,10 +26,12 @@ export default function App() {
          dispatch({type:"shop", payload:res});
          setHasStore(true);
        }
+       setLoading(false)
      }).catch(err=>{
       if(err==="Forbidden"){
         toast("Session Expired",{type:'error'})
         setIsAuthenticated(false);
+        setLoading(false)
         authDispatch({type:"logout"})
       }
      })
@@ -56,7 +58,7 @@ export default function App() {
         path="/dashboard"
         element={
           <ProtectedRoute>
-            {hasStore ? <Dashboard /> : <UserOnboarding setHasStore={setHasStore}/>}
+            {loading ? "Loading" : hasStore ? <Dashboard /> : <UserOnboarding setHasStore={setHasStore}/>}
           </ProtectedRoute>
         }
       />

@@ -130,6 +130,10 @@ export default function NewProduct({handleTabChange, theme}) {
   // react tag autocomplete
   const [tags, setTags] = React.useState([]);
 
+  const handleTags = ({tags})=>{
+    setTags(tags)
+    console.log(tags)
+  }
   const onEditorChange = (event) => {
     const rteContent = stateToHTML(event.getCurrentContent()); // for rte content with text formating
     rteContent && setProduct({ ..._product, description: rteContent }); // store your rteContent to state
@@ -144,7 +148,7 @@ export default function NewProduct({handleTabChange, theme}) {
     product_code: "",
     sku: "",
     category: "",
-    tags: "",
+    tags: [],
     regular_price: "",
     sale_price: "",
     includes_tax: true,
@@ -153,9 +157,22 @@ export default function NewProduct({handleTabChange, theme}) {
   // Add Product Handler
 
   const addProduct = () => {
-    console.log(_product);
-    console.log(files);
-    console.log("add product");
+
+    const formData = new FormData();
+    formData.append('name', _product.name);
+    formData.append('description', _product.description);
+    // files?.map((file) => formData.append('photos', file));
+    formData.append('quantity', _product.quantity);
+    formData.append('quantity', _product.quantity);
+    formData.append('product_code', _product.product_code);
+    formData.append('sku', _product.sku);
+    formData.append('category', _product.category);
+    formData.append('tags', _product.tags.join(","));
+    formData.append('regular_price', _product.regular_price);
+    formData.append('sale_price', _product.sale_price);
+    formData.append('includes_tax', _product.includes_tax);
+    
+    
   };
 
   return (
@@ -296,9 +313,7 @@ export default function NewProduct({handleTabChange, theme}) {
               </label>
               <TagsInput
                 value={_product.tags}
-                onChange={(e) =>
-                  setProduct({ ..._product, tags: e.target.value })
-                }
+                onChange={(_tags,a,b)=>setProduct({..._product,tags: _tags})}
               />
             </div>
 
