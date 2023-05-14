@@ -34,6 +34,9 @@
   overflow: inherit;
   margin-left: 6px;
 }
+#navbar-pop-over .MuiPaper-root .newStore, #navbar-pop-over .MuiPaper-root .MuiButton-root {
+  width: 100%;
+}
 
 #navbar-pop-over-dark .MuiPaper-root {
   background-color: rgb(33, 43, 54);
@@ -52,6 +55,9 @@
   width: 200px;
   overflow: inherit;
   margin-left: 6px;
+}
+#navbar-pop-over-dark .MuiPaper-root .newStore, #navbar-pop-over-dark .MuiPaper-root .MuiButton-root {
+  width: 100%;
 }
 
 .navbar__container {
@@ -75,6 +81,10 @@
   font-weight: 700;
   color: #22253c;
   font-family: "Oswald", serif;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 7px;
 }
 .navbar__container div {
   display: flex;
@@ -100,7 +110,7 @@
   cursor: pointer;
 }
 .navbar__container.dark {
-  background-color: rgba(22, 28, 36, 0.8);
+  background-color: rgb(22, 28, 36);
   -webkit-backdrop-filter: blur(6px);
           backdrop-filter: blur(6px);
 }

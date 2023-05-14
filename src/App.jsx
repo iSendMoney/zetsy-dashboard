@@ -10,29 +10,33 @@ import { toast } from "react-toastify";
 
 export default function App() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
-  const [hasStore, setHasStore] = React.useState(false);
-  const [,dispatch] = useShopContext();
-  const [{accessToken},authDispatch] = useAuthContext();
+  // @note by default the hasStore is false
+  const [hasStore, setHasStore] = React.useState(true);
+  const [, dispatch] = useShopContext();
+  const [{ accessToken }, authDispatch] = useAuthContext();
 
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
-    if(isAuthenticated && accessToken){
-      console.log(accessToken,isAuthenticated)
+    if (isAuthenticated && accessToken) {
       // get shop if user is authenticated
-     getStore(accessToken).then(res=>{
-       // store shop details in context
-       
-       if(res){
-         dispatch({type:"shop", payload:res});
-         setHasStore(true);
-       }
-     }).catch(err=>{
-      if(err==="Forbidden"){
-        toast("Session Expired",{type:'error'})
-        setIsAuthenticated(false);
-        authDispatch({type:"logout"})
-      }
-     })
+      getStore(accessToken)
+        .then((res) => {
+          // store shop details in context
+
+          if (res) {
+            dispatch({ type: "shop", payload: res });
+            setHasStore(true);
+          } else {
+            setHasStore(false);
+          }
+        })
+        .catch((err) => {
+          if (err === "Forbidden") {
+            toast("Session Expired", { type: "error" });
+            setIsAuthenticated(false);
+            authDispatch({ type: "logout" });
+          }
+        });
     }
   }, [isAuthenticated]);
 
@@ -41,7 +45,6 @@ export default function App() {
     else return <>{children}</>;
   };
 
-
   return (
     <Routes>
       <Route
@@ -49,14 +52,20 @@ export default function App() {
         element={
           !isAuthenticated ? (
             <Authentication setIsAuthenticated={setIsAuthenticated} />
-          ) : <Navigate to={"/dashboard"} />
+          ) : (
+            <Navigate to={"/dashboard"} />
+          )
         }
       />
       <Route
         path="/dashboard"
         element={
           <ProtectedRoute>
-            {hasStore ? <Dashboard /> : <UserOnboarding setHasStore={setHasStore}/>}
+            {hasStore ? (
+              <Dashboard />
+            ) : (
+              <UserOnboarding setHasStore={setHasStore} />
+            )}
           </ProtectedRoute>
         }
       />

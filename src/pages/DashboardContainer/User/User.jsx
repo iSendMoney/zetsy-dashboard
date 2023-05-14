@@ -61,7 +61,7 @@ export default function User() {
       </div>
 
       <Box className="user__container__userTable" sx={{ width: "100%" }}>
-        <Box className="boxHeader" sx={{ borderBottom: 1, borderColor: "divider" }}>
+        <Box className="boxHeader">
           <Tabs
             value={value}
             onChange={handleChange}
