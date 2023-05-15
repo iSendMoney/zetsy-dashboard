@@ -15,6 +15,16 @@ import { useShopContext } from "../../contexts/Shop";
 export default function SidebarApp({ theme }) {
   const [{ user }] = useAuthContext();
   const [{ shop }] = useShopContext();
+  const hour = new Date().getHours();
+  const welcomeTypes = ["Good Morning", "Good Afternoon", "Good Evening"];
+  const [welcomeText, setWelcomeText] = React.useState("");
+
+  React.useEffect(() => {
+    if (hour < 12) setWelcomeText(welcomeTypes[0]);
+    else if (hour < 18) setWelcomeText(welcomeTypes[1]);
+    else setWelcomeText(welcomeTypes[2]);
+  }, []);
+
   return (
     <div className={`sidebarApp__container ${theme}`}>
       <Helmet>
@@ -24,7 +34,7 @@ export default function SidebarApp({ theme }) {
       </Helmet>
       <div className="header">
         <div className="greetings text-base">
-          <h2>Good Evening, {user.email}</h2>
+          <h2>{welcomeText}, {user.email}</h2>
           <p>Here's your stat's for {moment().format("LL")}</p>
         </div>
         <div className="redirectToSite">

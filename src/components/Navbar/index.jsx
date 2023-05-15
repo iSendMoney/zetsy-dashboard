@@ -70,17 +70,70 @@ function notificationsLabel(count) {
 
 export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
   const [{ user }] = useAuthContext();
-  const [{ shop }] = useShopContext();
+  const [{ shop }, dispatchShopData] = useShopContext();
+  const [activeShop, setActiveShop] = React.useState({});
+
+  const handleActiveShop = (shop) => {
+    setActiveShop(shop);
+    dispatchShopData({ type: "active-shop", payload: shop });
+  };
 
   const handleLogout = () => {
-    localStorage.removeItem("authentication-token")
-    localStorage.removeItem("user")
-    window.location.reload()
-  }
+    localStorage.removeItem("authentication-token");
+    localStorage.removeItem("user");
+    window.location.reload();
+  };
 
   return (
     <div className={`navbar__container ${theme}`}>
-      <h2>{shop.name || "SS Brothers"}</h2>
+      <PopupState
+        variant="popover"
+        popupId={`${
+          theme === "dark" ? "navbar-pop-over-dark" : "navbar-pop-over"
+        }`}
+      >
+        {(storePopupState) => (
+          <div className="storeDropdown">
+            <h2 {...bindTrigger(storePopupState)}>
+              {activeShop.name || shop[0].name || "SS Brothers"}{" "}
+              <i className="ri-arrow-down-s-line"></i>
+            </h2>
+            <Popover
+              {...bindPopover(storePopupState)}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "center",
+              }}
+              transformOrigin={{
+                vertical: "top",
+                horizontal: "center",
+              }}
+            >
+              <div
+                className={`navbar__container__userActions ${theme} px-3.5 py-2 pt-4`}
+              >
+                {shop.map((data, index) => (
+                  <React.Fragment key={index}>
+                    <div className="">
+                      <Button
+                        onClick={() => handleActiveShop(data)}
+                        className="font-medium mb-3"
+                      >
+                        {data.name}
+                      </Button>
+                    </div>
+                    <div className="divider my-3"></div>
+                  </React.Fragment>
+                ))}
+
+                <Button className="newStore">
+                  <i className="ri-add-line"></i> Add Store
+                </Button>
+              </div>
+            </Popover>
+          </div>
+        )}
+      </PopupState>
       <div>
         <IconButton aria-label={notificationsLabel(100)}>
           <Badge badgeContent={100} color="warning">
@@ -94,14 +147,19 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
           onChange={() => dispatchUtilityData({ type: "theme" })}
           checked={theme === "dark" ? true : false}
         />
-        <PopupState variant="popover" popupId={`${theme === "dark" ? "navbar-pop-over-dark" : "navbar-pop-over"}`}>
+        <PopupState
+          variant="popover"
+          popupId={`${
+            theme === "dark" ? "navbar-pop-over-dark" : "navbar-pop-over"
+          }`}
+        >
           {(popupState) => (
             <div>
               <img
                 {...bindTrigger(popupState)}
                 src={
                   user.picture ||
-                  "https://www.dropbox.com/s/iv3vsr5k6ib2pqx/avatar_default.jpg?dl=1"
+                  "https://ik.imagekit.io/jckalabs/Zetsy/avatar_default.jpg?updatedAt=1683283007793"
                 }
                 loading="lazy"
                 alt=""
@@ -117,7 +175,9 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
                   horizontal: "right",
                 }}
               >
-                <div className={`navbar__container__userActions ${theme} px-3.5 py-2 pt-4`}>
+                <div
+                  className={`navbar__container__userActions ${theme} px-3.5 py-2 pt-4`}
+                >
                   <div className="userDetails mb-3">
                     <p className="font-medium">Jessica Singh Shrestha</p>
                     <span className="text-[#637381] text-sm">
@@ -128,11 +188,19 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
                   <div className="divider"></div>
 
                   <div className="actions flex flex-col">
-                    <Button onClick={() => setActiveTab("app")}><i className="ri-home-line"></i> Home</Button>
-                    <Button onClick={() => setActiveTab("profile")}><i className="ri-user-4-line"></i> Profile</Button>
-                    <Button><i className="ri-settings-5-line"></i> Settings</Button>
+                    <Button onClick={() => setActiveTab("app")}>
+                      <i className="ri-home-line"></i> Home
+                    </Button>
+                    <Button onClick={() => setActiveTab("profile")}>
+                      <i className="ri-user-4-line"></i> Profile
+                    </Button>
+                    <Button>
+                      <i className="ri-settings-5-line"></i> Settings
+                    </Button>
                     <div className="divider"></div>
-                    <Button onClick={() => handleLogout()}><i className="ri-logout-box-line"></i> Logout</Button>
+                    <Button onClick={() => handleLogout()}>
+                      <i className="ri-logout-box-line"></i> Logout
+                    </Button>
                   </div>
                 </div>
               </Popover>

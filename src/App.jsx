@@ -16,13 +16,12 @@ export default function App() {
   const [loading, setLoading] = React.useState(true);
   useEffect(() => {
     setIsAuthenticated(!!accessToken);
-    if(isAuthenticated && accessToken){
-      console.log(accessToken,isAuthenticated)
+    if (isAuthenticated && accessToken) {
       // get shop if user is authenticated
      getStore(accessToken).then(res=>{
        // store shop details in context
-       
-       if(res){
+      
+       if(res.length>0){
          dispatch({type:"shop", payload:res});
          setHasStore(true);
        }
@@ -43,7 +42,6 @@ export default function App() {
     else return <>{children}</>;
   };
 
-
   return (
     <Routes>
       <Route
@@ -51,7 +49,9 @@ export default function App() {
         element={
           !isAuthenticated ? (
             <Authentication setIsAuthenticated={setIsAuthenticated} />
-          ) : <Navigate to={"/dashboard"} />
+          ) : (
+            <Navigate to={"/dashboard"} />
+          )
         }
       />
       <Route

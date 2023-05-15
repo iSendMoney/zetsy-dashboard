@@ -5,15 +5,15 @@ import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import "./styles/style.css";
 import BusinessInfo from "../../components/UserOnboarding/BusinessInfo";
 import CustomerInfo from "../../components/UserOnboarding/CustomerInfo";
 import SocialInfo from "../../components/UserOnboarding/SocialInfo";
 import { useShopContext } from "../../contexts/Shop";
 import axios from "axios";
 import { useAuthContext } from "../../contexts/Auth";
-import LoadingBar from 'react-top-loading-bar'
+import LoadingBar from "react-top-loading-bar";
 import { toast } from "react-toastify";
+import "./styles/style.css";
 
 const steps = [
   "Business Information",
@@ -25,9 +25,8 @@ export default function UserOnboarding({ setHasStore }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const [shopData, dispatchShop] = useShopContext();
-  const [{accessToken},] = useAuthContext();
-  const [loading, setLoading] = React.useState(false);
-  const ref = React.useRef(null)
+  const [{ accessToken }] = useAuthContext();
+  const ref = React.useRef(null);
 
   const isStepOptional = () => {
     return true;
@@ -38,7 +37,6 @@ export default function UserOnboarding({ setHasStore }) {
   };
 
   const handleNext = () => {
-   
     let newSkipped = skipped;
     if (isStepSkipped(activeStep)) {
       newSkipped = new Set(newSkipped.values());
@@ -67,37 +65,39 @@ export default function UserOnboarding({ setHasStore }) {
     });
   };
 
-  const handleReset = () => {
-    setActiveStep(0);
-  };
+  // const handleReset = () => {
+  //   setActiveStep(0);
+  // };
 
-
-  const saveStore = async ()=>{
+  const saveStore = async () => {
     try {
-    ref.current.continuousStart()
-    const response = await axios.post(`${import.meta.env.VITE_API_BASE_URI}/api/v1/store/save`,shopData,{
-      headers:{
-        Authorization: `${accessToken}`
-      }
-    });
-    const {store, message} = response.data;
-    dispatchShop({type:"shop", payload: store});
-    ref.current.complete()
-    toast(message,{
-      type:"success"
-    })
-    setHasStore(true);
+      ref.current.continuousStart();
+      const response = await axios.post(
+        `${import.meta.env.VITE_API_BASE_URI}/api/v1/store/save`,
+        shopData,
+        {
+          headers: {
+            Authorization: `${accessToken}`,
+          },
+        }
+      );
+      const { store, message } = response.data;
+      dispatchShop({ type: "shop", payload: store });
+      ref.current.complete();
+      toast(message, {
+        type: "success",
+      });
+      setHasStore(true);
     } catch (error) {
-      if(error){
-        console.log(error.response.data)
-        ref.current.complete()
-        toast(error.response?.data || "Failed to Create Shop",{
-          type:'error'
-        })
+      if (error) {
+        console.log(error.response.data);
+        ref.current.complete();
+        toast(error.response?.data || "Failed to Create Shop", {
+          type: "error",
+        });
       }
     }
-    
-  }
+  };
 
   return (
     <div className="onboardUser__container">

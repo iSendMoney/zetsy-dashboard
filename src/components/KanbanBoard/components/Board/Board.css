@@ -1,0 +1,74 @@
+.board {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  word-wrap: break-word;
+  background-color: #F2F2F3;
+  background-clip: border-box;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 0.25rem;
+  height: 100%;
+  padding: 5px;
+  /* width: 250px; */
+}
+.board__footer {
+  display: flex;
+  flex-direction: column;
+  margin-top: auto;
+}
+.board__cards {
+  padding: 0.5rem 0.5rem;
+  overflow-y: auto;
+  max-height: 500px;
+  overflow-y: auto;
+  max-height: 350px;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.board__top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 0.5rem;
+  margin-bottom: 0;
+}
+.board__dropdown {
+  box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.12);
+  cursor: default;
+}
+.board__dropdown > p {
+  border-bottom: 1px solid #fff;
+  cursor: pointer;
+}
+.board__top > div > p:hover {
+  cursor: pointer;
+}
+.emoji {
+  margin-inline-end: 0.5rem;
+}
+
+.board__top > div > p {
+  font-weight: bolder;
+}
+.total__cards {
+  font-size: 12px;
+  border-radius: 15px 15px 15px 15px;
+  padding-inline: 0.6rem;
+  /* border: 0.5px solid var(--card-box-shadow); */
+  background-color: #fff;
+  margin-inline: 10px;
+}
+.title__input {
+  font-weight: 400;
+  /* padding-inline: 0.5rem; */
+  height: 30px;
+  border-radius: 5px;
+}
+.board__top > div {
+  cursor: pointer;
+}
+
+/* .board__top > input {
+} */

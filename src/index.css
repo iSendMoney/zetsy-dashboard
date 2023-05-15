@@ -20,11 +20,11 @@
   display: none;
 }
 
-body {
+ body {
   overflow-x: hidden;
   overflow-y: hidden;
-  /* background-color: #161C24; */
-}
+   /* background-color: #161C24; */ 
+  } 
 .MuiAutocomplete-root {
   width: 100% !important;
   /* padding: 16.5px 14px !important; */

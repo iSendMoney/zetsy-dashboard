@@ -41,6 +41,9 @@
     width: 200px;
     overflow: inherit;
     margin-left: 6px;
+    .newStore, .MuiButton-root {
+      width: 100%;
+    }
   }
 }
 
@@ -63,6 +66,9 @@
     width: 200px;
     overflow: inherit;
     margin-left: 6px;
+    .newStore, .MuiButton-root {
+      width: 100%;
+    }
   }
 }
 
@@ -75,7 +81,7 @@
   backdrop-filter: blur(6px);
   background-color: rgba(255, 255, 255, 0.8);
   transition: height 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  position: absolute;
+  /* position: absolute; */
   z-index: 1;
   top: 0;
   left: 0;
@@ -86,6 +92,10 @@
     font-weight: 700;
     color: #22253c;
     font-family: "Oswald", serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 7px;
   }
 
   div {
@@ -115,7 +125,7 @@
   }
 
   &.dark {
-    background-color: rgba(22, 28, 36, 0.8);
+    background-color: rgba(22, 28, 36, 1);
     backdrop-filter: blur(6px);
 
     h2 {

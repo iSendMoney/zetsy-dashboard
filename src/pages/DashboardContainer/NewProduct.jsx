@@ -77,7 +77,7 @@ const IOSSwitch = styled((props) => (
   },
 }));
 
-export default function NewProduct({handleTabChange, theme}) {
+export default function NewProduct({ handleTabChange, theme }) {
   const defaultTheme = createTheme({
     components: {
       MUIRichTextEditor: {
@@ -217,6 +217,7 @@ export default function NewProduct({handleTabChange, theme}) {
                 <i className="ri-landscape-line"></i> Images
               </label>
               <FileUploader
+                className="w-full"
                 multiple={true}
                 handleChange={handleChange}
                 name="file"

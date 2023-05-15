@@ -10,7 +10,7 @@ export default function Authentication({setIsAuthenticated}) {
   const [{theme}] = useUtilityContext();
 
   return (
-    <div className={`authentication__container  ${theme}`}>
+    <div className={`authentication__container`}>
       <img
         src="https://ik.imagekit.io/jckalabs/Zetsy/Screenshot_from_2023-03-28_22-35-35.png?updatedAt=1680022247413"
         alt=""

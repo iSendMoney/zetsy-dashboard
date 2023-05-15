@@ -1,9 +1,6 @@
-import { useAuthContext } from "../contexts/Auth";
+// import { useAuthContext } from "../contexts/Auth";
 
-export async function loginUser(email, password) {
-
-  
-}
+// export async function loginUser(email, password) {}
 
 export async function registerUser(email, password) {
   const response = await fetch(
