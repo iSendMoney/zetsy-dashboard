@@ -375,7 +375,12 @@ export default function ProductTable({ storeProducts }) {
                         )}
                       </TableCell>
                       <TableCell align="center">
-                        <b>Rs. {product?.priceInformation?.salesPrice}</b>
+                        <b>
+                          Rs.{" "}
+                          {new Intl.NumberFormat().format(
+                            product?.priceInformation?.salesPrice
+                          )}
+                        </b>
                       </TableCell>
                       <TableCell align="center" className="productTableAction">
                         <Button>
