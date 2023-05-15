@@ -7,6 +7,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import ProductTable from "../../components/Ecommerce/ProductTable";
+import { getProductsByStoreId } from "../../api/store";
+import { useShopContext } from "../../contexts/Shop";
 
 export default function Ecommerce({ handleTabChange, theme }) {
   const [status, setStatus] = React.useState("");
@@ -14,6 +16,22 @@ export default function Ecommerce({ handleTabChange, theme }) {
   const handleChange = (event) => {
     setStatus(event.target.value);
   };
+
+  // @section => store products
+  const [{ activeShop }] = useShopContext();
+  const [storeProducts, setStoreProducts] = React.useState([]);
+  const [, dispatchShopData] = useShopContext();
+  const [shopLoader, setShopLoader] = React.useState(true);
+
+  React.useEffect(() => {
+    (async () => {
+      let _storeProducts = await getProductsByStoreId(activeShop?._id);
+      _storeProducts.reverse();
+      dispatchShopData({ type: "add-products", payload: _storeProducts });
+      setStoreProducts(_storeProducts);
+      setShopLoader(false);
+    })();
+  }, []);
 
   return (
     <div className={`ecommerce__container ${theme}`}>
@@ -57,7 +75,11 @@ export default function Ecommerce({ handleTabChange, theme }) {
             <input type="text" placeholder="Search Product..." />
           </div>
         </div>
-        <ProductTable />
+        {!shopLoader ? (
+          <ProductTable storeProducts={storeProducts} />
+        ) : (
+          <>Loading...</>
+        )}
       </div>
     </div>
   );
