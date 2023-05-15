@@ -25,7 +25,7 @@ export default function UserOnboarding({ setHasStore }) {
   const [activeStep, setActiveStep] = React.useState(0);
   const [skipped, setSkipped] = React.useState(new Set());
   const [shopData, dispatchShop] = useShopContext();
-  const [{ accessToken }] = useAuthContext();
+  const [{ accessToken,user }] = useAuthContext();
   const ref = React.useRef(null);
 
   const isStepOptional = () => {
@@ -72,8 +72,15 @@ export default function UserOnboarding({ setHasStore }) {
   const saveStore = async () => {
     try {
       ref.current.continuousStart();
+      const shopData_ = {
+        name: shopData.businessInfo?.name,
+        description:shopData.businessInfo,
+        social:shopData.SocialInfo,
+        owner: user._id
+      }
+      console.log(shopData);
       const response = await axios.post(
-        `${import.meta.env.VITE_API_BASE_URI}/api/v1/store/save`,
+        `${import.meta.env.VITE_PRODUCT_MANAGEMENT_URI}/api/v1/store/`,
         shopData,
         {
           headers: {

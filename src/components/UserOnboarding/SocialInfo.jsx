@@ -31,12 +31,14 @@ export default function SocialInfo({
         <TextField
           id="outlined-basic"
           label="Facebook"
+          type="url"
           variant="outlined"
           onChange={e => setSocialInfo({...socialInfo, facebook: e.target.value})}
         />
         <TextField
           id="outlined-basic"
           label="Instagram"
+          type="url"
           variant="outlined"
           onChange={e => setSocialInfo({...socialInfo, instagram: e.target.value})}
 
@@ -44,6 +46,7 @@ export default function SocialInfo({
         <TextField
           id="outlined-basic"
           label="Twitter"
+          type="url"
           variant="outlined"
           onChange={e => setSocialInfo({...socialInfo, twitter: e.target.value})}
 
@@ -51,6 +54,7 @@ export default function SocialInfo({
         <TextField
           id="outlined-basic"
           label="Linkedin"
+          type="url"
           variant="outlined"
           onChange={e => setSocialInfo({...socialInfo, linkedin: e.target.value})}
 

@@ -5,9 +5,10 @@ import { useShopContext } from "../../contexts/Shop";
 
 const options = [
   { label: "Restaurant", value:"Restaurant" },
-  { label: "Foods and Average", value: "Foods and Average" },
-  { label: "clothing", value: "clothing" },
-  { label: "shoes", value: "shoes"  },
+  { label: "Medical", value: "Medical"  },
+  { label: "Foods and Beverage", value: "Foods and Average" },
+  { label: "Shoes", value: "Shoes" },
+  { label: "Shoes", value: "Shoes"  },
 ];
 
 const noOfEmployees = ["0 - 5", "5 - 10", "10 - 15","15 - 50+"];
