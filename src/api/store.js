@@ -22,3 +22,17 @@ export async function getStore(token) {
     throw error.response.data || "Failed to fetch";
   }
 }
+
+export async function getProductsByStoreId(storeId) {
+  try {
+    const response = await axios.get(
+      `${
+        import.meta.env.VITE_PRODUCT_MANAGEMENT_URI
+      }/api/v1/product/store-product/${storeId}`
+    );
+    const { products } = response.data;
+    return products;
+  } catch (error) {
+    console.log(error);
+  }
+}
