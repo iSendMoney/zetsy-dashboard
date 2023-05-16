@@ -4,6 +4,7 @@ export const ACTIONS = {
   SOCINFO: "social-info",
   SHOP: "shop",
   ACTIVESHOP: "active-shop",
+  ADD_PRODUCTS: "add-products",
 };
 
 export const initialShopState = {
@@ -14,6 +15,7 @@ export const initialShopState = {
     ? JSON.parse(localStorage.getItem("shop"))
     : {},
   activeShop: {},
+  products: [],
 };
 
 export const ShopReducer = (state, action) => {
@@ -37,6 +39,10 @@ export const ShopReducer = (state, action) => {
     case ACTIONS.SHOP:
       localStorage.setItem("shop", JSON.stringify(action.payload));
       state.shop = action.payload;
+      return state;
+
+    case ACTIONS.ADD_PRODUCTS:
+      state.products = action.payload;
       return state;
   }
 };

@@ -21,8 +21,6 @@ import Switch from "@mui/material/Switch";
 import { visuallyHidden } from "@mui/utils";
 import { Button } from "@mui/material";
 import moment from "moment";
-import { getProductsByStoreId } from "../../api/store";
-import { useShopContext } from "../../contexts/Shop";
 
 function createData(name, calories, fat, carbs, protein, actions) {
   return {
@@ -89,26 +87,26 @@ const headCells = [
     label: "Product",
   },
   {
-    id: "calories",
-    numeric: true,
+    id: "created_at",
+    numeric: false,
     disablePadding: false,
     label: "Created At",
   },
   {
-    id: "fat",
-    numeric: true,
+    id: "status",
+    numeric: false,
     disablePadding: false,
     label: "Status",
   },
   {
-    id: "carbs",
-    numeric: true,
+    id: "price",
+    numeric: false,
     disablePadding: false,
     label: "Price",
   },
   {
-    id: "action",
-    numeric: true,
+    id: "actions",
+    numeric: false,
     disablePadding: false,
     label: "Actions",
   },
@@ -234,7 +232,7 @@ EnhancedTableToolbar.propTypes = {
   numSelected: PropTypes.number.isRequired,
 };
 
-export default function ProductTable() {
+export default function ProductTable({ storeProducts, filteredProducts }) {
   const [order, setOrder] = React.useState("asc");
   const [orderBy, setOrderBy] = React.useState("calories");
   const [selected, setSelected] = React.useState([]);
@@ -250,7 +248,7 @@ export default function ProductTable() {
 
   const handleSelectAllClick = (event) => {
     if (event.target.checked) {
-      const newSelected = rows.map((n) => n.name);
+      const newSelected = storeProducts.map((n) => n.name);
       setSelected(newSelected);
       return;
     }
@@ -296,17 +294,6 @@ export default function ProductTable() {
   const emptyRows =
     page > 0 ? Math.max(0, (1 + page) * rowsPerPage - rows.length) : 0;
 
-  // @section => store products
-  const [{ activeShop }] = useShopContext();
-  const [storeProducts, setStoreProducts] = React.useState([]);
-
-  React.useEffect(() => {
-    (async () => {
-      const storeProducts = await getProductsByStoreId(activeShop?._id);
-      console.log(storeProducts);
-    })();
-  }, []);
-
   return (
     <Box sx={{ width: "100%" }} className="ecommerceContainer__productTable">
       <Paper sx={{ width: "100%", mb: 2 }}>
@@ -323,15 +310,15 @@ export default function ProductTable() {
               orderBy={orderBy}
               onSelectAllClick={handleSelectAllClick}
               onRequestSort={handleRequestSort}
-              rowCount={rows.length}
+              rowCount={storeProducts.length}
             />
             <TableBody>
               {/* if you don't need to support IE11, you can replace the `stableSort` call with:
                  rows.sort(getComparator(order, orderBy)).slice() */}
-              {stableSort(rows, getComparator(order, orderBy))
+              {stableSort(storeProducts, getComparator(order, orderBy))
                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map((row, index) => {
-                  const isItemSelected = isSelected(row.name);
+                .map((product, index) => {
+                  const isItemSelected = isSelected(product.name);
                   const labelId = `enhanced-table-checkbox-${index}`;
 
                   return (
@@ -340,12 +327,12 @@ export default function ProductTable() {
                       role="checkbox"
                       aria-checked={isItemSelected}
                       tabIndex={-1}
-                      key={row.name}
+                      key={product.name}
                       selected={isItemSelected}
                     >
                       <TableCell
                         padding="checkbox"
-                        onClick={(event) => handleClick(event, row.name)}
+                        onClick={(event) => handleClick(event, product.name)}
                       >
                         <Checkbox
                           color="primary"
@@ -363,26 +350,37 @@ export default function ProductTable() {
                       >
                         <div className="productImage">
                           <img
-                            src="https://api-prod-minimal-v4.vercel.app/assets/images/products/product_3.jpg"
+                            src={product?.images?.bannerImage}
                             loading="lazy"
                             alt=""
                           />
                           <div>
-                            <p>{row.name}</p>
-                            <h4>64 Items</h4>
+                            <p>{product.name}</p>
+                            <h4>{product?.description?.quantity} Items</h4>
                           </div>
                         </div>
                       </TableCell>
                       <TableCell align="center">
-                        <b>{moment().format("lll")}</b>
+                        <b>{moment(product.created_at).format("lll")}</b>
                       </TableCell>
                       <TableCell className="productStatus" align="center">
-                        <div className="outOfStock">Out of Stock</div>
-                        <div className="onStock">In Stock</div>
-                        <div className="lowStock">Low Stock</div>
+                        {product?.description?.quantity > 15 ? (
+                          <div className="onStock">In Stock</div>
+                        ) : product?.description?.quantity === 0 ? (
+                          <div className="outOfStock">Out of Stock</div>
+                        ) : product?.description?.quantity <= 15 ? (
+                          <div className="lowStock">Low Stock</div>
+                        ) : (
+                          <></>
+                        )}
                       </TableCell>
                       <TableCell align="center">
-                        <b>Rs. 10,000</b>
+                        <b>
+                          Rs.{" "}
+                          {new Intl.NumberFormat().format(
+                            product?.priceInformation?.salesPrice
+                          )}
+                        </b>
                       </TableCell>
                       <TableCell align="center" className="productTableAction">
                         <Button>
