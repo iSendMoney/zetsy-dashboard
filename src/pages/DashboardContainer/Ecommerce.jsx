@@ -9,6 +9,7 @@ import Select from "@mui/material/Select";
 import ProductTable from "../../components/Ecommerce/ProductTable";
 import { getProductsByStoreId } from "../../api/store";
 import { useShopContext } from "../../contexts/Shop";
+import Fuse from "fuse.js";
 
 export default function Ecommerce({ handleTabChange, theme }) {
   const [status, setStatus] = React.useState("");
@@ -20,6 +21,7 @@ export default function Ecommerce({ handleTabChange, theme }) {
   // @section => store products
   const [{ activeShop }] = useShopContext();
   const [storeProducts, setStoreProducts] = React.useState([]);
+  const [filteredProducts, setFilteredProducts] = React.useState([]);
   const [, dispatchShopData] = useShopContext();
   const [shopLoader, setShopLoader] = React.useState(true);
 
@@ -32,6 +34,32 @@ export default function Ecommerce({ handleTabChange, theme }) {
       setShopLoader(false);
     })();
   }, []);
+
+  const filterProductsUsingObject = (_keyword) => {
+    const options = {
+      includeScore: true,
+      // Search in `author` and in `tags` array
+      keys: [
+        "name",
+        "description.productInfo",
+        "description.productCode",
+        "description.productSku",
+        "description.category",
+        "priceInformation.salesPrice",
+      ],
+    };
+
+    const fuse = new Fuse(storeProducts, options);
+
+    const _filteredProducts = fuse.search(_keyword);
+    let _items = [];
+    if (_filteredProducts.length > 0)
+      _filteredProducts.forEach((_item) => {
+        _items.push(_item.item);
+      });
+
+    setFilteredProducts(_items);
+  };
 
   return (
     <div className={`ecommerce__container ${theme}`}>
@@ -72,11 +100,19 @@ export default function Ecommerce({ handleTabChange, theme }) {
           </Box>
           <div className="productSearchContainer">
             <i className="ri-search-line"></i>
-            <input type="text" placeholder="Search Product..." />
+            <input
+              type="text"
+              onChange={(e) => filterProductsUsingObject(e.target.value)}
+              placeholder="Search Product..."
+            />
           </div>
         </div>
         {!shopLoader ? (
-          <ProductTable storeProducts={storeProducts} />
+          <ProductTable
+            storeProducts={
+              filteredProducts.length > 0 ? filteredProducts : storeProducts
+            }
+          />
         ) : (
           <>Loading...</>
         )}
