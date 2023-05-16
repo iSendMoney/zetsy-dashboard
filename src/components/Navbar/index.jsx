@@ -73,6 +73,8 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
   const [{ shop }, dispatchShopData] = useShopContext();
   const [activeShop, setActiveShop] = React.useState({});
 
+  const shopArray = Object.keys(shop).map((key) => [key, shop[key]]);
+
   const handleActiveShop = (shop) => {
     setActiveShop(shop);
     dispatchShopData({ type: "active-shop", payload: shop });
@@ -95,7 +97,7 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
         {(storePopupState) => (
           <div className="storeDropdown">
             <h2 {...bindTrigger(storePopupState)}>
-              {activeShop.name || shop[0].name || "SS Brothers"}{" "}
+              {activeShop.name || shop[0]?.name || "SS Brothers"}{" "}
               <i className="ri-arrow-down-s-line"></i>
             </h2>
             <Popover
@@ -112,7 +114,7 @@ export default function Navbar({ theme, dispatchUtilityData, setActiveTab }) {
               <div
                 className={`navbar__container__userActions ${theme} px-3.5 py-2 pt-4`}
               >
-                {shop.map((data, index) => (
+                {shopArray.map((data, index) => (
                   <React.Fragment key={index}>
                     <div className="">
                       <Button

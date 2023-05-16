@@ -91,6 +91,13 @@
   border-radius: 8px;
   height: 48px;
 }
+@media screen and (max-width: 426px) {
+  .dashboard__container .sidebar__container .general div p,
+  .dashboard__container .sidebar__container .management div p,
+  .dashboard__container .sidebar__container .app div p {
+    display: none;
+  }
+}
 .dashboard__container .sidebar__container .general div:hover,
 .dashboard__container .sidebar__container .management div:hover,
 .dashboard__container .sidebar__container .app div:hover {

@@ -31,6 +31,11 @@
   width: 40vw;
   flex-direction: column;
 }
+@media screen and (max-width: 426px) {
+  .onboardUser__container .paper {
+    width: 100vw;
+  }
+}
 .onboardUser__container .paper .MuiStepper-root {
   width: 100%;
   padding: 0;
@@ -83,6 +88,11 @@
 }
 .onboardUser__container .paper form input {
   width: 25vw;
+}
+@media screen and (max-width: 426px) {
+  .onboardUser__container .paper .MuiFormControl-root {
+    width: 100%;
+  }
 }
 .onboardUser__container .paper .businessInfo__container,
 .onboardUser__container .paper .customerInformation__container,
