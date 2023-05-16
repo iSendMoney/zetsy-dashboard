@@ -12,12 +12,6 @@ import { useShopContext } from "../../contexts/Shop";
 import Fuse from "fuse.js";
 
 export default function Ecommerce({ handleTabChange, theme }) {
-  const [status, setStatus] = React.useState("");
-
-  const handleChange = (event) => {
-    setStatus(event.target.value);
-  };
-
   // @section => store products
   const [{ activeShop }] = useShopContext();
   const [storeProducts, setStoreProducts] = React.useState([]);
@@ -35,6 +29,7 @@ export default function Ecommerce({ handleTabChange, theme }) {
     })();
   }, []);
 
+  // @dev filter products as user search for product in input
   const filterProductsUsingObject = (_keyword) => {
     const options = {
       includeScore: true,
@@ -59,6 +54,48 @@ export default function Ecommerce({ handleTabChange, theme }) {
       });
 
     setFilteredProducts(_items);
+  };
+
+  const [status, setStatus] = React.useState("");
+
+  const filterProductUsingStatus = (_status) => {
+    let _filteredItems = [];
+
+    switch (_status) {
+      case "all":
+        setStatus(_status);
+        return setFilteredProducts([]);
+
+      case "active":
+        storeProducts.forEach((item) => {
+          if (item?.description?.quantity > 15) {
+            _filteredItems.push(item);
+          }
+        });
+        setStatus(_status);
+        return setFilteredProducts(_filteredItems);
+
+      case "low-stock":
+        storeProducts.forEach((item) => {
+          if (
+            item?.description?.quantity <= 15 &&
+            item.description.quantity !== 0
+          ) {
+            _filteredItems.push(item);
+          }
+        });
+        setStatus(_status);
+        return setFilteredProducts(_filteredItems);
+
+      case "out-of-stock":
+        storeProducts.forEach((item) => {
+          if (item?.description?.quantity === 0) {
+            _filteredItems.push(item);
+          }
+        });
+        setStatus(_status);
+        return setFilteredProducts(_filteredItems);
+    }
   };
 
   return (
@@ -89,12 +126,12 @@ export default function Ecommerce({ handleTabChange, theme }) {
                 id="demo-simple-select"
                 value={status}
                 label="Status"
-                onChange={handleChange}
+                onChange={(e) => filterProductUsingStatus(e.target.value)}
               >
+                <MenuItem value="all">All</MenuItem>
                 <MenuItem value="out-of-stock">Out of Stock</MenuItem>
                 <MenuItem value="active">In Stock</MenuItem>
                 <MenuItem value="low-stock">Low Stock</MenuItem>
-                <MenuItem value="draft">Draft</MenuItem>
               </Select>
             </FormControl>
           </Box>
