@@ -8,8 +8,10 @@ import {
   deleteUser,
   updatePassword,
   updateProfile,
+  signOut,
 } from "firebase/auth";
 import { auth } from "./firebase";
+import { toast } from "react-toastify";
 
 /**
  * Authentication
@@ -23,11 +25,11 @@ export const userSignIn = (email, password) => {
     .then((userCredential) => {
       // Signed in
       const user = userCredential.user;
-      // ...
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
+      toast(errorCode)
     });
 };
 
@@ -104,8 +106,7 @@ export const userSignUp = (email, password) => {
 export const sendUserPasswordResetEmail = (email) => {
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      // Password reset email sent!
-      // ..
+      toast("Password reset email sent!")
     })
     .catch((error) => {
       const errorCode = error.code;

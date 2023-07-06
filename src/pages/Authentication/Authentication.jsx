@@ -4,7 +4,7 @@ import Signup from "./components/Signup";
 import "./styles/authentication.style.css";
 import Forgot from "./components/Forgot";
 
-export default function Authentication() {
+export default function Authentication({setIsAuthenticated}) {
   const [formStatus, setFormStatus] = React.useState("login");
 
   const handleFormStatus = (_status) => {
@@ -14,10 +14,14 @@ export default function Authentication() {
   return (
     <main className="authentication__container">
       {formStatus === "login" ? (
-        <Login handleFormStatus={handleFormStatus} />
+        <Login handleFormStatus={handleFormStatus} setIsAuthenticated={setIsAuthenticated}/>
       ) : formStatus === "signup" ? (
         <Signup handleFormStatus={handleFormStatus} />
-      ): formStatus === "forgotPassword" && <Forgot handleFormStatus={handleFormStatus}/>}
+      ) : (
+        formStatus === "forgotPassword" && (
+          <Forgot handleFormStatus={handleFormStatus} />
+        )
+      )}
       <img
         className="rounded-lg"
         src="https://ik.imagekit.io/13x54r/Zetsy/Landing.png?updatedAt=1688659191461"
