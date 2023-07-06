@@ -1,55 +1,10 @@
 import React from "react";
 import { Button } from "@mui/material";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword
-} from "firebase/auth";
-import { auth } from "../../../utils/firebase";
-
-const provider = new GoogleAuthProvider();
+import { googleSignIn, userSignIn } from "../../../utils/authentication";
 
 export default function Login({handleFormStatus}) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-
-  const signInUserWithGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-        console.log(user, token);
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
-  };
-
-  const authenticateWithEmailAndPassword = () => {
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        // Signed in
-        const user = userCredential.user;
-        console.log(user);
-        // ...
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-      });
-  };
 
   return (
     <form action="" className="p-[5vw]">
@@ -78,13 +33,13 @@ export default function Login({handleFormStatus}) {
         <p className="text-sm mb-2 text-right cursor-pointer" onClick={() => handleFormStatus("forgotPassword")}>
           Forgot Password.
         </p>
-        <Button onClick={() => authenticateWithEmailAndPassword()}>
+        <Button onClick={() => userSignIn(email,password)}>
           Sign in
         </Button>
         <p className="divider text-sm my-1">Or</p>
         <Button
           className="flex flex-row gap-1 social"
-          onClick={() => signInUserWithGoogle()}
+          onClick={() => googleSignIn()}
         >
           <i className="ri-google-fill"></i> Google
         </Button>

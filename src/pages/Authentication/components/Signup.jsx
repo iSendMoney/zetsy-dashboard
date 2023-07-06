@@ -1,61 +1,11 @@
 import React from "react";
 import { Button } from "@mui/material";
-import {
-  GoogleAuthProvider,
-  signInWithPopup,
-  createUserWithEmailAndPassword,
-  sendEmailVerification
-} from "firebase/auth";
-import { auth } from "../../../utils/firebase";
-import { toast } from "react-toastify";
-
-const provider = new GoogleAuthProvider();
+import { googleSignIn, userSignUp } from "../../../utils/authentication";
 
 export default function Signup({ handleFormStatus }) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [confirmPassword, setConfirmPassword] = React.useState("");
-
-  const signUpUserWithEmailPassword = () => {
-    createUserWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-
-        sendEmailVerification(user).then(() => {
-          toast("Email verification sent!");
-        });
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        
-        toast("User already exists!")
-      });
-  };
-
-  const signInUserWithGoogle = () => {
-    signInWithPopup(auth, provider)
-      .then((result) => {
-        // This gives you a Google Access Token. You can use it to access the Google API.
-        const credential = GoogleAuthProvider.credentialFromResult(result);
-        const token = credential.accessToken;
-        // The signed-in user info.
-        const user = result.user;
-        // IdP data available using getAdditionalUserInfo(result)
-        // ...
-        console.log(user, token);
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.customData.email;
-        // The AuthCredential type that was used.
-        const credential = GoogleAuthProvider.credentialFromError(error);
-        // ...
-      });
-  };
 
   return (
     <form action="" className="p-[5vw]">
@@ -91,14 +41,14 @@ export default function Signup({ handleFormStatus }) {
         />
         <Button
           className="flex flex-row gap-1"
-          onClick={() => signUpUserWithEmailPassword()}
+          onClick={() => userSignUp(email, password)}
         >
           Sign up
         </Button>
         <p className="divider text-sm my-1">Or</p>
         <Button
           className="flex flex-row gap-1 social"
-          onClick={() => signInUserWithGoogle()}
+          onClick={() => googleSignIn()}
         >
           <i className="ri-google-fill"></i> Google
         </Button>
