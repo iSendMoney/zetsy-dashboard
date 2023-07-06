@@ -1,23 +1,8 @@
 import React from "react";
 import { Button } from "@mui/material";
-import { sendPasswordResetEmail } from "firebase/auth";
-import { auth } from "../../../utils/firebase";
-import { toast } from "react-toastify";
 
 export default function Forgot({ handleFormStatus }) {
   const [email, setEmail] = React.useState("");
-
-  const handleResetPasswordEmail = () => {
-    sendPasswordResetEmail(auth, email)
-      .then(() => {
-        toast("Password reset email sent!");
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        toast("User does not exist!")
-      });
-  };
 
   return (
     <form action="" className="p-[5vw]">
@@ -35,33 +20,9 @@ export default function Forgot({ handleFormStatus }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
-        {/* <label htmlFor="">Verification Code</label>
-        <input
-          className="text-sm"
-          type="text"
-          placeholder="At least 8 characters"
-          //   value={password}
-          //   onChange={(e) => setPassword(e.target.value)}
-        />
-        <label htmlFor="">New Password</label>
-        <input
-          className="text-sm"
-          type="password"
-          placeholder="At least 8 characters"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <label htmlFor="">Confirm Password</label>
-        <input
-          className="text-sm"
-          type="password"
-          placeholder="At least 8 characters"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        /> */}
         <Button
           className="flex flex-row gap-1"
-          onClick={() => handleResetPasswordEmail()}
+          onClick={() => sendUserPasswordResetEmail(email)}
         >
           Send verification email
         </Button>
