@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@mui/material";
+import { sendUserPasswordResetEmail } from "../../../utils/authentication";
 
 export default function Forgot({ handleFormStatus }) {
   const [email, setEmail] = React.useState("");
