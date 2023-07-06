@@ -4,7 +4,7 @@
   height: 100vh;
   flex-direction: row;
   justify-content: center;
-  padding: 3vw 30px;
+  padding: 50px 30px;
 
   form {
     flex: 1;
@@ -42,6 +42,16 @@
         background: #000;
         color: #fff;
         margin: 5px 0;
+
+        &.social{
+            background: #efefef;
+            color: #000;
+        }
+      }
+
+      a{
+        text-decoration: none;
+        color: #000;
       }
 
       .divider{

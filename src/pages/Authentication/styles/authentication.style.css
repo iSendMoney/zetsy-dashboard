@@ -4,7 +4,7 @@
   height: 100vh;
   flex-direction: row;
   justify-content: center;
-  padding: 3vw 30px;
+  padding: 50px 30px;
 }
 .authentication__container form {
   flex: 1;
@@ -38,6 +38,14 @@
   background: #000;
   color: #fff;
   margin: 5px 0;
+}
+.authentication__container form .inputContainer .MuiButton-root.social {
+  background: #efefef;
+  color: #000;
+}
+.authentication__container form .inputContainer a {
+  text-decoration: none;
+  color: #000;
 }
 .authentication__container form .inputContainer .divider {
   text-align: center;

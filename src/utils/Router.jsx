@@ -1,11 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Authentication from "../pages/Authentication";
+import Authentication from "../pages/Authentication/Authentication";
+import { auth } from "./firebase";
 
 export default function Router() {
+  const user = auth.currentUser;
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Authentication />,
+      element: user ? <p>Dashboard</p> :<Authentication />,
       // children: [
       //   {
       //     path: "team",
