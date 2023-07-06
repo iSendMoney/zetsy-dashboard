@@ -25,6 +25,8 @@ import {
    */
 } from "firebase/auth";
 import { auth } from "../utils/firebase";
+import "./styles/authentication.style.css";
+import { Button } from "@mui/material";
 
 const provider = new GoogleAuthProvider();
 
@@ -57,7 +59,7 @@ export default function Authentication() {
         const user = result.user;
         // IdP data available using getAdditionalUserInfo(result)
         // ...
-        console.log(user, token)
+        console.log(user, token);
       })
       .catch((error) => {
         // Handle Errors here.
@@ -76,7 +78,7 @@ export default function Authentication() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user)
+        console.log(user);
         // ...
       })
       .catch((error) => {
@@ -86,24 +88,51 @@ export default function Authentication() {
   };
 
   return (
-    <div>
-      <h1>Authentication</h1>
+    // <div>
+    //   <h1>Authentication</h1>
 
-      <input
-        type="email"
-        placeholder="email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
+    //
+
+    //   <button onClick={() => signUpUserWithEmailPassword()}>Sign Up</button>
+    // </div>
+    <main className="authentication__container">
+      <form action="" className="p-[5vw]">
+        <div className="inputContainer">
+          <h1 className="text-3xl font-medium">Welcome Back 👋</h1>
+          <p className="my-4 font-thin">
+            Today is a new day. It's your day. You shape it.
+            <br /> Sign in to start managing your business.
+          </p>
+          <label htmlFor="">Email</label>
+          <input
+          className="text-sm"
+            type="email"
+            placeholder="Example@email.com"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <label htmlFor="">Password</label>
+          <input
+          className="text-sm"
+            type="password"
+            placeholder="At least 8 characters"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          {/* <a href="">Forgot Password</a> */}
+          <Button onClick={() => authenticateWithEmailAndPassword()}>
+            Sign in
+          </Button>
+          <p className="divider text-sm my-1">Or</p>
+          <Button className="flex flex-row gap-2" onClick={() => signInWithGoogle()}><i className="ri-google-line"></i> Google</Button>
+        </div>
+      </form>
+      <img
+        className="rounded-lg"
+        src="https://ik.imagekit.io/13x54r/Zetsy/Screenshot_2023-07-06_at_1.31.38_AM.png?updatedAt=1688621509219"
+        loading="lazy"
+        alt=""
       />
-      <input
-        type="password"
-        placeholder="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={() => authenticateWithEmailAndPassword()}>Login</button>
-      <button onClick={() => signUpUserWithEmailPassword()}>Sign Up</button>
-      <button onClick={() => signInWithGoogle()}>Google</button>
-    </div>
+    </main>
   );
 }

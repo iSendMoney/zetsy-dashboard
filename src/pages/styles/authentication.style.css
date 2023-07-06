@@ -1,0 +1,50 @@
+.authentication__container {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  flex-direction: row;
+  justify-content: center;
+  padding: 3vw 30px;
+}
+.authentication__container form {
+  flex: 1;
+}
+.authentication__container form .inputContainer {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+}
+.authentication__container form .inputContainer label,
+.authentication__container form .inputContainer input {
+  display: block;
+}
+.authentication__container form .inputContainer label {
+  margin-bottom: 5px;
+}
+.authentication__container form .inputContainer input {
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+.authentication__container form .inputContainer input:focus {
+  outline: none;
+  border-color: #34495e;
+}
+.authentication__container form .inputContainer .MuiButton-root {
+  text-transform: capitalize;
+  background: #000;
+  color: #fff;
+  margin: 5px 0;
+}
+.authentication__container form .inputContainer .divider {
+  text-align: center;
+}
+.authentication__container img {
+  width: 62vw;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}/*# sourceMappingURL=authentication.style.css.map */
