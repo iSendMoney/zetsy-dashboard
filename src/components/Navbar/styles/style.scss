@@ -1,0 +1,29 @@
+nav {
+  border-bottom: 0.5px solid #cfcfcf;
+
+  .logo {
+    font-family: "Playfair Display", serif;
+  }
+
+  input {
+    width: 20vw;
+
+    &:focus {
+      outline: none;
+      border: none;
+    }
+  }
+
+  .MuiButton-root {
+    color: #000;
+    min-width: 0;
+    padding: 0 10px;
+  }
+}
+
+#avatar-popover {
+  .MuiPaper-root {
+    -webkit-box-shadow: -3px 5px 8px 1px rgba(0, 0, 0, 0.11);
+    box-shadow: -3px 5px 8px 1px rgba(0, 0, 0, 0.11);
+  }
+}

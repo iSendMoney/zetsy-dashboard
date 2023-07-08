@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Authentication from "../pages/Authentication/Authentication";
 import { auth } from "./firebase";
-import { userSignOut } from "./authentication";
+import DesktopLayout from "../layouts/DesktopLayout";
 
 export default function Router() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -32,7 +32,7 @@ export default function Router() {
       path: "/",
       element: (
         <ProtectedRoute>
-          <><button onClick={() => userSignOut()}>sign out</button></>
+          <DesktopLayout/>
         </ProtectedRoute>
       ),
       // children: [
