@@ -90,10 +90,9 @@ export default function RecentPurchases() {
   return (
     <Card>
       <Flex justifyContent="start" className="space-x-2">
-        <Title>Purchases</Title>
+        <Title><i className="ri-shopping-cart-2-line"></i> Recent Purchases</Title>
         <Badge color="gray">8</Badge>
       </Flex>
-      <Text className="mt-2">Overview of this month's purchases</Text>
 
       <Table className="mt-6">
         <TableHead>

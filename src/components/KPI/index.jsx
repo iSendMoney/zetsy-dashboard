@@ -1,4 +1,4 @@
-import { Card, Grid, Metric, Text } from "@tremor/react";
+import { Card, Flex, Metric, BadgeDelta, Text, Grid } from "@tremor/react";
 
 const categories = [
   {
@@ -13,14 +13,27 @@ const categories = [
     title: "Customers",
     metric: "456",
   },
+  {
+    title: "Active Users",
+    metric: "456",
+  },
 ];
 
 export default function KPI() {
   return (
-    <Grid numItemsSm={2} numItemsLg={3} className="gap-6 mt-4">
+    <Grid numItemsSm={3} numItemsLg={4} className="gap-6 mt-4">
       {categories.map((item) => (
-        <Card key={item.title}>
-          <Text>{item.title}</Text>
+        <Card className="max-w-sm" key={item.title}>
+          <Flex>
+            <Text>{item.title}</Text>
+            <BadgeDelta
+              deltaType="moderateIncrease"
+              isIncreasePositive={true}
+              size="xs"
+            >
+              +12.3%
+            </BadgeDelta>
+          </Flex>
           <Metric>{item.metric}</Metric>
         </Card>
       ))}

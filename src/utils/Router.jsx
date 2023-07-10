@@ -22,7 +22,11 @@ export default function Router() {
   }, []);
 
   const ProtectedRoute = ({ children }) => {
-    return isAuthenticated ? {...children} : <Authentication setIsAuthenticated={setIsAuthenticated} />;
+    return isAuthenticated ? (
+      { ...children }
+    ) : (
+      <Authentication setIsAuthenticated={setIsAuthenticated} />
+    );
   };
 
   const user = auth.currentUser;
@@ -32,7 +36,7 @@ export default function Router() {
       path: "/",
       element: (
         <ProtectedRoute>
-          <DesktopLayout/>
+            <DesktopLayout />
         </ProtectedRoute>
       ),
       // children: [
@@ -45,7 +49,11 @@ export default function Router() {
     },
     {
       path: "/login",
-      element: !isAuthenticated ? <Authentication setIsAuthenticated={setIsAuthenticated} /> : <Navigate to="/" replace />,
+      element: !isAuthenticated ? (
+        <Authentication setIsAuthenticated={setIsAuthenticated} />
+      ) : (
+        <Navigate to="/" replace />
+      ),
     },
   ]);
 
