@@ -52,7 +52,7 @@ export default function Navbar() {
             horizontal: "left",
           }}
         >
-          <div className="flex flex-col"><Button onClick={() => userSignOut()}>Profile</Button>
+          <div className="flex flex-col w-64"><Button onClick={() => userSignOut()}>Profile</Button>
           <Button onClick={() => userSignOut()}>Sign Out</Button></div>
         </Popover>
       </div>

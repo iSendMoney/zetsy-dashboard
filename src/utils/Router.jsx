@@ -7,6 +7,7 @@ import {
 import Authentication from "../pages/Authentication/Authentication";
 import { auth } from "./firebase";
 import DesktopLayout from "../layouts/DesktopLayout";
+import NotFound from "../components/404/404";
 
 export default function Router() {
   const [isAuthenticated, setIsAuthenticated] = React.useState(false);
@@ -55,6 +56,10 @@ export default function Router() {
         <Navigate to="/" replace />
       ),
     },
+    {
+      path: "*",
+      element: <NotFound />,
+    }
   ]);
 
   return <RouterProvider router={router} />;

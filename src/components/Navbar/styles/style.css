@@ -19,4 +19,8 @@ nav .MuiButton-root {
 
 #avatar-popover .MuiPaper-root {
   box-shadow: -3px 5px 8px 1px rgba(0, 0, 0, 0.11);
+}
+#avatar-popover .MuiPaper-root .MuiButton-root {
+  text-transform: capitalize;
+  justify-content: left;
 }/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,52 @@
+[
+    {
+        "name": "Home",
+        "icon": "ri-home-fill",
+        "actionName": "home"
+    },
+    {
+        "name": "Orders",
+        "icon": "ri-inbox-2-fill",
+        "actionName": "orders"
+    },
+    {
+        "name": "Products",
+        "icon": "ri-price-tag-3-fill",
+        "actionName": "products"
+    },
+    {
+        "name": "Categories",
+        "icon": "ri-at-line",
+        "actionName": "categories"
+    },
+    {
+        "name": "Customers",
+        "icon": "ri-user-3-fill",
+        "actionName": "customers"
+    },
+    {
+        "name": "Content",
+        "icon": "ri-image-fill",
+        "actionName": "content"
+    },
+    {
+        "name": "Analytics",
+        "icon": "ri-bar-chart-fill",
+        "actionName": "analytics"
+    },
+    {
+        "name": "Marketing",
+        "icon": "ri-focus-2-line",
+        "actionName": "marketing"
+    },
+    {
+        "name": "Discounts",
+        "icon": "ri-gift-2-fill",
+        "actionName": "discounts"
+    },
+    {
+        "name": "Settings",
+        "icon": "ri-settings-3-fill",
+        "actionName": "settings"
+    }
+]

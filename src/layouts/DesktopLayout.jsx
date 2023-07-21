@@ -6,6 +6,7 @@ import Sidebar from "../components/Sidebar";
 import Home from "../pages/Home";
 import { useActiveDashboard } from "../contexts/ActiveDashboardPage";
 import Orders from "../pages/Orders";
+import Products from "../pages/Products/Products";
 
 export default function DesktopLayout() {
   const [activeDashboard] = useActiveDashboard();
@@ -17,6 +18,7 @@ export default function DesktopLayout() {
         <div className="flex-1 p-6 h-[93vh] overflow-y-scroll">
           {activeDashboard === "home" && <Home />}
           {activeDashboard === "orders" && <Orders/>}
+          {activeDashboard === "products" && <Products/>}
         </div>
       </main>
     </div>
