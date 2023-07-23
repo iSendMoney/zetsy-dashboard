@@ -35,6 +35,11 @@
         "actionName": "analytics"
     },
     {
+        "name": "Users",
+        "icon": "ri-user-3-fill",
+        "actionName": "users"
+    },
+    {
         "name": "Marketing",
         "icon": "ri-focus-2-line",
         "actionName": "marketing"
