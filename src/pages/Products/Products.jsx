@@ -27,7 +27,6 @@ const transactions = [
     item: "Under Armour Shorts",
     status: "In Stock",
     amount: "$ 49.90",
-    link: "#",
   },
   {
     productId: "#234567",
@@ -35,7 +34,6 @@ const transactions = [
     item: "Book - Wealth of Nations",
     status: "Out of Stock",
     amount: "$ 19.90",
-    link: "#",
   },
   {
     productId: "#345678",
@@ -43,7 +41,6 @@ const transactions = [
     item: "Garmin Forerunner 945",
     status: "Low Stock",
     amount: "$ 499.90",
-    link: "#",
   },
   {
     productId: "#4567890",
@@ -51,7 +48,6 @@ const transactions = [
     item: "Running Backpack",
     status: "In Stock",
     amount: "$ 89.90",
-    link: "#",
   },
   {
     productId: "#5678901",
@@ -59,7 +55,6 @@ const transactions = [
     item: "Rolex Submariner Replica",
     status: "In Stock",
     amount: "$ 299.90",
-    link: "#",
   },
   {
     productId: "#6789012",
@@ -67,7 +62,6 @@ const transactions = [
     item: "On Clouds Shoes",
     status: "Low Stock",
     amount: "$ 290.90",
-    link: "#",
   },
   {
     productId: "#78901234",
@@ -75,7 +69,6 @@ const transactions = [
     item: "Ortovox Backpack 40l",
     status: "Out of Stock",
     amount: "$ 150.00",
-    link: "#",
   },
   {
     productId: "#89012345",
@@ -83,7 +76,6 @@ const transactions = [
     item: "Oakley Jawbreaker",
     status: "Low Stock",
     amount: "$ 190.90",
-    link: "#",
   },
 ];
 
