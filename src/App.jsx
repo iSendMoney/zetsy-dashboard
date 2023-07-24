@@ -1,10 +1,13 @@
 import React from "react";
 import Router from "./utils/Router";
+import { ActiveDashboardProvider } from "./contexts/ActiveDashboardPage";
 
 export default function App() {
   return (
     <div>
-      <Router />
+      <ActiveDashboardProvider>
+        <Router />
+      </ActiveDashboardProvider>
     </div>
   );
 }
