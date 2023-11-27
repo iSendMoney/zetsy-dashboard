@@ -1,7 +1,6 @@
 import {
   Card,
   Title,
-  Text,
   Flex,
   Table,
   TableRow,
@@ -11,7 +10,10 @@ import {
   TableBody,
   Badge,
   Button,
+  SelectItem,
+  Select,
 } from "@tremor/react";
+import React from "react";
 
 const colors = {
   "Ready for dispatch": "gray",
@@ -87,14 +89,33 @@ const transactions = [
 ];
 
 export default function RecentPurchases() {
+  const [selectedStatus, setSelectedStatus] = React.useState("all");
+
+  const isSalesPersonSelected = (salesPerson) =>
+    salesPerson.status === selectedStatus || selectedStatus === "all";
+
   return (
     <Card>
       <Flex justifyContent="start" className="space-x-2">
-        <Title><i className="ri-shopping-cart-2-line"></i> Recent Purchases</Title>
-        <Badge color="gray">8</Badge>
+        <Title>
+          <i className="ri-shopping-cart-2-line"></i> Recent Purchases
+        </Title>
+        <Badge color="gray">{transactions.length}</Badge>
       </Flex>
+      <div className="flex space-x-2 py-2">
+        <Select
+          className="max-w-full sm:max-w-xs"
+          defaultValue="all"
+          onValueChange={setSelectedStatus}
+        >
+          <SelectItem value="all">All Status</SelectItem>
+          <SelectItem value="Shipped">Shipped</SelectItem>
+          <SelectItem value="Cancelled">Cancelled</SelectItem>
+          <SelectItem value="Ready for dispatch">Ready for dispatch</SelectItem>
+        </Select>
+      </div>
 
-      <Table className="mt-6">
+      <Table>
         <TableHead>
           <TableRow>
             <TableHeaderCell>Transaction ID</TableHeaderCell>
@@ -107,24 +128,26 @@ export default function RecentPurchases() {
         </TableHead>
 
         <TableBody>
-          {transactions.map((item) => (
-            <TableRow key={item.transactionID}>
-              <TableCell>{item.transactionID}</TableCell>
-              <TableCell>{item.user}</TableCell>
-              <TableCell>{item.item}</TableCell>
-              <TableCell>
-                <Badge color={colors[item.status]} size="xs">
-                  {item.status}
-                </Badge>
-              </TableCell>
-              <TableCell className="text-right">{item.amount}</TableCell>
-              <TableCell>
-                <Button size="xs" variant="secondary" color="gray">
-                  See details
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
+          {transactions
+            .filter((item) => isSalesPersonSelected(item))
+            .map((item) => (
+              <TableRow key={item.transactionID}>
+                <TableCell>{item.transactionID}</TableCell>
+                <TableCell>{item.user}</TableCell>
+                <TableCell>{item.item}</TableCell>
+                <TableCell>
+                  <Badge color={colors[item.status]} size="xs">
+                    {item.status}
+                  </Badge>
+                </TableCell>
+                <TableCell className="text-right">{item.amount}</TableCell>
+                <TableCell>
+                  <Button size="xs" variant="secondary" color="gray">
+                    See details
+                  </Button>
+                </TableCell>
+              </TableRow>
+            ))}
         </TableBody>
       </Table>
     </Card>

@@ -29,7 +29,7 @@ export const userSignIn = (email, password) => {
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
-      toast(errorCode)
+      toast(errorCode);
     });
 };
 
@@ -56,9 +56,14 @@ export const userSignOut = () => {
 export const googleSignIn = () => {
   signInWithPopup(auth, new GoogleAuthProvider())
     .then((result) => {
+      // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       const token = credential.accessToken;
+      // The signed-in user info.
       const user = result.user;
+      console.log(user)
+      // IdP data available using getAdditionalUserInfo(result)
+      // ...
     })
     .catch((error) => {
       // Handle Errors here.
@@ -106,7 +111,7 @@ export const userSignUp = (email, password) => {
 export const sendUserPasswordResetEmail = (email) => {
   sendPasswordResetEmail(auth, email)
     .then(() => {
-      toast("Password reset email sent!")
+      toast("Password reset email sent!");
     })
     .catch((error) => {
       const errorCode = error.code;

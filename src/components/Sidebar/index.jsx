@@ -1,17 +1,22 @@
 import { Button } from "@mui/material";
-import React from "react";
 import { Text } from "@tremor/react";
 import { SearchSelect, SearchSelectItem } from "@tremor/react";
-import { useActiveDashboard } from "../../contexts/ActiveDashboardPage";
+// import { useActiveDashboard } from "../../contexts/ActiveDashboardPage";
 import SidebarItems from "../../utils/Sidebar.json";
 import "./styles/style.css";
+import { NavLink } from "react-router-dom";
 
 export default function Sidebar() {
-  const [activeDashboard, setActiveDashboard] = useActiveDashboard();
+  // const [activeDashboard, setActiveDashboard] = useActiveDashboard();
+  // const navigate = useNavigate();
+  // const location = useLocation();
 
-  const handleActiveDashboard = (dashboard) => {
-    setActiveDashboard(dashboard);
-  };
+  // const handleActiveDashboard = (dashboard) => {
+  //   setActiveDashboard(dashboard);
+  // };
+
+  // console.log(location.pathname.match("/").input);
+  console.log(location.pathname);
 
   return (
     <div className="pt-3 desktopLayoutSidebar__container flex flex-col align-start">
@@ -26,10 +31,20 @@ export default function Sidebar() {
       {SidebarItems.map((item, index) => (
         <Button
           key={index}
-          className={activeDashboard === item.actionName && "active"}
-          onClick={() => handleActiveDashboard(item.actionName)}
+          className={
+            location.pathname === `/${item.actionName}` ? "active" : ""
+          }
         >
-          <i className={item.icon}></i> <Text>{item.name}</Text>
+          <NavLink
+            to={item.path}
+            className={({ isActive }) =>
+              isActive
+                ? "active flex items-center gap-2 w-full"
+                : "flex items-center gap-2 w-full"
+            }
+          >
+            <i className={item.icon}></i> <Text>{item.name}</Text>
+          </NavLink>
         </Button>
       ))}
     </div>

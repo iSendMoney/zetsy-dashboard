@@ -1,57 +1,68 @@
 [
-    {
-        "name": "Home",
-        "icon": "ri-home-fill",
-        "actionName": "home"
-    },
-    {
-        "name": "Orders",
-        "icon": "ri-inbox-2-fill",
-        "actionName": "orders"
-    },
-    {
-        "name": "Products",
-        "icon": "ri-price-tag-3-fill",
-        "actionName": "products"
-    },
-    {
-        "name": "Categories",
-        "icon": "ri-at-line",
-        "actionName": "categories"
-    },
-    {
-        "name": "Customers",
-        "icon": "ri-user-3-fill",
-        "actionName": "customers"
-    },
-    {
-        "name": "Content",
-        "icon": "ri-image-fill",
-        "actionName": "content"
-    },
-    {
-        "name": "Analytics",
-        "icon": "ri-bar-chart-fill",
-        "actionName": "analytics"
-    },
-    {
-        "name": "Users",
-        "icon": "ri-user-3-fill",
-        "actionName": "users"
-    },
-    {
-        "name": "Marketing",
-        "icon": "ri-focus-2-line",
-        "actionName": "marketing"
-    },
-    {
-        "name": "Discounts",
-        "icon": "ri-gift-2-fill",
-        "actionName": "discounts"
-    },
-    {
-        "name": "Settings",
-        "icon": "ri-settings-3-fill",
-        "actionName": "settings"
-    }
+  {
+    "name": "Home",
+    "icon": "ri-home-fill",
+    "actionName": "",
+    "path": "/"
+  },
+  {
+    "name": "Orders",
+    "icon": "ri-inbox-2-fill",
+    "actionName": "orders",
+    "path": "/orders"
+  },
+  {
+    "name": "Products",
+    "icon": "ri-price-tag-3-fill",
+    "actionName": "products",
+    "path": "/products"
+  },
+  {
+    "name": "Categories",
+    "icon": "ri-at-line",
+    "actionName": "categories",
+    "path": "/categories"
+  },
+  {
+    "name": "Customers",
+    "icon": "ri-user-3-fill",
+    "actionName": "customers",
+    "path": "/customers"
+  },
+  {
+    "name": "Content",
+    "icon": "ri-image-fill",
+    "actionName": "content",
+    "path": "/content"
+  },
+  {
+    "name": "Analytics",
+    "icon": "ri-bar-chart-fill",
+    "actionName": "analytics",
+    "path": "/analytics"
+  },
+  {
+    "name": "Users",
+    "icon": "ri-user-3-fill",
+    "actionName": "users",
+    "path": "/users"
+  },
+  {
+    "name": "Marketing",
+    "icon": "ri-focus-2-line",
+    "actionName": "marketing",
+    "path": "/merketing"
+  },
+  {
+    "name": "Discounts",
+    "icon": "ri-gift-2-fill",
+    "actionName": "discounts",
+    "path": "/discounts"
+  },
+  {
+    "name": "Settings",
+    "icon": "ri-settings-3-fill",
+    "actionName": "settings",
+    "path": "/settings"
+  }
 ]

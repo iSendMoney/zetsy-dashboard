@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Button } from "@mui/material";
 import { googleSignIn, userSignUp } from "../../../utils/authentication";
@@ -12,7 +13,7 @@ export default function Signup({ handleFormStatus }) {
       <div className="inputContainer">
         <h1 className="text-3xl font-medium">Welcome Back 👋</h1>
         <p className="my-4 font-thin">
-          Today is a new day. It's your day. You shape it.
+          Today is a new day. It&apos;s your day. You shape it.
           <br /> Sign in to start managing your business.
         </p>
         <label htmlFor="">Email</label>

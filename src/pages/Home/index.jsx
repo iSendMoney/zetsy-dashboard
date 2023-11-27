@@ -1,5 +1,4 @@
 import { Flex, Text, Title } from "@tremor/react";
-import React from "react";
 import KPI from "../../components/KPI";
 import RecentPurchases from "../../components/RecentPurchases";
 

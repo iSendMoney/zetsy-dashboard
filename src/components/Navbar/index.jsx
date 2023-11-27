@@ -6,6 +6,8 @@ import Popover from "@mui/material/Popover";
 import { userSignOut } from "../../utils/authentication";
 import "./styles/style.css";
 import { Text } from "@tremor/react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../contexts/UserContext";
 
 export default function Navbar() {
   const [AvatarAnchorEl, setAvatarAnchorEl] = React.useState(null);
@@ -16,17 +18,25 @@ export default function Navbar() {
     setAvatarAnchorEl(null);
   };
   const avatarPopeverOpen = Boolean(AvatarAnchorEl);
+  const navigate = useNavigate();
+  const { dispatch } = React.useContext(UserContext);
   const avatarPopeverId = open ? "avatar-popover" : undefined;
 
   const [search, setSearch] = React.useState("");
 
   return (
     <nav className="flex flex-row justify-between align-center px-6 py-2 text-sm">
-      <p className="text-2xl logo">Zetsy.</p>
+      <p className="text-2xl logo cursor-pointer" onClick={() => navigate("/")}>
+        Zetsy.
+      </p>
       <div className="navbarSearchContainer flex flex-row align-center gap-2 border p-2 rounded">
-        <Text><i className="ri-search-line"></i></Text>
+        <Text>
+          <i className="ri-search-line"></i>
+        </Text>
         <input type="text" placeholder="Search" />
-        <Text><i className="ri-command-line"></i>+K</Text>
+        <Text>
+          <i className="ri-command-line"></i>+K
+        </Text>
       </div>
       <div className="flex flex-row align-center gap-2">
         <Button>
@@ -52,10 +62,13 @@ export default function Navbar() {
             horizontal: "left",
           }}
         >
-          <div className="flex flex-col w-64"><Button onClick={() => userSignOut()}>Profile</Button>
-          <Button onClick={() => userSignOut()}>Sign Out</Button></div>
+          <div className="flex flex-col w-64">
+            <Button>Profile</Button>
+            <Button onClick={() => userSignOut()}>Sign Out</Button>
+          </div>
         </Popover>
       </div>
     </nav>
   );
 }
+// userSignOut()

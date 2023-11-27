@@ -2,6 +2,9 @@
   border-left: 2px solid #2ecc71;
   border-radius: 0;
 }
-.desktopLayoutSidebar__container .MuiButton-root.active i {
+
+.desktopLayoutSidebar__container a.active i {
   color: #2ecc71;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */

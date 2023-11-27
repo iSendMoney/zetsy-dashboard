@@ -1,4 +1,3 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import { ToastContainer } from "react-toastify";
@@ -6,9 +5,10 @@ import { ToastContainer } from "react-toastify";
 import "remixicon/fonts/remixicon.css";
 import "react-toastify/dist/ReactToastify.css";
 import "./index.css";
+import UserContextProvider from "./contexts/UserContext.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <>
+  <UserContextProvider>
     <App />
     <ToastContainer
       position="top-center"
@@ -22,5 +22,5 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       pauseOnHover
       theme="light"
     />
-  </>
+  </UserContextProvider>
 );
